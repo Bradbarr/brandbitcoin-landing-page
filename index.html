@@ -4,14 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bitcoin Buying & Selling | BrandBitcoin</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500;700&display=swap" rel="stylesheet">
     <style>
         /* General Styles */
         body {
-            font-family: 'Arial', sans-serif;
+            font-family: 'Roboto Mono', monospace;
             margin: 0;
             padding: 0;
-            background-color: #f8f8f8;
-            color: #333;
+            background-color: #f0f4f8;
+            color: #2d3748;
             line-height: 1.6;
         }
 
@@ -19,14 +20,17 @@
             max-width: 1200px;
             margin: 0 auto;
             padding: 20px;
+            background: white;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
         }
 
         h1, h2 {
-            color: #ff9900;
+            color: #2c5282;
         }
 
         a {
-            color: #ff9900;
+            color: #2c5282;
             text-decoration: none;
         }
 
@@ -36,7 +40,7 @@
 
         /* Navigation Bar */
         nav {
-            background: #333;
+            background: #2c5282;
             padding: 10px 0;
             text-align: center;
         }
@@ -48,12 +52,12 @@
         }
 
         nav a:hover {
-            color: #ff9900;
+            color: #a0aec0;
         }
 
         /* Hero Section */
         .hero {
-            background: linear-gradient(135deg, #ff9900, #ff6600);
+            background: linear-gradient(135deg, #2c5282, #4a5568);
             color: white;
             padding: 100px 20px;
             text-align: center;
@@ -73,14 +77,14 @@
             display: inline-block;
             padding: 15px 30px;
             background: white;
-            color: #ff9900;
+            color: #2c5282;
             font-size: 18px;
             border-radius: 5px;
             margin-top: 20px;
         }
 
         .cta-button:hover {
-            background: #f0f0f0;
+            background: #e2e8f0;
         }
 
         /* Consultation Section */
@@ -105,7 +109,7 @@
         }
 
         .consultation button {
-            background: #ff9900;
+            background: #2c5282;
             color: white;
             padding: 10px 20px;
             border: none;
@@ -114,12 +118,12 @@
         }
 
         .consultation button:hover {
-            background: #cc7700;
+            background: #4a5568;
         }
 
         /* FAQ Section */
         .faq {
-            background: #f8f8f8;
+            background: #f0f4f8;
             padding: 50px 20px;
         }
 
@@ -132,7 +136,7 @@
         }
 
         .faq-item h3 {
-            color: #ff9900;
+            color: #2c5282;
         }
 
         /* Mempool Section */
@@ -148,9 +152,47 @@
             border: none;
         }
 
+        /* Insights Section */
+        .insights {
+            background: #f0f4f8;
+            padding: 50px 20px;
+            text-align: center;
+        }
+
+        .insights h2 {
+            color: #2c5282;
+        }
+
+        .insights form {
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: left;
+        }
+
+        .insights input, .insights textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .insights button {
+            background: #2c5282;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .insights button:hover {
+            background: #4a5568;
+        }
+
         /* Footer */
         footer {
-            background: #333;
+            background: #2c5282;
             color: white;
             text-align: center;
             padding: 20px 0;
@@ -165,6 +207,7 @@
         <a href="#consultation">Consultation</a>
         <a href="#faq">FAQ</a>
         <a href="#mempool">Mempool</a>
+        <a href="#insights">Insights</a>
     </nav>
 
     <!-- Hero Section -->
@@ -180,7 +223,7 @@
     <section class="consultation" id="consultation">
         <div class="container">
             <h2>Schedule a Consultation</h2>
-            <form>
+            <form action="mailto:bradbarrand@proton.me" method="post" enctype="text/plain">
                 <input type="text" placeholder="Your Name" required>
                 <input type="email" placeholder="Your Email" required>
                 <textarea placeholder="Your Message" rows="5" required></textarea>
@@ -199,7 +242,7 @@
             </div>
             <div class="faq-item">
                 <h3>How do I buy Bitcoin?</h3>
-                <p>You can buy Bitcoin through exchanges, peer-to-peer platforms, or Bitcoin ATMs.</p>
+                <p>You can buy Bitcoin through exchanges, peer-to-peer platforms, or Bitcoin ATMs. You can also exchange Bitcoin directly with others securely.</p>
             </div>
             <!-- Add more FAQ items here -->
         </div>
@@ -210,6 +253,19 @@
         <div class="container">
             <h2>Live Mempool</h2>
             <iframe src="https://mempool.space/" title="Live Mempool"></iframe>
+        </div>
+    </section>
+
+    <!-- Insights Section -->
+    <section class="insights" id="insights">
+        <div class="container">
+            <h2>Share Your Insights</h2>
+            <form>
+                <input type="text" placeholder="Your Name" required>
+                <input type="email" placeholder="Your Email" required>
+                <textarea placeholder="Your Insights" rows="5" required></textarea>
+                <button type="submit">Submit</button>
+            </form>
         </div>
     </section>
 
