@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -25,7 +26,7 @@
             border-radius: 10px;
         }
 
-        h1, h2 {
+        h1, h2, h3 {
             color: #2c5282;
         }
 
@@ -139,89 +140,45 @@
             color: #2c5282;
         }
 
-        <!-- Bitcoin for Beginners Section -->
-
-        <section class="bitcoin-for-kids" id="bitcoin-for-kids">
-        <div class="container">
-        <h2>Bitcoin Made Simple</h2>
-        <p>Bitcoin is like digital money that you can use to buy things or save for later. Here’s how you can get Bitcoin and keep it safe:</p>
-
-        <h3>Step 1: Get Bitcoin</h3>
-        <p>To get Bitcoin, you need to:</p>
-        <ol>
-            <li>Find a place to buy Bitcoin (like a special app or website).</li>
-            <li>Use your money (like dollars) to buy Bitcoin.</li>
-            <li>Wait for the Bitcoin to show up in your digital wallet.</li>
-        </ol>
-
-        <h3>Step 2: Keep Your Bitcoin Safe</h3>
-        <p>Once you have Bitcoin, you need to keep it safe. Here’s how:</p>
-        <ol>
-            <li>Get a special wallet (like a piggy bank, but for Bitcoin).</li>
-            <li>Write down your secret code (called a "seed phrase") and keep it in a safe place.</li>
-            <li>Never share your secret code with anyone!</li>
-        </ol>
-
-        <h3>How I Can Help You</h3>
-        <p>If this sounds tricky, don’t worry! I can help you:</p>
-        <ul>
-            <li>Find the best place to buy Bitcoin.</li>
-            <li>Set up your digital wallet and keep it safe.</li>
-            <li>Teach you how to use Bitcoin step by step.</li>
-        </ul>
-
-        <p>Bitcoin is fun and easy once you know how it works. Let’s get started together!</p>
-        </div>
-        </section>
-        /* Mempool Section */
-        .mempool {
+        /* Bitcoin for Kids Section */
+        .bitcoin-for-kids {
             background: white;
             padding: 50px 20px;
             text-align: center;
         }
 
-        .mempool iframe {
-            width: 100%;
-            height: 500px;
-            border: none;
-        }
-
-        /* Insights Section */
-        .insights {
-            background: #f0f4f8;
-            padding: 50px 20px;
-            text-align: center;
-        }
-
-        .insights h2 {
+        .bitcoin-for-kids h2 {
             color: #2c5282;
         }
 
-        .insights form {
+        .bitcoin-for-kids p {
+            font-size: 18px;
+            margin: 20px 0;
+        }
+
+        .bitcoin-for-kids ol {
+            text-align: left;
             max-width: 600px;
             margin: 0 auto;
-            text-align: left;
         }
 
-        .insights input, .insights textarea {
-            width: 100%;
-            padding: 10px;
+        .bitcoin-for-kids ol li {
             margin: 10px 0;
-            border: 1px solid #ccc;
-            border-radius: 5px;
         }
 
-        .insights button {
-            background: #2c5282;
-            color: white;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
+        .bitcoin-for-kids ul {
+            text-align: left;
+            max-width: 600px;
+            margin: 0 auto;
         }
 
-        .insights button:hover {
-            background: #4a5568;
+        .bitcoin-for-kids ul li {
+            margin: 10px 0;
+        }
+
+        .bitcoin-symbol {
+            font-size: 24px;
+            color: #f2a900;
         }
 
         /* Footer */
@@ -240,8 +197,7 @@
         <a href="#home">Home</a>
         <a href="#consultation">Consultation</a>
         <a href="#faq">FAQ</a>
-        <a href="#mempool">Mempool</a>
-        <a href="#insights">Insights</a>
+        <a href="#bitcoin-for-kids">Bitcoin for Kids</a>
     </nav>
 
     <!-- Hero Section -->
@@ -282,24 +238,34 @@
         </div>
     </section>
 
-    <!-- Mempool Section -->
-    <section class="mempool" id="mempool">
+    <!-- Bitcoin for Kids Section -->
+    <section class="bitcoin-for-kids" id="bitcoin-for-kids">
         <div class="container">
-            <h2>Live Mempool</h2>
-            <iframe src="https://mempool.space/" title="Live Mempool"></iframe>
-        </div>
-    </section>
+            <h2>Bitcoin Made Simple <span class="bitcoin-symbol">₿</span></h2>
+            <p>Bitcoin is like digital money that you can use to buy things or save for later. Here’s how you can get Bitcoin and keep it safe:</p>
 
-    <!-- Insights Section -->
-    <section class="insights" id="insights">
-        <div class="container">
-            <h2>Share Your Insights</h2>
-            <form>
-                <input type="text" placeholder="Your Name" required>
-                <input type="email" placeholder="Your Email" required>
-                <textarea placeholder="Your Insights" rows="5" required></textarea>
-                <button type="submit">Submit</button>
-            </form>
+            <h3>Step 1: Get Bitcoin</h3>
+            <ol>
+                <li>Find a place to buy Bitcoin (like a special app or website).</li>
+                <li>Use your money (like dollars) to buy Bitcoin.</li>
+                <li>Wait for the Bitcoin to show up in your digital wallet.</li>
+            </ol>
+
+            <h3>Step 2: Keep Your Bitcoin Safe</h3>
+            <ol>
+                <li>Get a special wallet (like a piggy bank, but for Bitcoin).</li>
+                <li>Write down your secret code (called a "seed phrase") and keep it in a safe place.</li>
+                <li>Never share your secret code with anyone!</li>
+            </ol>
+
+            <h3>How I Can Help You</h3>
+            <ul>
+                <li>Find the best place to buy Bitcoin.</li>
+                <li>Set up your digital wallet and keep it safe.</li>
+                <li>Teach you how to use Bitcoin step by step.</li>
+            </ul>
+
+            <p>Bitcoin is fun and easy once you know how it works. Let’s get started together! <span class="bitcoin-symbol">₿</span></p>
         </div>
     </section>
 
