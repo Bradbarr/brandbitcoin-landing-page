@@ -3,46 +3,219 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bitcoin Buying & Selling | Your Trusted Partner</title>
+    <title>Bitcoin Buying & Selling | BrandBitcoin</title>
     <style>
+        /* General Styles */
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Arial', sans-serif;
             margin: 0;
             padding: 0;
             background-color: #f8f8f8;
-            text-align: center;
+            color: #333;
+            line-height: 1.6;
         }
+
         .container {
-            max-width: 800px;
-            margin: 50px auto;
+            max-width: 1200px;
+            margin: 0 auto;
             padding: 20px;
-            background: white;
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-            border-radius: 10px;
         }
-        h1 {
+
+        h1, h2 {
             color: #ff9900;
         }
+
+        a {
+            color: #ff9900;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        /* Navigation Bar */
+        nav {
+            background: #333;
+            padding: 10px 0;
+            text-align: center;
+        }
+
+        nav a {
+            color: white;
+            margin: 0 15px;
+            font-size: 18px;
+        }
+
+        nav a:hover {
+            color: #ff9900;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #ff9900, #ff6600);
+            color: white;
+            padding: 100px 20px;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            margin: 0;
+        }
+
+        .hero p {
+            font-size: 20px;
+            margin: 20px 0;
+        }
+
         .cta-button {
             display: inline-block;
             padding: 15px 30px;
-            background: #ff9900;
-            color: white;
-            text-decoration: none;
+            background: white;
+            color: #ff9900;
             font-size: 18px;
             border-radius: 5px;
             margin-top: 20px;
         }
+
         .cta-button:hover {
+            background: #f0f0f0;
+        }
+
+        /* Consultation Section */
+        .consultation {
+            background: white;
+            padding: 50px 20px;
+            text-align: center;
+        }
+
+        .consultation form {
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: left;
+        }
+
+        .consultation input, .consultation textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .consultation button {
+            background: #ff9900;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .consultation button:hover {
             background: #cc7700;
+        }
+
+        /* FAQ Section */
+        .faq {
+            background: #f8f8f8;
+            padding: 50px 20px;
+        }
+
+        .faq h2 {
+            text-align: center;
+        }
+
+        .faq-item {
+            margin: 20px 0;
+        }
+
+        .faq-item h3 {
+            color: #ff9900;
+        }
+
+        /* Mempool Section */
+        .mempool {
+            background: white;
+            padding: 50px 20px;
+            text-align: center;
+        }
+
+        .mempool iframe {
+            width: 100%;
+            height: 500px;
+            border: none;
+        }
+
+        /* Footer */
+        footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+            margin-top: 50px;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Buy, Sell & Learn Bitcoin – Secure & Simple</h1>
-        <p>Your trusted partner for Bitcoin transactions and user support.</p>
-        <a href="https://t.me/yourtelegram" class="cta-button">Get Started</a>
-    </div>
+    <!-- Navigation Bar -->
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#consultation">Consultation</a>
+        <a href="#faq">FAQ</a>
+        <a href="#mempool">Mempool</a>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <h1>Buy, Sell & Learn Bitcoin – Secure & Simple</h1>
+            <p>Your trusted partner for Bitcoin transactions and user support.</p>
+            <a href="#consultation" class="cta-button">Get Started</a>
+        </div>
+    </section>
+
+    <!-- Consultation Section -->
+    <section class="consultation" id="consultation">
+        <div class="container">
+            <h2>Schedule a Consultation</h2>
+            <form>
+                <input type="text" placeholder="Your Name" required>
+                <input type="email" placeholder="Your Email" required>
+                <textarea placeholder="Your Message" rows="5" required></textarea>
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq" id="faq">
+        <div class="container">
+            <h2>Frequently Asked Questions</h2>
+            <div class="faq-item">
+                <h3>What is Bitcoin?</h3>
+                <p>Bitcoin is a decentralized digital currency that allows peer-to-peer transactions without intermediaries.</p>
+            </div>
+            <div class="faq-item">
+                <h3>How do I buy Bitcoin?</h3>
+                <p>You can buy Bitcoin through exchanges, peer-to-peer platforms, or Bitcoin ATMs.</p>
+            </div>
+            <!-- Add more FAQ items here -->
+        </div>
+    </section>
+
+    <!-- Mempool Section -->
+    <section class="mempool" id="mempool">
+        <div class="container">
+            <h2>Live Mempool</h2>
+            <iframe src="https://mempool.space/" title="Live Mempool"></iframe>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2023 BrandBitcoin. All rights reserved.</p>
+    </footer>
 </body>
 </html>
