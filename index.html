@@ -47,38 +47,49 @@
 
         nav a {
             color: white;
-            margin: 0 15px;
-            font-size: 18px;
+            margin: 0 10px;
+            font-size: 16px;
         }
 
         nav a:hover {
             color: #a0aec0;
         }
 
+        .consultation-button {
+            background: #fec107;
+            color: #2c5282;
+            padding: 10px 20px;
+            border-radius: 5px;
+        }
+
+        .consultation-button:hover {
+            background: #e0a800;
+        }
+
         /* Hero Section */
         .hero {
             background: linear-gradient(135deg, #2c5282, #4a5568);
             color: white;
-            padding: 100px 20px;
+            padding: 80px 20px;
             text-align: center;
         }
 
         .hero h1 {
-            font-size: 48px;
+            font-size: 36px;
             margin: 0;
         }
 
         .hero p {
-            font-size: 20px;
+            font-size: 18px;
             margin: 20px 0;
         }
 
         .cta-button {
             display: inline-block;
-            padding: 15px 30px;
+            padding: 12px 24px;
             background: #fec107;
             color: #2c5282;
-            font-size: 18px;
+            font-size: 16px;
             border-radius: 5px;
             margin-top: 20px;
         }
@@ -87,10 +98,44 @@
             background: #e0a800;
         }
 
+        /* Consultation Section */
+        .consultation {
+            background: white;
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        .consultation form {
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: left;
+        }
+
+        .consultation input, .consultation textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .consultation button {
+            background: #2c5282;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .consultation button:hover {
+            background: #4a5568;
+        }
+
         /* FAQ Section */
         .faq {
             background: #f8f8f8;
-            padding: 50px 20px;
+            padding: 40px 20px;
         }
 
         .faq h2 {
@@ -105,28 +150,69 @@
             color: #2c5282;
         }
 
-        /* Advanced Guides Section */
-        .advanced-guides {
+        /* Bitcoin Basics Section */
+        .bitcoin-basics {
             background: white;
-            padding: 50px 20px;
-        }
-
-        .advanced-guides h2 {
+            padding: 40px 20px;
             text-align: center;
         }
 
-        .guide-item {
+        .bitcoin-basics h2 {
+            color: #2c5282;
+        }
+
+        .bitcoin-basics p {
+            font-size: 16px;
             margin: 20px 0;
         }
 
-        .guide-item h3 {
+        .bitcoin-basics ol {
+            text-align: left;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .bitcoin-basics ol li {
+            margin: 10px 0;
+        }
+
+        .bitcoin-basics ul {
+            text-align: left;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .bitcoin-basics ul li {
+            margin: 10px 0;
+        }
+
+        .bitcoin-symbol {
+            font-size: 24px;
+            color: #f2a900;
+        }
+
+        /* Resources Section */
+        .resources {
+            background: #f8f8f8;
+            padding: 40px 20px;
+        }
+
+        .resources h2 {
+            text-align: center;
+        }
+
+        .resource-item {
+            margin: 20px 0;
+        }
+
+        .resource-item h3 {
             color: #2c5282;
         }
 
         /* Security Section */
         .security {
-            background: #f8f8f8;
-            padding: 50px 20px;
+            background: white;
+            padding: 40px 20px;
         }
 
         .security h2 {
@@ -149,14 +235,54 @@
             padding: 20px 0;
             margin-top: 50px;
         }
+
+        /* Media Queries for Mobile */
+        @media (max-width: 768px) {
+            nav a {
+                display: block;
+                margin: 10px 0;
+            }
+
+            .hero h1 {
+                font-size: 28px;
+            }
+
+            .hero p {
+                font-size: 16px;
+            }
+
+            .cta-button {
+                font-size: 14px;
+                padding: 10px 20px;
+            }
+
+            .consultation input, .consultation textarea {
+                font-size: 14px;
+            }
+
+            .consultation button {
+                font-size: 14px;
+                padding: 8px 16px;
+            }
+
+            .faq-item h3, .resource-item h3, .security-item h3 {
+                font-size: 18px;
+            }
+
+            .faq-item p, .resource-item p, .security-item p {
+                font-size: 14px;
+            }
+        }
     </style>
 </head>
 <body>
     <!-- Navigation Bar -->
     <nav>
         <a href="#home">Home</a>
+        <a href="#consultation" class="consultation-button">Consultation</a>
         <a href="#faq">FAQs</a>
-        <a href="#advanced-guides">Advanced Guides</a>
+        <a href="#bitcoin-basics">Bitcoin Basics</a>
+        <a href="#resources">Resources</a>
         <a href="#security">Security</a>
     </nav>
 
@@ -165,7 +291,20 @@
         <div class="container">
             <h1>Buy, Sell & Learn Bitcoin – Secure & Simple</h1>
             <p>Your trusted partner for Bitcoin transactions and user support.</p>
-            <a href="#faq" class="cta-button">Get Started</a>
+            <a href="#consultation" class="cta-button">Get Started</a>
+        </div>
+    </section>
+
+    <!-- Consultation Section -->
+    <section class="consultation" id="consultation">
+        <div class="container">
+            <h2>Schedule a Consultation</h2>
+            <form action="mailto:bradbarrand@proton.me" method="post" enctype="text/plain">
+                <input type="text" placeholder="Your Name" required>
+                <input type="email" placeholder="Your Email" required>
+                <textarea placeholder="Your Message" rows="5" required></textarea>
+                <button type="submit">Submit</button>
+            </form>
         </div>
     </section>
 
@@ -222,25 +361,56 @@
         </div>
     </section>
 
-    <!-- Advanced Guides Section -->
-    <section class="advanced-guides" id="advanced-guides">
+    <!-- Bitcoin Basics Section -->
+    <section class="bitcoin-basics" id="bitcoin-basics">
         <div class="container">
-            <h2>Advanced Guides</h2>
-            <p>For users looking to deepen their understanding of Bitcoin, our advanced guides cover essential topics in depth. We provide insights into complex areas such as Bitcoin mining, blockchain technology, and market analysis to help you make informed decisions.</p>
+            <h2>Bitcoin Basics <span class="bitcoin-symbol">₿</span></h2>
+            <p>Bitcoin is a revolutionary digital asset that offers financial freedom and security. Whether you're new to Bitcoin or looking to deepen your understanding, here's a simple guide to get started:</p>
 
-            <div class="guide-item">
+            <h3>Step 1: Acquire Bitcoin</h3>
+            <ol>
+                <li><strong>Choose a Platform:</strong> Use a trusted exchange or peer-to-peer platform to buy Bitcoin.</li>
+                <li><strong>Make a Purchase:</strong> Use your local currency to buy Bitcoin securely.</li>
+                <li><strong>Receive Bitcoin:</strong> Your Bitcoin will be sent to your digital wallet.</li>
+            </ol>
+
+            <h3>Step 2: Secure Your Bitcoin</h3>
+            <ol>
+                <li><strong>Set Up a Wallet:</strong> Choose a secure wallet to store your Bitcoin.</li>
+                <li><strong>Backup Your Wallet:</strong> Write down your recovery phrase and store it in a safe place.</li>
+                <li><strong>Protect Your Keys:</strong> Never share your private keys or recovery phrase with anyone.</li>
+            </ol>
+
+            <h3>How I Can Help You</h3>
+            <p>Specialising in <strong>Bitcoin Acquisition, Sales, and User Support</strong>, I bring expertise in:</p>
+            <ul>
+                <li><strong>Cybersecurity:</strong> Ensuring your Bitcoin is stored securely.</li>
+                <li><strong>Market Analysis:</strong> Helping you make informed decisions.</li>
+                <li><strong>Wallet Integration:</strong> Setting up and managing your Bitcoin wallet.</li>
+            </ul>
+            <p>Whether you're buying your first Bitcoin or optimizing your portfolio, I provide <strong>secure, efficient, and innovative Bitcoin solutions</strong> tailored to your needs.</p>
+        </div>
+    </section>
+
+    <!-- Resources Section -->
+    <section class="resources" id="resources">
+        <div class="container">
+            <h2>Resources</h2>
+            <p>Explore our advanced guides and educational resources to deepen your understanding of Bitcoin and blockchain technology.</p>
+
+            <div class="resource-item">
                 <h3>Bitcoin Mining</h3>
-                <p>Bitcoin mining is the process of validating transactions and adding them to the blockchain. Miners use powerful computers to solve cryptographic puzzles, securing the network and earning new Bitcoins as rewards.</p>
+                <p>Learn how Bitcoin mining works, how to set up a mining rig, and understand mining profitability.</p>
             </div>
 
-            <div class="guide-item">
+            <div class="resource-item">
                 <h3>Blockchain Technology</h3>
-                <p>Blockchain is a decentralized ledger that records transactions immutably. Each transaction is verified by nodes, making fraud nearly impossible.</p>
+                <p>Discover how blockchain ensures transaction security and decentralization, and explore its applications beyond cryptocurrency.</p>
             </div>
 
-            <div class="guide-item">
+            <div class="resource-item">
                 <h3>Market Analysis</h3>
-                <p>Learn to analyze candlestick charts, moving averages, and RSI (Relative Strength Index) to understand market trends.</p>
+                <p>Understand Bitcoin price charts, market indicators, and trading strategies to make informed investment decisions.</p>
             </div>
         </div>
     </section>
