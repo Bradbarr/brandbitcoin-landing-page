@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bitcoin Buying & Selling | BrandBitcoin</title>
+    <title>BrandBitcoin | Your Bitcoin Partner</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500;700&display=swap" rel="stylesheet">
     <style>
         /* General Styles */
@@ -11,8 +11,8 @@
             font-family: 'Roboto Mono', monospace;
             margin: 0;
             padding: 0;
-            background-color: #f8f8f8;
-            color: #2d3748;
+            background-color: #000000;
+            color: #ffffff;
             line-height: 1.6;
         }
 
@@ -20,17 +20,14 @@
             max-width: 1200px;
             margin: 0 auto;
             padding: 20px;
-            background: white;
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-            border-radius: 10px;
         }
 
         h1, h2, h3 {
-            color: #2c5282;
+            color: #fec107;
         }
 
         a {
-            color: #2c5282;
+            color: #fec107;
             text-decoration: none;
         }
 
@@ -40,26 +37,30 @@
 
         /* Navigation Bar */
         nav {
-            background: #2c5282;
-            padding: 10px 0;
+            background: #000000;
+            padding: 20px 0;
             text-align: center;
+            border-bottom: 1px solid #fec107;
         }
 
         nav a {
-            color: white;
-            margin: 0 10px;
-            font-size: 16px;
+            color: #ffffff;
+            margin: 0 15px;
+            font-size: 18px;
+            transition: color 0.3s ease;
         }
 
         nav a:hover {
-            color: #a0aec0;
+            color: #fec107;
         }
 
         .consultation-button {
             background: #fec107;
-            color: #2c5282;
+            color: #000000;
             padding: 10px 20px;
             border-radius: 5px;
+            font-weight: bold;
+            transition: background 0.3s ease;
         }
 
         .consultation-button:hover {
@@ -68,172 +69,85 @@
 
         /* Hero Section */
         .hero {
-            background: linear-gradient(135deg, #2c5282, #4a5568);
-            color: white;
-            padding: 80px 20px;
+            background: #000000;
+            padding: 100px 20px;
             text-align: center;
         }
 
         .hero h1 {
-            font-size: 36px;
+            font-size: 48px;
             margin: 0;
         }
 
         .hero p {
-            font-size: 18px;
+            font-size: 20px;
             margin: 20px 0;
+            color: #ffffff;
         }
 
         .cta-button {
             display: inline-block;
-            padding: 12px 24px;
+            padding: 15px 30px;
             background: #fec107;
-            color: #2c5282;
-            font-size: 16px;
+            color: #000000;
+            font-size: 18px;
             border-radius: 5px;
             margin-top: 20px;
+            text-transform: uppercase;
+            font-weight: bold;
+            transition: background 0.3s ease, transform 0.3s ease;
         }
 
         .cta-button:hover {
             background: #e0a800;
+            transform: translateY(-5px);
         }
 
-        /* Consultation Section */
-        .consultation {
-            background: white;
-            padding: 40px 20px;
+        /* Email Form Section */
+        .email-form {
+            background: #000000;
+            padding: 50px 20px;
             text-align: center;
+            border-top: 1px solid #fec107;
         }
 
-        .consultation form {
-            max-width: 600px;
-            margin: 0 auto;
-            text-align: left;
+        .email-form h2 {
+            color: #fec107;
+            margin-bottom: 20px;
         }
 
-        .consultation input, .consultation textarea {
-            width: 100%;
+        .email-form input {
+            width: 300px;
             padding: 10px;
             margin: 10px 0;
-            border: 1px solid #ccc;
+            border: 1px solid #fec107;
             border-radius: 5px;
+            background: #000000;
+            color: #ffffff;
         }
 
-        .consultation button {
-            background: #2c5282;
-            color: white;
+        .email-form button {
+            background: #fec107;
+            color: #000000;
             padding: 10px 20px;
             border: none;
             border-radius: 5px;
             cursor: pointer;
+            font-weight: bold;
+            transition: background 0.3s ease;
         }
 
-        .consultation button:hover {
-            background: #4a5568;
-        }
-
-        /* FAQ Section */
-        .faq {
-            background: #f8f8f8;
-            padding: 40px 20px;
-        }
-
-        .faq h2 {
-            text-align: center;
-        }
-
-        .faq-item {
-            margin: 20px 0;
-        }
-
-        .faq-item h3 {
-            color: #2c5282;
-        }
-
-        /* Bitcoin Basics Section */
-        .bitcoin-basics {
-            background: white;
-            padding: 40px 20px;
-            text-align: center;
-        }
-
-        .bitcoin-basics h2 {
-            color: #2c5282;
-        }
-
-        .bitcoin-basics p {
-            font-size: 16px;
-            margin: 20px 0;
-        }
-
-        .bitcoin-basics ol {
-            text-align: left;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        .bitcoin-basics ol li {
-            margin: 10px 0;
-        }
-
-        .bitcoin-basics ul {
-            text-align: left;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        .bitcoin-basics ul li {
-            margin: 10px 0;
-        }
-
-        .bitcoin-symbol {
-            font-size: 24px;
-            color: #f2a900;
-        }
-
-        /* Resources Section */
-        .resources {
-            background: #f8f8f8;
-            padding: 40px 20px;
-        }
-
-        .resources h2 {
-            text-align: center;
-        }
-
-        .resource-item {
-            margin: 20px 0;
-        }
-
-        .resource-item h3 {
-            color: #2c5282;
-        }
-
-        /* Security Section */
-        .security {
-            background: white;
-            padding: 40px 20px;
-        }
-
-        .security h2 {
-            text-align: center;
-        }
-
-        .security-item {
-            margin: 20px 0;
-        }
-
-        .security-item h3 {
-            color: #2c5282;
+        .email-form button:hover {
+            background: #e0a800;
         }
 
         /* Footer */
         footer {
-            background: #2c5282;
-            color: white;
+            background: #000000;
+            color: #ffffff;
             text-align: center;
             padding: 20px 0;
-            margin-top: 50px;
+            border-top: 1px solid #fec107;
         }
 
         /* Media Queries for Mobile */
@@ -244,7 +158,7 @@
             }
 
             .hero h1 {
-                font-size: 28px;
+                font-size: 36px;
             }
 
             .hero p {
@@ -252,25 +166,12 @@
             }
 
             .cta-button {
-                font-size: 14px;
-                padding: 10px 20px;
+                font-size: 16px;
+                padding: 12px 24px;
             }
 
-            .consultation input, .consultation textarea {
-                font-size: 14px;
-            }
-
-            .consultation button {
-                font-size: 14px;
-                padding: 8px 16px;
-            }
-
-            .faq-item h3, .resource-item h3, .security-item h3 {
-                font-size: 18px;
-            }
-
-            .faq-item p, .resource-item p, .security-item p {
-                font-size: 14px;
+            .email-form input {
+                width: 100%;
             }
         }
     </style>
@@ -280,161 +181,27 @@
     <nav>
         <a href="#home">Home</a>
         <a href="#consultation" class="consultation-button">Consultation</a>
-        <a href="#faq">FAQs</a>
-        <a href="#bitcoin-basics">Bitcoin Basics</a>
-        <a href="#resources">Resources</a>
+        <a href="resources.html">Resources</a>
         <a href="#security">Security</a>
     </nav>
 
     <!-- Hero Section -->
     <section class="hero" id="home">
         <div class="container">
-            <h1>Buy, Sell & Learn Bitcoin – Secure & Simple</h1>
-            <p>Your trusted partner for Bitcoin transactions and user support.</p>
+            <h1>Your Bitcoin Journey Starts Here</h1>
+            <p>Secure, simple, and tailored to your needs. Let’s make Bitcoin work for you.</p>
             <a href="#consultation" class="cta-button">Get Started</a>
         </div>
     </section>
 
-    <!-- Consultation Section -->
-    <section class="consultation" id="consultation">
+    <!-- Email Form Section -->
+    <section class="email-form">
         <div class="container">
-            <h2>Schedule a Consultation</h2>
+            <h2>Get Your Free Bitcoin Guide</h2>
             <form action="mailto:bradbarrand@proton.me" method="post" enctype="text/plain">
-                <input type="text" placeholder="Your Name" required>
-                <input type="email" placeholder="Your Email" required>
-                <textarea placeholder="Your Message" rows="5" required></textarea>
-                <button type="submit">Submit</button>
+                <input type="email" placeholder="Enter your email" required>
+                <button type="submit">Download PDF</button>
             </form>
-        </div>
-    </section>
-
-    <!-- FAQ Section -->
-    <section class="faq" id="faq">
-        <div class="container">
-            <h2>Comprehensive FAQs</h2>
-            <p>We understand that navigating the world of Bitcoin can be complex, especially for newcomers. That’s why we have compiled a comprehensive FAQ section to address the most common inquiries and concerns.</p>
-
-            <div class="faq-item">
-                <h3>What is Bitcoin, and how does it work?</h3>
-                <p>Bitcoin is a decentralized digital currency that allows peer-to-peer transactions without the need for a central authority. It operates on blockchain technology, which records all transactions securely and transparently.</p>
-            </div>
-
-            <div class="faq-item">
-                <h3>How do I buy and sell Bitcoin safely?</h3>
-                <p>To buy Bitcoin safely, use reputable exchanges, enable two-factor authentication, and store your funds in a secure wallet. To sell, ensure you transact on secure platforms and verify buyers before transferring Bitcoin.</p>
-            </div>
-
-            <div class="faq-item">
-                <h3>What are the risks associated with Bitcoin investments?</h3>
-                <p>Bitcoin is highly volatile, meaning its value can fluctuate significantly. Other risks include regulatory changes, cybersecurity threats, and scams. It’s essential to do thorough research and only invest what you can afford to lose.</p>
-            </div>
-
-            <div class="faq-item">
-                <h3>How do I store my Bitcoin securely?</h3>
-                <p>The best way to store Bitcoin is through a hardware wallet, which keeps your private keys offline. Alternatively, you can use software wallets with strong passwords and two-factor authentication for added security.</p>
-            </div>
-
-            <div class="faq-item">
-                <h3>What are transaction fees, and how are they calculated?</h3>
-                <p>Bitcoin transaction fees are charged by the network to prioritize transactions. Fees depend on network congestion and the size of the transaction in bytes. Higher fees result in faster transaction confirmation.</p>
-            </div>
-
-            <div class="faq-item">
-                <h3>Can Bitcoin be converted to traditional currency?</h3>
-                <p>Yes, Bitcoin can be converted to fiat currencies like USD, GBP, and EUR through cryptocurrency exchanges, Bitcoin ATMs, or peer-to-peer trading platforms.</p>
-            </div>
-
-            <div class="faq-item">
-                <h3>Is Bitcoin legal in my country?</h3>
-                <p>Bitcoin’s legal status varies by country. Some nations fully support it, while others impose restrictions or outright bans. Check your local regulations before using Bitcoin.</p>
-            </div>
-
-            <div class="faq-item">
-                <h3>What should I do if I suspect fraudulent activity?</h3>
-                <p>If you suspect fraud, immediately report it to the relevant authorities or the exchange you used. Never share your private keys, and always verify transactions before proceeding.</p>
-            </div>
-
-            <div class="faq-item">
-                <h3>How does Bitcoin mining work, and is it profitable?</h3>
-                <p>Bitcoin mining involves solving complex mathematical problems to validate transactions and add them to the blockchain. It requires specialized hardware and consumes significant energy. Profitability depends on factors like electricity costs, mining difficulty, and Bitcoin’s market price.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Bitcoin Basics Section -->
-    <section class="bitcoin-basics" id="bitcoin-basics">
-        <div class="container">
-            <h2>Bitcoin Basics <span class="bitcoin-symbol">₿</span></h2>
-            <p>Bitcoin is a revolutionary digital asset that offers financial freedom and security. Whether you're new to Bitcoin or looking to deepen your understanding, here's a simple guide to get started:</p>
-
-            <h3>Step 1: Acquire Bitcoin</h3>
-            <ol>
-                <li><strong>Choose a Platform:</strong> Use a trusted exchange or peer-to-peer platform to buy Bitcoin.</li>
-                <li><strong>Make a Purchase:</strong> Use your local currency to buy Bitcoin securely.</li>
-                <li><strong>Receive Bitcoin:</strong> Your Bitcoin will be sent to your digital wallet.</li>
-            </ol>
-
-            <h3>Step 2: Secure Your Bitcoin</h3>
-            <ol>
-                <li><strong>Set Up a Wallet:</strong> Choose a secure wallet to store your Bitcoin.</li>
-                <li><strong>Backup Your Wallet:</strong> Write down your recovery phrase and store it in a safe place.</li>
-                <li><strong>Protect Your Keys:</strong> Never share your private keys or recovery phrase with anyone.</li>
-            </ol>
-
-            <h3>How I Can Help You</h3>
-            <p>Specialising in <strong>Bitcoin Acquisition, Sales, and User Support</strong>, I bring expertise in:</p>
-            <ul>
-                <li><strong>Cybersecurity:</strong> Ensuring your Bitcoin is stored securely.</li>
-                <li><strong>Market Analysis:</strong> Helping you make informed decisions.</li>
-                <li><strong>Wallet Integration:</strong> Setting up and managing your Bitcoin wallet.</li>
-            </ul>
-            <p>Whether you're buying your first Bitcoin or optimizing your portfolio, I provide <strong>secure, efficient, and innovative Bitcoin solutions</strong> tailored to your needs.</p>
-        </div>
-    </section>
-
-    <!-- Resources Section -->
-    <section class="resources" id="resources">
-        <div class="container">
-            <h2>Resources</h2>
-            <p>Explore our advanced guides and educational resources to deepen your understanding of Bitcoin and blockchain technology.</p>
-
-            <div class="resource-item">
-                <h3>Bitcoin Mining</h3>
-                <p>Learn how Bitcoin mining works, how to set up a mining rig, and understand mining profitability.</p>
-            </div>
-
-            <div class="resource-item">
-                <h3>Blockchain Technology</h3>
-                <p>Discover how blockchain ensures transaction security and decentralization, and explore its applications beyond cryptocurrency.</p>
-            </div>
-
-            <div class="resource-item">
-                <h3>Market Analysis</h3>
-                <p>Understand Bitcoin price charts, market indicators, and trading strategies to make informed investment decisions.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Security Section -->
-    <section class="security" id="security">
-        <div class="container">
-            <h2>Prioritize Security Measures</h2>
-            <p>Security is one of the most crucial aspects of Bitcoin ownership. At Brand Bitcoin, we emphasize the importance of protecting your digital assets and personal information.</p>
-
-            <div class="security-item">
-                <h3>Using Hardware Wallets</h3>
-                <p>Hardware wallets store private keys offline, making them immune to online hacking attempts. Popular options include Ledger and Trezor.</p>
-            </div>
-
-            <div class="security-item">
-                <h3>Enabling Two-Factor Authentication (2FA)</h3>
-                <p>2FA adds an extra security layer by requiring a second verification step, such as an SMS code or an authentication app like Google Authenticator.</p>
-            </div>
-
-            <div class="security-item">
-                <h3>Avoiding Phishing Scams</h3>
-                <p>Always verify website URLs before entering login credentials, and never click on suspicious links in emails or messages.</p>
-            </div>
         </div>
     </section>
 
