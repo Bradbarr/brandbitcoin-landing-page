@@ -49,10 +49,28 @@
 
         .faq-item {
             margin: 20px 0;
+            border-bottom: 1px solid #fec107;
         }
 
-        .faq-item h3 {
+        .faq-question {
+            cursor: pointer;
+            padding: 10px 0;
+            font-size: 18px;
             color: #fec107;
+        }
+
+        .faq-question:hover {
+            text-decoration: underline;
+        }
+
+        .faq-answer {
+            display: none;
+            padding: 10px 0;
+            color: #ffffff;
+        }
+
+        .faq-answer.active {
+            display: block;
         }
 
         /* Resources Section */
@@ -84,34 +102,13 @@
 
         /* Media Queries for Mobile */
         @media (max-width: 768px) {
-            .faq-item h3, .resource-item h3 {
-                font-size: 18px;
+            .faq-question {
+                font-size: 16px;
             }
 
-            .faq-item p, .resource-item p {
+            .faq-answer {
                 font-size: 14px;
             }
-        }
-
-        /* Markdown Content Styling */
-        #advanced-guide {
-            background-color: #1a1a1a;
-            padding: 20px;
-            border-radius: 8px;
-            margin-top: 20px;
-        }
-
-        #advanced-guide h1, #advanced-guide h2, #advanced-guide h3 {
-            color: #fec107;
-        }
-
-        #advanced-guide a {
-            color: #fec107;
-            text-decoration: none;
-        }
-
-        #advanced-guide a:hover {
-            text-decoration: underline;
         }
     </style>
 </head>
@@ -124,86 +121,90 @@
         <a href="security.html">Security</a>
     </nav>
 
-   <!-- FAQ Section -->
-<section class="faq">
-    <div class="container">
-        <h2>Frequently Asked Questions</h2>
-        
-        <!-- FAQ 1 -->
-        <div class="faq-item">
-            <h3>What is Fiat Money?</h3>
-            <p>Fiat money is government-issued currency that isn't backed by a physical commodity like gold or silver. Its value comes from the trust people place in the government that issues it. Examples include the US Dollar, Euro, and British Pound. Unlike Bitcoin, fiat money can be printed indefinitely, which can lead to inflation.</p>
-        </div>
-
-        <!-- FAQ 2 -->
-        <div class="faq-item">
-            <h3>How Does Bitcoin Differ from Traditional Money?</h3>
-            <p>Bitcoin is decentralized, meaning no single entity (like a government or bank) controls it. It operates on a blockchain, a public ledger that records all transactions. Unlike traditional money, Bitcoin has a fixed supply of 21 million coins, making it immune to inflation caused by overprinting.</p>
-        </div>
-
-        <!-- FAQ 3 -->
-        <div class="faq-item">
-            <h3>What Gives Bitcoin Its Value?</h3>
-            <p>Bitcoin's value comes from its scarcity, utility, and the trust people place in it. Like gold, Bitcoin is scarce (only 21 million will ever exist). It’s also useful as a decentralized, borderless currency and a store of value. The more people adopt it, the more valuable it becomes.</p>
-        </div>
-
-        <!-- FAQ 4 -->
-        <div class="faq-item">
-            <h3>Can Bitcoin Be Hacked?</h3>
-            <p>Bitcoin itself has never been hacked. Its blockchain is secured by cryptography and a decentralized network of computers. However, exchanges and wallets can be vulnerable to hacking. That’s why it’s crucial to use secure wallets and enable two-factor authentication (2FA).</p>
-        </div>
-
-        <!-- FAQ 5 -->
-        <div class="faq-item">
-            <h3>What is the Blockchain?</h3>
-            <p>The blockchain is a public ledger that records all Bitcoin transactions. It’s decentralized, meaning it’s maintained by a network of computers (nodes) around the world. Once a transaction is added to the blockchain, it cannot be altered, making Bitcoin highly secure and transparent.</p>
-        </div>
-
-        <!-- FAQ 6 -->
-        <div class="faq-item">
-            <h3>How Does Bitcoin Mining Work?</h3>
-            <p>Bitcoin mining involves solving complex mathematical problems to validate transactions and add them to the blockchain. Miners compete to solve these problems, and the first one to succeed is rewarded with newly minted Bitcoins. This process also secures the network and prevents double-spending.</p>
-        </div>
-
-        <!-- FAQ 7 -->
-        <div class="faq-item">
-            <h3>What is the Halving?</h3>
-            <p>The Bitcoin halving is an event that occurs every 210,000 blocks (approximately every 4 years). During the halving, the block reward for miners is cut in half. This reduces the rate at which new Bitcoins are created, making Bitcoin more scarce over time. The last halving occurred in 2020, reducing the block reward to 6.25 BTC.</p>
-        </div>
-
-        <!-- FAQ 8 -->
-        <div class="faq-item">
-            <h3>Can Bitcoin Be Used for Everyday Purchases?</h3>
-            <p>Yes, Bitcoin can be used for everyday purchases, but its adoption is still growing. Some businesses and online retailers accept Bitcoin as payment. However, many people use Bitcoin as a store of value (like digital gold) rather than a daily currency due to its volatility.</p>
-        </div>
-
-        <!-- FAQ 9 -->
-        <div class="faq-item">
-            <h3>What is the Environmental Impact of Bitcoin Mining?</h3>
-            <p>Bitcoin mining consumes energy, but the industry is increasingly shifting to renewable energy sources. For example, many miners use excess hydroelectric, solar, or wind power. Additionally, Bitcoin’s energy consumption is often compared to traditional banking systems, which also have significant environmental footprints.</p>
-        </div>
-
-        <!-- FAQ 10 -->
-        <div class="faq-item">
-            <h3>What is the Lightning Network?</h3>
-            <p>The Lightning Network is a second-layer solution built on top of Bitcoin’s blockchain. It enables faster and cheaper transactions by processing them off-chain and settling them on the blockchain later. This makes Bitcoin more practical for small, everyday transactions.</p>
-        </div>
-    </div>
-</section>
-
-    <!-- Resources Section -->
-    <section class="resources">
+    <!-- FAQ Section -->
+    <section class="faq">
         <div class="container">
-            <h2>Advanced Guides</h2>
-            <div class="resource-item">
-                <h3>Bitcoin Mining</h3>
-                <p>Learn about Bitcoin and bitcoin mining.</p>
-                <!-- Add a link to your Markdown file on GitHub -->
-                <p><a href="https://github.com/Bradbarr/brandbitcoin-landing-page/blob/main/resources/advanced-guide-bitcoin-mining.md" target="_blank">Advanced Guide to Bitcoin Mining</a></p>
-                <!-- Add a container for the Markdown content -->
-                <div id="advanced-guide"></div>
+            <h2>Frequently Asked Questions</h2>
+
+            <!-- FAQ 1 -->
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleAnswer(1)">What is Fiat Money?</div>
+                <div class="faq-answer" id="answer-1">
+                    Fiat money is government-issued currency that isn't backed by a physical commodity like gold or silver. Its value comes from the trust people place in the government that issues it. Examples include the US Dollar, Euro, and British Pound. Unlike Bitcoin, fiat money can be printed indefinitely, which can lead to inflation.
+                </div>
             </div>
-            <!-- Add more resources here -->
+
+            <!-- FAQ 2 -->
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleAnswer(2)">How Does Bitcoin Differ from Traditional Money?</div>
+                <div class="faq-answer" id="answer-2">
+                    Bitcoin is decentralized, meaning no single entity (like a government or bank) controls it. It operates on a blockchain, a public ledger that records all transactions. Unlike traditional money, Bitcoin has a fixed supply of 21 million coins, making it immune to inflation caused by overprinting.
+                </div>
+            </div>
+
+            <!-- FAQ 3 -->
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleAnswer(3)">What Gives Bitcoin Its Value?</div>
+                <div class="faq-answer" id="answer-3">
+                    Bitcoin's value comes from its scarcity, utility, and the trust people place in it. Like gold, Bitcoin is scarce (only 21 million will ever exist). It’s also useful as a decentralized, borderless currency and a store of value. The more people adopt it, the more valuable it becomes.
+                </div>
+            </div>
+
+            <!-- FAQ 4 -->
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleAnswer(4)">Can Bitcoin Be Hacked?</div>
+                <div class="faq-answer" id="answer-4">
+                    Bitcoin itself has never been hacked. Its blockchain is secured by cryptography and a decentralized network of computers. However, exchanges and wallets can be vulnerable to hacking. That’s why it’s crucial to use secure wallets and enable two-factor authentication (2FA).
+                </div>
+            </div>
+
+            <!-- FAQ 5 -->
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleAnswer(5)">What is the Blockchain?</div>
+                <div class="faq-answer" id="answer-5">
+                    The blockchain is a public ledger that records all Bitcoin transactions. It’s decentralized, meaning it’s maintained by a network of computers (nodes) around the world. Once a transaction is added to the blockchain, it cannot be altered, making Bitcoin highly secure and transparent.
+                </div>
+            </div>
+
+            <!-- FAQ 6 -->
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleAnswer(6)">How Does Bitcoin Mining Work?</div>
+                <div class="faq-answer" id="answer-6">
+                    Bitcoin mining involves solving complex mathematical problems to validate transactions and add them to the blockchain. Miners compete to solve these problems, and the first one to succeed is rewarded with newly minted Bitcoins. This process also secures the network and prevents double-spending.
+                </div>
+            </div>
+
+            <!-- FAQ 7 -->
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleAnswer(7)">What is the Halving?</div>
+                <div class="faq-answer" id="answer-7">
+                    The Bitcoin halving is an event that occurs every 210,000 blocks (approximately every 4 years). During the halving, the block reward for miners is cut in half. This reduces the rate at which new Bitcoins are created, making Bitcoin more scarce over time. The last halving occurred in 2020, reducing the block reward to 6.25 BTC.
+                </div>
+            </div>
+
+            <!-- FAQ 8 -->
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleAnswer(8)">Can Bitcoin Be Used for Everyday Purchases?</div>
+                <div class="faq-answer" id="answer-8">
+                    Yes, Bitcoin can be used for everyday purchases, but its adoption is still growing. Some businesses and online retailers accept Bitcoin as payment. However, many people use Bitcoin as a store of value (like digital gold) rather than a daily currency due to its volatility.
+                </div>
+            </div>
+
+            <!-- FAQ 9 -->
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleAnswer(9)">What is the Environmental Impact of Bitcoin Mining?</div>
+                <div class="faq-answer" id="answer-9">
+                    Bitcoin mining consumes energy, but the industry is increasingly shifting to renewable energy sources. For example, many miners use excess hydroelectric, solar, or wind power. Additionally, Bitcoin’s energy consumption is often compared to traditional banking systems, which also have significant environmental footprints.
+                </div>
+            </div>
+
+            <!-- FAQ 10 -->
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleAnswer(10)">What is the Lightning Network?</div>
+                <div class="faq-answer" id="answer-10">
+                    The Lightning Network is a second-layer solution built on top of Bitcoin’s blockchain. It enables faster and cheaper transactions by processing them off-chain and settling them on the blockchain later. This makes Bitcoin more practical for small, everyday transactions.
+                </div>
+            </div>
         </div>
     </section>
 
@@ -212,16 +213,12 @@
         <p>&copy; 2023 BrandBitcoin. All rights reserved.</p>
     </footer>
 
-    <!-- Script to Fetch and Render Markdown -->
+    <!-- Script for Dropdown FAQs -->
     <script>
-        // Fetch the Markdown file from GitHub
-        fetch('https://raw.githubusercontent.com/Bradbarr/brandbitcoin-landing-page/main/resources/advanced-guide-bitcoin-mining.md')
-            .then(response => response.text())
-            .then(markdown => {
-                // Render the Markdown content
-                document.getElementById('advanced-guide').innerHTML = marked.parse(markdown);
-            })
-            .catch(error => console.error('Error loading Markdown file:', error));
+        function toggleAnswer(id) {
+            const answer = document.getElementById(`answer-${id}`);
+            answer.classList.toggle('active');
+        }
     </script>
 </body>
 </html>
