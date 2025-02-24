@@ -35,13 +35,13 @@
             text-decoration: underline;
         }
 
-        /* Security Section */
-        .security {
+        /* Security Guide Section */
+        .security-guide {
             background: #000000;
             padding: 50px 20px;
         }
 
-        .security h2 {
+        .security-guide h2 {
             text-align: center;
         }
 
@@ -51,6 +51,15 @@
 
         .security-item h3 {
             color: #fec107;
+        }
+
+        .security-item ul {
+            list-style-type: disc;
+            padding-left: 20px;
+        }
+
+        .security-item ul li {
+            margin: 10px 0;
         }
 
         /* Footer */
@@ -68,7 +77,7 @@
                 font-size: 18px;
             }
 
-            .security-item p {
+            .security-item p, .security-item ul li {
                 font-size: 14px;
             }
         }
@@ -83,15 +92,81 @@
         <a href="security.html">Security</a>
     </nav>
 
-    <!-- Security Section -->
-    <section class="security">
+    <!-- Security Guide Section -->
+    <section class="security-guide">
         <div class="container">
-            <h2>Prioritize Security Measures</h2>
+            <h2>Bitcoin Security Guide</h2>
             <div class="security-item">
-                <h3>Using Hardware Wallets</h3>
-                <p>Hardware wallets store private keys offline, making them immune to online hacking attempts. Popular options include Ledger and Trezor.</p>
+                <h3>1. Secure Your Bitcoin Wallet</h3>
+                <p>Your Bitcoin wallet is the gateway to your funds. Follow these best practices to keep it secure:</p>
+                <ul>
+                    <li><strong>Use a Hardware Wallet:</strong> Store your Bitcoin in a hardware wallet (e.g., Ledger, Trezor) for offline, cold storage.</li>
+                    <li><strong>Enable Two-Factor Authentication (2FA):</strong> Add an extra layer of security to your wallet.</li>
+                    <li><strong>Backup Your Wallet:</strong> Regularly backup your wallet's seed phrase and store it in a secure, offline location.</li>
+                    <li><strong>Avoid Public Wi-Fi:</strong> Never access your wallet over public Wi-Fi networks.</li>
+                </ul>
             </div>
-            <!-- Add more security content here -->
+
+            <div class="security-item">
+                <h3>2. Protect Your Private Keys</h3>
+                <p>Your private keys are the most critical part of your Bitcoin security. Treat them like gold:</p>
+                <ul>
+                    <li><strong>Never Share Your Private Keys:</strong> Keep your private keys offline and never share them with anyone.</li>
+                    <li><strong>Use Multi-Signature Wallets:</strong> Require multiple signatures to authorize transactions for added security.</li>
+                    <li><strong>Store Keys Securely:</strong> Use a fireproof and waterproof safe for physical storage of your seed phrase.</li>
+                </ul>
+            </div>
+
+            <div class="security-item">
+                <h3>3. Practice Good Cybersecurity Habits</h3>
+                <p>Cybersecurity is essential for protecting your Bitcoin and personal information:</p>
+                <ul>
+                    <li><strong>Use Strong Passwords:</strong> Create unique, complex passwords for all your accounts.</li>
+                    <li><strong>Enable 2FA Everywhere:</strong> Use two-factor authentication for all online accounts, especially exchanges.</li>
+                    <li><strong>Beware of Phishing:</strong> Avoid clicking on suspicious links or downloading unknown attachments.</li>
+                    <li><strong>Keep Software Updated:</strong> Regularly update your wallet software, operating system, and antivirus programs.</li>
+                </ul>
+            </div>
+
+            <div class="security-item">
+                <h3>4. Be Cautious with Exchanges</h3>
+                <p>Exchanges are a common target for hackers. Follow these tips to stay safe:</p>
+                <ul>
+                    <li><strong>Use Reputable Exchanges:</strong> Only trade on well-known, regulated exchanges.</li>
+                    <li><strong>Withdraw Funds to Your Wallet:</strong> Don’t leave large amounts of Bitcoin on exchanges.</li>
+                    <li><strong>Verify Website URLs:</strong> Always double-check the URL to avoid fake exchange websites.</li>
+                </ul>
+            </div>
+
+            <div class="security-item">
+                <h3>5. Protect Your Personal Information</h3>
+                <p>Your personal information can be used to target your Bitcoin holdings:</p>
+                <ul>
+                    <li><strong>Avoid Oversharing:</strong> Don’t disclose how much Bitcoin you own on social media or public forums.</li>
+                    <li><strong>Use Pseudonyms:</strong> Consider using a pseudonym when interacting in Bitcoin communities.</li>
+                    <li><strong>Secure Your Devices:</strong> Use strong passwords and encryption on all your devices.</li>
+                </ul>
+            </div>
+
+            <div class="security-item">
+                <h3>6. Stay Informed About Scams</h3>
+                <p>Scams are prevalent in the Bitcoin space. Stay vigilant:</p>
+                <ul>
+                    <li><strong>Watch for Fake Giveaways:</strong> Legitimate companies will never ask for Bitcoin in exchange for giveaways.</li>
+                    <li><strong>Avoid "Too Good to Be True" Offers:</strong> High-yield investment programs (HYIPs) are often scams.</li>
+                    <li><strong>Verify Before Trusting:</strong> Double-check the authenticity of any service or individual before sending Bitcoin.</li>
+                </ul>
+            </div>
+
+            <div class="security-item">
+                <h3>7. Plan for the Worst</h3>
+                <p>Prepare for emergencies to ensure your Bitcoin is safe:</p>
+                <ul>
+                    <li><strong>Create a Will:</strong> Include instructions for accessing your Bitcoin in case of death.</li>
+                    <li><strong>Use Inheritance Tools:</strong> Consider using tools like Shamir's Secret Sharing to securely pass on your keys.</li>
+                    <li><strong>Test Your Backups:</strong> Regularly test your wallet backups to ensure they work.</li>
+                </ul>
+            </div>
         </div>
     </section>
 
