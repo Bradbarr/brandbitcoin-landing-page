@@ -71,6 +71,52 @@
             display: block;
         }
 
+        /* Terminology Section */
+        .terminology {
+            background: #000000;
+            padding: 50px 20px;
+        }
+
+        .terminology h2 {
+            text-align: center;
+        }
+
+        .terminology-item {
+            margin: 20px 0;
+            border-bottom: 1px solid #fec107;
+        }
+
+        .terminology-question {
+            cursor: pointer;
+            padding: 10px 0;
+            font-size: 18px;
+            color: #fec107;
+        }
+
+        .terminology-question:hover {
+            text-decoration: underline;
+        }
+
+        .terminology-answer {
+            display: none;
+            padding: 10px 0;
+            color: #ffffff;
+        }
+
+        .terminology-answer.active {
+            display: block;
+        }
+
+        .terminology-answer dt {
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        .terminology-answer dd {
+            margin-left: 20px;
+            margin-bottom: 10px;
+        }
+
         /* Resources Section */
         .resources {
             background: #000000;
@@ -113,11 +159,11 @@
 
         /* Media Queries for Mobile */
         @media (max-width: 768px) {
-            .faq-question {
+            .faq-question, .terminology-question {
                 font-size: 16px;
             }
 
-            .faq-answer {
+            .faq-answer, .terminology-answer {
                 font-size: 14px;
             }
         }
@@ -219,79 +265,99 @@
         </div>
     </section>
 
-    <!-- Resources Section -->
-    <section id="bitcoin-terminology">
-    <div class="container">
-        <h2>Bitcoin Terminology</h2>
-        <p>Diving into the world of Bitcoin and cryptocurrency can be overwhelming with its unique jargon. To help you navigate this exciting landscape, we've compiled a list of essential terms related to Bitcoin, cybersecurity, and investing, presented in an easy-to-understand manner.</p>
-        
-        <h3>Bitcoin and Cryptocurrency Terms</h3>
-        <dl>
-            <dt><strong>Bitcoin (BTC)</strong></dt>
-            <dd>The first and most well-known cryptocurrency, introduced in 2009 by an anonymous entity known as Satoshi Nakamoto. Bitcoin operates on a decentralized network, allowing peer-to-peer transactions without intermediaries.</dd>
-            
-            <dt><strong>Blockchain</strong></dt>
-            <dd>A public, decentralized ledger that records all Bitcoin transactions in chronological order. Each block contains a list of transactions, and blocks are linked together, forming a chain that ensures the integrity and security of data.</dd>
-            
-            <dt><strong>Altcoin</strong></dt>
-            <dd>Any cryptocurrency other than Bitcoin. Examples include Ethereum (ETH), Litecoin (LTC), and Ripple (XRP). Altcoins often introduce unique features or improvements over Bitcoin.</dd>
-            
-            <dt><strong>Wallet</strong></dt>
-            <dd>A digital tool that allows users to store, send, and receive cryptocurrencies. Wallets can be hardware-based (physical devices) or software-based (applications or online services).</dd>
-            
-            <dt><strong>Private Key</strong></dt>
-            <dd>A secret alphanumeric code that allows access to your cryptocurrency holdings. It's crucial to keep your private key secure, as anyone with access to it can control your funds.</dd>
-            
-            <dt><strong>Public Key</strong></dt>
-            <dd>An alphanumeric code derived from the private key, which can be shared publicly. It serves as an address for receiving cryptocurrencies.</dd>
-            
-            <dt><strong>Mining</strong></dt>
-            <dd>The process by which new bitcoins are created and transactions are added to the blockchain. Miners use powerful computers to solve complex mathematical problems, and in return, they are rewarded with newly minted bitcoins.</dd>
-            
-            <dt><strong>Halving</strong></dt>
-            <dd>An event that occurs approximately every four years, reducing the reward miners receive for adding new blocks to the blockchain by half. This mechanism helps control Bitcoin's supply and inflation rate.</dd>
-        </dl>
-        
-        <h3>Cybersecurity Terms</h3>
-        <dl>
-            <dt><strong>Two-Factor Authentication (2FA)</strong></dt>
-            <dd>An extra layer of security requiring not only a password and username but also something that only the user has on them, such as a physical token or a mobile app, to access an account.</dd>
-            
-            <dt><strong>Phishing</strong></dt>
-            <dd>A fraudulent attempt to obtain sensitive information by posing as a trustworthy entity through email, messaging, or websites.</dd>
-            
-            <dt><strong>Malware</strong></dt>
-            <dd>Malicious software designed to harm or exploit any programmable device, service, or network. Examples include viruses, worms, ransomware, and spyware.</dd>
-            
-            <dt><strong>Encryption</strong></dt>
-            <dd>The process of converting information or data into a code to prevent unauthorized access.</dd>
-            
-            <dt><strong>Firewall</strong></dt>
-            <dd>A network security system that monitors and controls incoming and outgoing network traffic based on predetermined security rules, acting as a barrier between trusted and untrusted networks.</dd>
-        </dl>
-        
-        <h3>Investment Terms</h3>
-        <dl>
-            <dt><strong>Bull Market</strong></dt>
-            <dd>A financial market condition where prices are rising or are expected to rise, often characterized by investor optimism.</dd>
-            
-            <dt><strong>Bear Market</strong></dt>
-            <dd>A market condition where prices are falling or are expected to fall, leading to widespread pessimism among investors.</dd>
-            
-            <dt><strong>Diversification</strong></dt>
-            <dd>An investment strategy that involves spreading investments across various assets to reduce exposure to any single asset or risk.</dd>
-            
-            <dt><strong>Liquidity</strong></dt>
-            <dd>The ease with which an asset can be converted into cash without affecting its market price.</dd>
-            
-            <dt><strong>Volatility</strong></dt>
-            <dd>The degree of variation in the price of a financial instrument over time, indicating the level of risk associated with the asset's price changes.</dd>
-        </dl>
-        
-        <p>By familiarizing yourself with these terms, you'll be better equipped to navigate the dynamic world of Bitcoin and cryptocurrency investments. Remember, continuous learning and staying informed are key to making sound investment decisions.</p>
-    </div>
-</section>
+    <!-- Terminology Section -->
+    <section class="terminology">
+        <div class="container">
+            <h2>Bitcoin Terminology</h2>
+            <p>Diving into the world of Bitcoin and cryptocurrency can be overwhelming with its unique jargon. To help you navigate this exciting landscape, we've compiled a list of essential terms related to Bitcoin, cybersecurity, and investing, presented in an easy-to-understand manner.</p>
 
+            <!-- Bitcoin and Cryptocurrency Terms -->
+            <div class="terminology-item">
+                <div class="terminology-question" onclick="toggleTerminology(1)">
+                    Bitcoin and Cryptocurrency Terms
+                </div>
+                <div class="terminology-answer" id="terminology-1">
+                    <dl>
+                        <dt><strong>Bitcoin (BTC)</strong></dt>
+                        <dd>The first and most well-known cryptocurrency, introduced in 2009 by an anonymous entity known as Satoshi Nakamoto. Bitcoin operates on a decentralized network, allowing peer-to-peer transactions without intermediaries.</dd>
+                        
+                        <dt><strong>Blockchain</strong></dt>
+                        <dd>A public, decentralized ledger that records all Bitcoin transactions in chronological order. Each block contains a list of transactions, and blocks are linked together, forming a chain that ensures the integrity and security of data.</dd>
+                        
+                        <dt><strong>Altcoin</strong></dt>
+                        <dd>Any cryptocurrency other than Bitcoin. Examples include Ethereum (ETH), Litecoin (LTC), and Ripple (XRP). Altcoins often introduce unique features or improvements over Bitcoin.</dd>
+                        
+                        <dt><strong>Wallet</strong></dt>
+                        <dd>A digital tool that allows users to store, send, and receive cryptocurrencies. Wallets can be hardware-based (physical devices) or software-based (applications or online services).</dd>
+                        
+                        <dt><strong>Private Key</strong></dt>
+                        <dd>A secret alphanumeric code that allows access to your cryptocurrency holdings. It's crucial to keep your private key secure, as anyone with access to it can control your funds.</dd>
+                        
+                        <dt><strong>Public Key</strong></dt>
+                        <dd>An alphanumeric code derived from the private key, which can be shared publicly. It serves as an address for receiving cryptocurrencies.</dd>
+                        
+                        <dt><strong>Mining</strong></dt>
+                        <dd>The process by which new bitcoins are created and transactions are added to the blockchain. Miners use powerful computers to solve complex mathematical problems, and in return, they are rewarded with newly minted bitcoins.</dd>
+                        
+                        <dt><strong>Halving</strong></dt>
+                        <dd>An event that occurs approximately every four years, reducing the reward miners receive for adding new blocks to the blockchain by half. This mechanism helps control Bitcoin's supply and inflation rate.</dd>
+                    </dl>
+                </div>
+            </div>
+
+            <!-- Cybersecurity Terms -->
+            <div class="terminology-item">
+                <div class="terminology-question" onclick="toggleTerminology(2)">
+                    Cybersecurity Terms
+                </div>
+                <div class="terminology-answer" id="terminology-2">
+                    <dl>
+                        <dt><strong>Two-Factor Authentication (2FA)</strong></dt>
+                        <dd>An extra layer of security requiring not only a password and username but also something that only the user has on them, such as a physical token or a mobile app, to access an account.</dd>
+                        
+                        <dt><strong>Phishing</strong></dt>
+                        <dd>A fraudulent attempt to obtain sensitive information by posing as a trustworthy entity through email, messaging, or websites.</dd>
+                        
+                        <dt><strong>Malware</strong></dt>
+                        <dd>Malicious software designed to harm or exploit any programmable device, service, or network. Examples include viruses, worms, ransomware, and spyware.</dd>
+                        
+                        <dt><strong>Encryption</strong></dt>
+                        <dd>The process of converting information or data into a code to prevent unauthorized access.</dd>
+                        
+                        <dt><strong>Firewall</strong></dt>
+                        <dd>A network security system that monitors and controls incoming and outgoing network traffic based on predetermined security rules, acting as a barrier between trusted and untrusted networks.</dd>
+                    </dl>
+                </div>
+            </div>
+
+            <!-- Investment Terms -->
+            <div class="terminology-item">
+                <div class="terminology-question" onclick="toggleTerminology(3)">
+                    Investment Terms
+                </div>
+                <div class="terminology-answer" id="terminology-3">
+                    <dl>
+                        <dt><strong>Bull Market</strong></dt>
+                        <dd>A financial market condition where prices are rising or are expected to rise, often characterized by investor optimism.</dd>
+                        
+                        <dt><strong>Bear Market</strong></dt>
+                        <dd>A market condition where prices are falling or are expected to fall, leading to widespread pessimism among investors.</dd>
+                        
+                        <dt><strong>Diversification</strong></dt>
+                        <dd>An investment strategy that involves spreading investments across various assets to reduce exposure to any single asset or risk.</dd>
+                        
+                        <dt><strong>Liquidity</strong></dt>
+                        <dd>The ease with which an asset can be converted into cash without affecting its market price.</dd>
+                        
+                        <dt><strong>Volatility</strong></dt>
+                        <dd>The degree of variation in the price of a financial instrument over time, indicating the level of risk associated with the asset's price changes.</dd>
+                    </dl>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Resources Section -->
     <section class="resources">
         <div class="container">
             <h2>Advanced Guides</h2>
@@ -308,10 +374,15 @@
         <p>&copy; 2023 BrandBitcoin. All rights reserved.</p>
     </footer>
 
-    <!-- Script for Dropdown FAQs -->
+    <!-- Script for Dropdown FAQs and Terminology -->
     <script>
         function toggleAnswer(id) {
             const answer = document.getElementById(`answer-${id}`);
+            answer.classList.toggle('active');
+        }
+
+        function toggleTerminology(id) {
+            const answer = document.getElementById(`terminology-${id}`);
             answer.classList.toggle('active');
         }
     </script>
