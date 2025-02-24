@@ -5,8 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Resources | BrandBitcoin</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500;700&display=swap" rel="stylesheet">
-    <!-- Add Marked.js -->
-    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
     <style>
         /* General Styles */
         body {
@@ -89,6 +87,19 @@
 
         .resource-item h3 {
             color: #fec107;
+        }
+
+        .resource-item p {
+            margin: 10px 0;
+        }
+
+        .resource-item a {
+            color: #fec107;
+            text-decoration: underline;
+        }
+
+        .resource-item a:hover {
+            color: #ffeb3b;
         }
 
         /* Footer */
@@ -204,6 +215,18 @@
                 <div class="faq-answer" id="answer-10">
                     The Lightning Network is a second-layer solution built on top of Bitcoin’s blockchain. It enables faster and cheaper transactions by processing them off-chain and settling them on the blockchain later. This makes Bitcoin more practical for small, everyday transactions.
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Resources Section -->
+    <section class="resources">
+        <div class="container">
+            <h2>Advanced Guides</h2>
+            <div class="resource-item">
+                <h3>Bitcoin Mining Guide</h3>
+                <p>Learn how Bitcoin mining works, explore energy-efficient solutions, and discover the latest trends in renewable energy-powered mining.</p>
+                <p><a href="https://github.com/Bradbarr/brandbitcoin-landing-page/blob/main/resources/advanced-guide-bitcoin-mining.md" target="_blank">Read the Advanced Guide to Bitcoin Mining on GitHub</a></p>
             </div>
         </div>
     </section>
