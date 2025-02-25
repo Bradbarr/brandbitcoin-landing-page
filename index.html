@@ -251,43 +251,43 @@
         <p>&copy; 2023 BrandBitcoin. All rights reserved.</p>
     </footer>
 
-    <script>
-        // Function to fetch Bitcoin price and apply 10% markup
-        async function fetchBitcoinPriceWithMarkup() {
-            try {
-                const response = await fetch('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd');
-                const data = await response.json();
-                const bitcoinPrice = data.bitcoin.usd;
-                const markupPrice = bitcoinPrice * 1.10; // 10% markup
-                return markupPrice.toFixed(2);
-            } catch (error) {
-                console.error('Error fetching Bitcoin price:', error);
-                return null;
-            }
+ <script>
+    // Function to fetch Bitcoin price in GBP
+    async function fetchBitcoinPriceInGBP() {
+        try {
+            const response = await fetch('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=gbp');
+            const data = await response.json();
+            const bitcoinPrice = data.bitcoin.gbp;
+            return bitcoinPrice.toFixed(2); // No markup, exact price in GBP
+        } catch (error) {
+            console.error('Error fetching Bitcoin price:', error);
+            return null;
         }
+    }
 
-        // Function to update the Bitcoin price on the page
-        async function updateBitcoinPrice() {
-            const priceElement = document.getElementById('bitcoinPrice');
-            const price = await fetchBitcoinPriceWithMarkup();
-            if (price) {
-                priceElement.innerText = `$${price}`;
-            } else {
-                priceElement.innerText = 'Failed to load price.';
-            }
+    // Function to update the Bitcoin price on the page
+    async function updateBitcoinPrice() {
+        const priceElement = document.getElementById('bitcoinPrice');
+        const price = await fetchBitcoinPriceInGBP();
+        if (price) {
+            priceElement.innerText = `£${price}`; // Display in GBP
+        } else {
+            priceElement.innerText = 'Failed to load price.';
         }
+    }
 
-        // Update the price every 10 minutes (600,000 milliseconds)
-        setInterval(updateBitcoinPrice, 600000);
+    // Update the price every 1 minute (60,000 milliseconds)
+    setInterval(updateBitcoinPrice, 60000);
 
-        // Initial price update
-        updateBitcoinPrice();
+    // Initial price update
+    updateBitcoinPrice();
 
-        // Function to handle the Buy Bitcoin button click
-        function buyBitcoin() {
-            alert('Redirecting to Bitcoin purchase page...');
-            // Add logic to handle the purchase (e.g., redirect to a payment page)
-        }
-    </script>
+    // Function to handle the Buy Bitcoin button click
+    function buyBitcoin() {
+        alert('Redirecting to Bitcoin purchase page...');
+        // Add logic to handle the purchase (e.g., redirect to a payment page)
+    }
+</script>
+
 </body>
 </html>
