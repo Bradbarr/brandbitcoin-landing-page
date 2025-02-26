@@ -205,16 +205,23 @@ footer {
 .terminology-answer {
     margin-left: 20px;
     font-size: 14px;
-    color: #7f8c8d;
+    color: #ffffff; /* Updated to white text */
+    background-color: #1c1c1c; /* Optional: Background color for contrast */
+    padding: 10px;
+    border-radius: 5px;
 }
 
-/* Security Page Dropdown Menu (Assuming a similar dropdown for the security page) */
+/* Security Page Dropdown Menu */
 .security-dropdown {
     display: none;
 }
 
 .security-dropdown.active {
     display: block;
+    color: #ffffff; /* Updated to white text */
+    background-color: #1c1c1c; /* Optional: Background color for contrast */
+    padding: 10px;
+    border-radius: 5px;
 }
 
 .security-dropdown-button {
@@ -253,3 +260,4 @@ footer {
         width: 100%;
     }
 }
+
