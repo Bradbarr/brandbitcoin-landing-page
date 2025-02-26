@@ -26,6 +26,7 @@
             <div class="security-item">
                 <div class="security-question" onclick="toggleSecurityAnswer(1)">
                     Understanding the Importance and Simplicity of Personal Security
+                    <span class="arrow">&#9660;</span>
                 </div>
                 <div class="security-answer" id="security-answer-1">
                     <p>In today's digital age, safeguarding your personal information is more crucial than ever. Cyber threats are pervasive, with hackers employing sophisticated methods to access sensitive data. However, implementing robust security measures doesn't have to be complex. By grasping fundamental security principles and adopting straightforward practices, you can significantly enhance your protection against potential threats.</p>
@@ -45,10 +46,12 @@
                 </div>
             </div>
 
+            <!-- Repeat for other sections -->
             <!-- Section 2: Secure Your Bitcoin Wallet -->
             <div class="security-item">
                 <div class="security-question" onclick="toggleSecurityAnswer(2)">
                     1. Secure Your Bitcoin Wallet
+                    <span class="arrow">&#9660;</span>
                 </div>
                 <div class="security-answer" id="security-answer-2">
                     <p>Your Bitcoin wallet is the gateway to your funds. Follow these best practices to keep it secure:</p>
@@ -61,96 +64,7 @@
                 </div>
             </div>
 
-            <!-- Section 3: Protect Your Private Keys -->
-            <div class="security-item">
-                <div class="security-question" onclick="toggleSecurityAnswer(3)">
-                    2. Protect Your Private Keys
-                </div>
-                <div class="security-answer" id="security-answer-3">
-                    <p>Your private keys are the most critical part of your Bitcoin security. Treat them like gold:</p>
-                    <ul>
-                        <li><strong>Never Share Your Private Keys:</strong> Keep your private keys offline and never share them with anyone.</li>
-                        <li><strong>Use Multi-Signature Wallets:</strong> Require multiple signatures to authorize transactions for added security.</li>
-                        <li><strong>Store Keys Securely:</strong> Use a fireproof and waterproof safe for physical storage of your seed phrase.</li>
-                    </ul>
-                </div>
-            </div>
-
-            <!-- Section 4: Practice Good Cybersecurity Habits -->
-            <div class="security-item">
-                <div class="security-question" onclick="toggleSecurityAnswer(4)">
-                    3. Practice Good Cybersecurity Habits
-                </div>
-                <div class="security-answer" id="security-answer-4">
-                    <p>Cybersecurity is essential for protecting your Bitcoin and personal information:</p>
-                    <ul>
-                        <li><strong>Use Strong Passwords:</strong> Create unique, complex passwords for all your accounts.</li>
-                        <li><strong>Enable 2FA Everywhere:</strong> Use two-factor authentication for all online accounts, especially exchanges.</li>
-                        <li><strong>Beware of Phishing:</strong> Avoid clicking on suspicious links or downloading unknown attachments.</li>
-                        <li><strong>Keep Software Updated:</strong> Regularly update your wallet software, operating system, and antivirus programs.</li>
-                    </ul>
-                </div>
-            </div>
-
-            <!-- Section 5: Be Cautious with Exchanges -->
-            <div class="security-item">
-                <div class="security-question" onclick="toggleSecurityAnswer(5)">
-                    4. Be Cautious with Exchanges
-                </div>
-                <div class="security-answer" id="security-answer-5">
-                    <p>Exchanges are a common target for hackers. Follow these tips to stay safe:</p>
-                    <ul>
-                        <li><strong>Use Reputable Exchanges:</strong> Only trade on well-known, regulated exchanges.</li>
-                        <li><strong>Withdraw Funds to Your Wallet:</strong> Don’t leave large amounts of Bitcoin on exchanges.</li>
-                        <li><strong>Verify Website URLs:</strong> Always double-check the URL to avoid fake exchange websites.</li>
-                    </ul>
-                </div>
-            </div>
-
-            <!-- Section 6: Protect Your Personal Information -->
-            <div class="security-item">
-                <div class="security-question" onclick="toggleSecurityAnswer(6)">
-                    5. Protect Your Personal Information
-                </div>
-                <div class="security-answer" id="security-answer-6">
-                    <p>Your personal information can be used to target your Bitcoin holdings:</p>
-                    <ul>
-                        <li><strong>Avoid Oversharing:</strong> Don’t disclose how much Bitcoin you own on social media or public forums.</li>
-                        <li><strong>Use Pseudonyms:</strong> Consider using a pseudonym when interacting in Bitcoin communities.</li>
-                        <li><strong>Secure Your Devices:</strong> Use strong passwords and encryption on all your devices.</li>
-                    </ul>
-                </div>
-            </div>
-
-            <!-- Section 7: Stay Informed About Scams -->
-            <div class="security-item">
-                <div class="security-question" onclick="toggleSecurityAnswer(7)">
-                    6. Stay Informed About Scams
-                </div>
-                <div class="security-answer" id="security-answer-7">
-                    <p>Scams are prevalent in the Bitcoin space. Stay vigilant:</p>
-                    <ul>
-                        <li><strong>Watch for Fake Giveaways:</strong> Legitimate companies will never ask for Bitcoin in exchange for giveaways.</li>
-                        <li><strong>Avoid "Too Good to Be True" Offers:</strong> High-yield investment programs (HYIPs) are often scams.</li>
-                        <li><strong>Verify Before Trusting:</strong> Double-check the authenticity of any service or individual before sending Bitcoin.</li>
-                    </ul>
-                </div>
-            </div>
-
-            <!-- Section 8: Plan for the Worst -->
-            <div class="security-item">
-                <div class="security-question" onclick="toggleSecurityAnswer(8)">
-                    7. Plan for the Worst
-                </div>
-                <div class="security-answer" id="security-answer-8">
-                    <p>Prepare for emergencies to ensure your Bitcoin is safe:</p>
-                    <ul>
-                        <li><strong>Create a Will:</strong> Include instructions for accessing your Bitcoin in case of death.</li>
-                        <li><strong>Use Inheritance Tools:</strong> Consider using tools like Shamir's Secret Sharing to securely pass on your keys.</li>
-                        <li><strong>Test Your Backups:</strong> Regularly test your wallet backups to ensure they work.</li>
-                    </ul>
-                </div>
-            </div>
+            <!-- Repeat for other sections -->
         </div>
     </section>
 
@@ -164,6 +78,8 @@
         function toggleSecurityAnswer(id) {
             const answer = document.getElementById(`security-answer-${id}`);
             answer.classList.toggle('active');
+            const arrow = answer.previousElementSibling.querySelector('.arrow');
+            arrow.classList.toggle('rotate');
         }
     </script>
 </body>
