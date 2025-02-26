@@ -21,43 +21,59 @@
     <section class="faq">
         <div class="container">
             <h2>Frequently Asked Questions</h2>
+            <div class="section-divider"></div> <!-- Divider line -->
 
             <!-- FAQ 1 -->
             <div class="faq-item">
-                <div class="faq-question" onclick="toggleAnswer(1)">What is Fiat Money?</div>
-                <div class="faq-answer" id="answer-1">
+                <button class="dropdown-question" onclick="toggleAnswer(1)">
+                    What is Fiat Money?
+                    <span class="arrow">▼</span>
+                </button>
+                <div class="dropdown-answer" id="answer-1">
                     Fiat money is government-issued currency that isn't backed by a physical commodity like gold or silver. Its value comes from the trust people place in the government that issues it. Examples include the US Dollar, Euro, and British Pound. Unlike Bitcoin, fiat money can be printed indefinitely, which can lead to inflation.
                 </div>
             </div>
 
             <!-- FAQ 2 -->
             <div class="faq-item">
-                <div class="faq-question" onclick="toggleAnswer(2)">How Does Bitcoin Differ from Traditional Money?</div>
-                <div class="faq-answer" id="answer-2">
+                <button class="dropdown-question" onclick="toggleAnswer(2)">
+                    How Does Bitcoin Differ from Traditional Money?
+                    <span class="arrow">▼</span>
+                </button>
+                <div class="dropdown-answer" id="answer-2">
                     Bitcoin is decentralized, meaning no single entity (like a government or bank) controls it. It operates on a blockchain, a public ledger that records all transactions. Unlike traditional money, Bitcoin has a fixed supply of 21 million coins, making it immune to inflation caused by overprinting.
                 </div>
             </div>
 
             <!-- FAQ 3 -->
             <div class="faq-item">
-                <div class="faq-question" onclick="toggleAnswer(3)">What Gives Bitcoin Its Value?</div>
-                <div class="faq-answer" id="answer-3">
+                <button class="dropdown-question" onclick="toggleAnswer(3)">
+                    What Gives Bitcoin Its Value?
+                    <span class="arrow">▼</span>
+                </button>
+                <div class="dropdown-answer" id="answer-3">
                     Bitcoin's value comes from its scarcity, utility, and the trust people place in it. Like gold, Bitcoin is scarce (only 21 million will ever exist). It’s also useful as a decentralized, borderless currency and a store of value. The more people adopt it, the more valuable it becomes.
                 </div>
             </div>
 
             <!-- FAQ 4 -->
             <div class="faq-item">
-                <div class="faq-question" onclick="toggleAnswer(4)">What is the Blockchain?</div>
-                <div class="faq-answer" id="answer-4">
+                <button class="dropdown-question" onclick="toggleAnswer(4)">
+                    What is the Blockchain?
+                    <span class="arrow">▼</span>
+                </button>
+                <div class="dropdown-answer" id="answer-4">
                     The blockchain is a decentralized digital ledger that records transactions in a secure and transparent manner. It’s composed of blocks that contain transaction data, and each block is linked to the previous one, ensuring data integrity and security.
                 </div>
             </div>
 
             <!-- FAQ 5 -->
             <div class="faq-item">
-                <div class="faq-question" onclick="toggleAnswer(5)">How Can I Buy Bitcoin?</div>
-                <div class="faq-answer" id="answer-5">
+                <button class="dropdown-question" onclick="toggleAnswer(5)">
+                    How Can I Buy Bitcoin?
+                    <span class="arrow">▼</span>
+                </button>
+                <div class="dropdown-answer" id="answer-5">
                     Bitcoin can be bought through online exchanges, such as Coinbase, Binance, or Kraken, using traditional payment methods like bank transfers, credit cards, or even PayPal in some cases.
                 </div>
             </div>
@@ -70,14 +86,16 @@
     <section class="terminology">
         <div class="container">
             <h2>Bitcoin Terminology</h2>
+            <div class="section-divider"></div> <!-- Divider line -->
             <p>Diving into the world of Bitcoin and cryptocurrency can be overwhelming with its unique jargon. To help you navigate this exciting landscape, we've compiled a list of essential terms related to Bitcoin, cybersecurity, and investing, presented in an easy-to-understand manner.</p>
 
             <!-- Bitcoin and Cryptocurrency Terms -->
             <div class="terminology-item">
-                <div class="terminology-question" onclick="toggleTerminology(1)">
+                <button class="dropdown-question" onclick="toggleTerminology(1)">
                     Bitcoin and Cryptocurrency Terms
-                </div>
-                <div class="terminology-answer" id="terminology-1">
+                    <span class="arrow">▼</span>
+                </button>
+                <div class="dropdown-answer" id="terminology-1">
                     <dl>
                         <dt><strong>Bitcoin (BTC)</strong></dt>
                         <dd>The first and most well-known cryptocurrency, introduced in 2009 by an anonymous entity known as Satoshi Nakamoto. Bitcoin operates on a decentralized network, allowing peer-to-peer transactions without intermediaries.</dd>
@@ -94,11 +112,13 @@
                 </div>
             </div>
 
+            <!-- Bitcoin Security Terms -->
             <div class="terminology-item">
-                <div class="terminology-question" onclick="toggleTerminology(2)">
+                <button class="dropdown-question" onclick="toggleTerminology(2)">
                     Bitcoin Security Terms
-                </div>
-                <div class="terminology-answer" id="terminology-2">
+                    <span class="arrow">▼</span>
+                </button>
+                <div class="dropdown-answer" id="terminology-2">
                     <dl>
                         <dt><strong>Private Key</strong></dt>
                         <dd>A private key is a secret code that allows you to access and control your cryptocurrency. It must be kept secure and never shared.</dd>
@@ -120,6 +140,7 @@
     <section class="resources">
         <div class="container">
             <h2>Advanced Guides</h2>
+            <div class="section-divider"></div> <!-- Divider line -->
             <div class="resource-item">
                 <h3>Bitcoin Mining Guide</h3>
                 <p>Learn how Bitcoin mining works, explore energy-efficient solutions, and discover the latest trends in renewable energy-powered mining.</p>
@@ -138,15 +159,17 @@
         // Function to toggle visibility of FAQ answers
         function toggleAnswer(id) {
             const answer = document.getElementById(`answer-${id}`);
-            // Toggle the 'active' class to show/hide the answer
+            const arrow = document.querySelector(`#answer-${id}`).previousElementSibling.querySelector('.arrow');
             answer.classList.toggle('active');
+            arrow.textContent = answer.classList.contains('active') ? '▲' : '▼';
         }
 
         // Function to toggle visibility of Terminology answers
         function toggleTerminology(id) {
             const answer = document.getElementById(`terminology-${id}`);
-            // Toggle the 'active' class to show/hide the terminology description
+            const arrow = document.querySelector(`#terminology-${id}`).previousElementSibling.querySelector('.arrow');
             answer.classList.toggle('active');
+            arrow.textContent = answer.classList.contains('active') ? '▲' : '▼';
         }
     </script>
 </body>
