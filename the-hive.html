@@ -39,13 +39,15 @@
         nav {
             background: #000000;
             padding: 20px 0;
-            text-align: center;
+            display: flex;
+            justify-content: center; /* Center navigation links */
+            align-items: center;
             border-bottom: 1px solid #fec107;
         }
 
         nav a {
             color: #ffffff;
-            margin: 0 15px;
+            margin: 0 15px; /* Uniform spacing between links */
             font-size: 18px;
             transition: color 0.3s ease;
         }
@@ -114,6 +116,25 @@
             padding: 20px 0;
             border-top: 1px solid #fec107;
         }
+
+        /* Media Queries for Mobile */
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column; /* Stack navigation links vertically on mobile */
+            }
+
+            nav a {
+                margin: 10px 0; /* Adjust spacing for mobile */
+            }
+
+            .hero h1 {
+                font-size: 36px;
+            }
+
+            .hero p {
+                font-size: 16px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -123,7 +144,7 @@
         <a href="consultation.html">Consultation</a>
         <a href="resources.html">Resources</a>
         <a href="security.html">Security</a>
-        <a href="the-hive.html">The Hive</a> <!-- Link to the new page -->
+        <a href="the-hive.html">The Hive</a>
     </nav>
 
     <!-- Hero Section -->
