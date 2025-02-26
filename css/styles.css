@@ -31,8 +31,15 @@ a:hover {
 nav {
     background: #000000;
     padding: 20px 0;
-    text-align: center;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     border-bottom: 1px solid #fec107;
+}
+
+nav .logo img {
+    height: 100px; /* Adjust the logo size */
+    width: auto;
 }
 
 nav a {
@@ -277,3 +284,4 @@ footer {
         margin-left: 10px;
     }
 }
+
