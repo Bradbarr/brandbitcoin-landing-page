@@ -211,14 +211,31 @@ footer {
     border-radius: 5px;
 }
 
-/* Security Page Dropdown Menu */
-.security-dropdown {
+/* Security Page Dropdown Styles (Reuse FAQ Styles) */
+.security-question {
+    cursor: pointer;
+    font-weight: bold;
+    margin: 10px 0;
+    color: #fec107;
+    transition: color 0.3s ease;
+}
+
+.security-question:hover {
+    color: #3498db; /* Hover color for questions */
+}
+
+.security-answer {
     display: none;
-    color: #ffffff; /* Text color */
-    background-color: #1c1c1c; /* Background color for contrast */
+    margin-left: 20px;
+    font-size: 14px;
+    color: #ffffff; /* Updated to white text */
+    background-color: #1c1c1c; /* Optional: Background color for contrast */
     padding: 10px;
     border-radius: 5px;
-    font-size: 14px;
+}
+
+.security-answer.active {
+    display: block; /* Display the answer when the question is clicked */
 }
 
 /* Active state to show dropdown */
