@@ -40,14 +40,14 @@
             background: #000000;
             padding: 20px 0;
             display: flex;
-            justify-content: center; /* Center navigation links */
+            justify-content: center;
             align-items: center;
             border-bottom: 1px solid #fec107;
         }
 
         nav a {
             color: #ffffff;
-            margin: 0 15px; /* Uniform spacing between links */
+            margin: 0 15px;
             font-size: 18px;
             transition: color 0.3s ease;
         }
@@ -58,12 +58,12 @@
 
         /* Logo Under Navigation Bar */
         .logo-container {
-            text-align: center; /* Center the logo */
-            margin-top: 60px; /* Spacing between nav bar and logo */
+            text-align: center;
+            margin-top: 60px;
         }
 
         .logo-container img {
-            height: 210px; /* Adjust logo size as needed */
+            height: 210px;
             width: auto;
         }
 
@@ -83,46 +83,15 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: 
-                repeating-linear-gradient(
-                    60deg,
-                    transparent,
-                    transparent 49px,
-                    #fec107 49px,
-                    #fec107 50px
-                ),
-                repeating-linear-gradient(
-                    120deg,
-                    transparent,
-                    transparent 49px,
-                    #fec107 49px,
-                    #fec107 50px
-                ),
-                repeating-linear-gradient(
-                    0deg,
-                    transparent,
-                    transparent 49px,
-                    #fec107 49px,
-                    #fec107 50px
-                );
-            background-size: 100px 173px; /* Adjust size of hexagons */
-            opacity: 0.2; /* Adjust opacity for subtlety */
-            z-index: 1; /* Place behind the content */
+            background-image: radial-gradient(circle, rgba(254, 193, 7, 0.2) 20%, transparent 20%);
+            background-size: 50px 50px;
+            opacity: 0.2;
+            z-index: 1;
         }
 
-        .hero h1 {
-            font-size: 48px;
-            margin: 0;
+        .hero h1, .hero p {
             position: relative;
-            z-index: 2; /* Ensure text is above the pattern */
-        }
-
-        .hero p {
-            font-size: 20px;
-            margin: 20px 0;
-            color: #ffffff;
-            position: relative;
-            z-index: 2; /* Ensure text is above the pattern */
+            z-index: 2;
         }
 
         /* Section */
@@ -149,66 +118,6 @@
             text-align: center;
             padding: 20px 0;
             border-top: 1px solid #fec107;
-        }
-
-        /* Disclaimer Section */
-        .disclaimer {
-            background: #1c1c1c;
-            padding: 20px;
-            margin: 20px 0;
-            border-radius: 5px;
-            text-align: center;
-        }
-
-        .disclaimer p {
-            font-size: 14px;
-            color: #ffffff;
-            margin: 0;
-        }
-
-        .disclaimer button {
-            background: none;
-            border: none;
-            color: #fec107;
-            cursor: pointer;
-            font-size: 14px;
-            text-decoration: underline;
-            margin-top: 10px;
-        }
-
-        .disclaimer button:hover {
-            color: #e0a800;
-        }
-
-        .disclaimer .full-disclaimer {
-            display: none;
-            margin-top: 10px;
-            font-size: 14px;
-            color: #ffffff;
-            text-align: left;
-        }
-
-        .disclaimer .full-disclaimer.active {
-            display: block;
-        }
-
-        /* Media Queries for Mobile */
-        @media (max-width: 768px) {
-            nav {
-                flex-direction: column; /* Stack navigation links vertically on mobile */
-            }
-
-            nav a {
-                margin: 10px 0; /* Adjust spacing for mobile */
-            }
-
-            .hero h1 {
-                font-size: 36px;
-            }
-
-            .hero p {
-                font-size: 16px;
-            }
         }
     </style>
 </head>
@@ -239,9 +148,7 @@
     <section>
         <div class="container">
             <h2>About Us</h2>
-            <p>At <strong>BrandBitcoin.co.uk</strong>, we are a team of professionals with backgrounds in cybersecurity, Bitcoin, and Bitcoin mining. Our mission is to help people navigate the world of Bitcoin, providing them with the security and knowledge they need to participate in the ecosystem with confidence.</p>
-            <p>We come from a diverse set of expertise—ranging from safeguarding networks to mining Bitcoin efficiently. What unites us is our passion for empowering individuals to access and use Bitcoin safely. We believe that the future of finance lies in decentralized networks, and Bitcoin is at the forefront of this revolution.</p>
-            <p>Our work doesn't stop at education. We strive to create solutions that protect and promote the integrity of the Bitcoin network. Whether you are just starting your journey into cryptocurrency or you are already well-versed in the ecosystem, we are here to guide you securely every step of the way.</p>
+            <p>At <strong>BrandBitcoin.co.uk</strong>, we are a team of professionals with backgrounds in cybersecurity, Bitcoin, and Bitcoin mining...</p>
         </div>
     </section>
 
@@ -249,31 +156,26 @@
     <section>
         <div class="container">
             <h2>Our Mission</h2>
-            <p>Our mission is to support and strengthen the Bitcoin ecosystem, encourage adoption, and ensure that anyone who wants to get involved can do so securely and confidently. We focus on three main goals:</p>
-            <ul>
-                <li><strong>Supporting the Bitcoin Ecosystem:</strong> We contribute to the development and sustainability of the Bitcoin network, leveraging our deep technical knowledge in cybersecurity and mining.</li>
-                <li><strong>Encouraging Widespread Adoption:</strong> By demystifying Bitcoin and making it accessible, we aim to drive adoption and make cryptocurrency a mainstream financial tool.</li>
-                <li><strong>Ensuring Safe Access:</strong> Security is at the heart of what we do. We provide robust security solutions that help individuals and businesses protect their assets and navigate the Bitcoin network safely.</li>
-            </ul>
+            <p>Our mission is to support and strengthen the Bitcoin ecosystem...</p>
         </div>
     </section>
 
     <!-- Disclaimer Section -->
     <section class="disclaimer">
         <div class="container">
-            <p><strong>Disclaimer:</strong> The information provided on this website is for educational purposes only and does not constitute financial, legal, or tax advice. Bitcoin is a highly volatile asset, and you could lose money. Always consult a professional before making financial decisions.</p>
+            <p><strong>Disclaimer:</strong> The information provided on this website is for educational purposes only...</p>
             <button onclick="toggleDisclaimer()">Read Full Disclaimer</button>
             <div class="full-disclaimer" id="fullDisclaimer">
                 <p><strong>Full Disclaimer:</strong></p>
                 <ol>
-                    <li><strong>No Financial Advice:</strong> The content on this website is for informational purposes only and should not be considered financial, legal, or tax advice. Consult a qualified professional before making any financial decisions.</li>
-                    <li><strong>Risks of Bitcoin:</strong> Bitcoin is a highly volatile and speculative asset. The value of Bitcoin can fluctuate significantly, and you may lose some or all of your investment. Past performance is not indicative of future results.</li>
-                    <li><strong>No Guarantees:</strong> We do not guarantee the accuracy, completeness, or timeliness of the information provided on this website. We are not responsible for any errors or omissions, or for the results obtained from the use of this information.</li>
-                    <li><strong>User Responsibility:</strong> You are solely responsible for your decisions and actions. BrandBitcoin is not liable for any losses or damages arising from your use of this website or our services.</li>
-                    <li><strong>Third-Party Services:</strong> This website may contain links to third-party websites or services. We are not responsible for the content, accuracy, or practices of these third-party sites. Use them at your own risk.</li>
-                    <li><strong>Jurisdiction:</strong> This website and its services are governed by the laws of [Insert Jurisdiction, e.g., the United Kingdom]. Any disputes will be resolved in the courts of [Insert Jurisdiction].</li>
+                    <li><strong>No Financial Advice:</strong> The content on this website is for informational purposes only...</li>
+                    <li><strong>Risks of Bitcoin:</strong> Bitcoin is a highly volatile and speculative asset...</li>
+                    <li><strong>No Guarantees:</strong> We do not guarantee the accuracy...</li>
+                    <li><strong>User Responsibility:</strong> You are solely responsible for your decisions...</li>
+                    <li><strong>Third-Party Services:</strong> This website may contain links to third-party websites...</li>
+                    <li><strong>Jurisdiction:</strong> This website and its services are governed by the laws of [Insert Jurisdiction]...</li>
                 </ol>
-                <p>By using this website, you acknowledge that you have read, understood, and agreed to this disclaimer. If you do not agree, please do not use this website or our services.</p>
+                <p>By using this website, you acknowledge that you have read, understood, and agreed to this disclaimer...</p>
             </div>
         </div>
     </section>
@@ -284,7 +186,6 @@
     </footer>
 
     <script>
-        // Function to toggle the full disclaimer
         function toggleDisclaimer() {
             const fullDisclaimer = document.getElementById('fullDisclaimer');
             fullDisclaimer.classList.toggle('active');
@@ -292,3 +193,4 @@
     </script>
 </body>
 </html>
+
