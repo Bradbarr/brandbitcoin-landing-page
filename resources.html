@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Resources | BrandBitcoin</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/styles.css"> <!-- Correct link to CSS -->
+    <link rel="stylesheet" href="css/styles.css"> <!-- Correct link to your CSS -->
 </head>
 <body>
     <!-- Navigation Bar -->
@@ -14,7 +14,7 @@
         <a href="consultation.html">Consultation</a>
         <a href="resources.html">Resources</a>
         <a href="security.html">Security</a>
-        <a href="the-hive.html">The Hive</a> <!-- Link to the new page -->
+        <a href="the-hive.html">The Hive</a> <!-- Link to your other pages -->
     </nav>
 
     <!-- FAQ Section -->
@@ -69,7 +69,8 @@
                         <dt><strong>Blockchain</strong></dt>
                         <dd>A public, decentralized ledger that records all Bitcoin transactions in chronological order. Each block contains a list of transactions, and blocks are linked together, forming a chain that ensures the integrity and security of data.</dd>
                         
-                        <!-- More terminology here... -->
+                        <dt><strong>Crypto Mining</strong></dt>
+                        <dd>The process of validating transactions on a cryptocurrency network and adding them to the blockchain. In return, miners are rewarded with newly created coins (e.g., Bitcoin) and transaction fees.</dd>
                     </dl>
                 </div>
             </div>
@@ -97,13 +98,17 @@
 
     <!-- Script for Dropdown FAQs and Terminology -->
     <script>
+        // Function to toggle visibility of FAQ answers
         function toggleAnswer(id) {
             const answer = document.getElementById(`answer-${id}`);
+            // Toggle the 'active' class to show/hide the answer
             answer.classList.toggle('active');
         }
 
+        // Function to toggle visibility of Terminology answers
         function toggleTerminology(id) {
             const answer = document.getElementById(`terminology-${id}`);
+            // Toggle the 'active' class to show/hide the terminology description
             answer.classList.toggle('active');
         }
     </script>
