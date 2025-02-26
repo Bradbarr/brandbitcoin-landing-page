@@ -238,9 +238,42 @@ footer {
     transition: transform 0.3s ease;
 }
 
+.arrow.rotate {
+    transform: rotate(180deg);
+}
+
 /* Section Divider */
 .section-divider {
     height: 2px;
     background-color: #fec107;
     margin: 20px 0;
+}
+
+/* Media Queries for Mobile */
+@media (max-width: 768px) {
+    nav a {
+        display: block;
+        margin: 10px 0;
+    }
+
+    .hero h1 {
+        font-size: 36px;
+    }
+
+    .hero p {
+        font-size: 16px;
+    }
+
+    .cta-button {
+        font-size: 16px;
+        padding: 12px 24px;
+    }
+
+    .email-form input {
+        width: 100%;
+    }
+
+    .dropdown-answer {
+        margin-left: 10px;
+    }
 }
