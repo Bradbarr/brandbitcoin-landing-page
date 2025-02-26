@@ -32,19 +32,14 @@ nav {
     background: #000000;
     padding: 20px 0;
     display: flex;
-    justify-content: space-between;
+    justify-content: center; /* Center navigation links */
     align-items: center;
     border-bottom: 1px solid #fec107;
 }
 
-nav .logo img {
-    height: 40px; /* Adjust the logo size */
-    width: auto;
-}
-
 nav a {
     color: #ffffff;
-    margin: 0 15px;
+    margin: 0 15px; /* Uniform spacing between links */
     font-size: 18px;
     transition: color 0.3s ease;
 }
@@ -64,6 +59,18 @@ nav a:hover {
 
 .consultation-button:hover {
     background: #e0a800;
+}
+
+/* Logo Under Navigation Bar */
+.logo-container {
+    text-align: center; /* Center the logo */
+    margin-top: 20px; /* Spacing between nav bar and logo */
+    padding: 20px 0; /* Optional: Add padding for better spacing */
+}
+
+.logo-container img {
+    height: 100px; /* Adjust logo size as needed */
+    width: auto;
 }
 
 /* Hero Section */
@@ -258,9 +265,16 @@ footer {
 
 /* Media Queries for Mobile */
 @media (max-width: 768px) {
+    nav {
+        flex-direction: column; /* Stack navigation links vertically */
+    }
+
     nav a {
-        display: block;
-        margin: 10px 0;
+        margin: 10px 0; /* Adjust spacing for mobile */
+    }
+
+    .logo-container img {
+        height: 80px; /* Adjust logo size for mobile */
     }
 
     .hero h1 {
