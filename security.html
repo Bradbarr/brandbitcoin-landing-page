@@ -24,11 +24,11 @@
 
             <!-- Section 1: Importance and Simplicity of Personal Security -->
             <div class="security-item">
-                <div class="security-question" onclick="toggleSecurityAnswer(1)">
+                <button class="dropdown-question" onclick="toggleSecurityAnswer(1)" aria-expanded="false" aria-controls="security-answer-1">
                     Understanding the Importance and Simplicity of Personal Security
                     <span class="arrow">&#9660;</span>
-                </div>
-                <div class="security-answer" id="security-answer-1">
+                </button>
+                <div class="dropdown-answer" id="security-answer-1">
                     <p>In today's digital age, safeguarding your personal information is more crucial than ever. Cyber threats are pervasive, with hackers employing sophisticated methods to access sensitive data. However, implementing robust security measures doesn't have to be complex. By grasping fundamental security principles and adopting straightforward practices, you can significantly enhance your protection against potential threats.</p>
                     <h3>The Importance of Personal Security</h3>
                     <p>Personal security encompasses the protection of your digital identity, financial assets, and private communications. Neglecting security can lead to unauthorized access, identity theft, financial loss, and privacy breaches. For instance, a study by the UK's Department for Science, Innovation & Technology revealed that 32% of businesses and 24% of charities experienced cyber breaches or attacks in the past year, underscoring the widespread nature of these threats. <a href="https://en.wikipedia.org/wiki/Computer_security">Source</a></p>
@@ -46,14 +46,13 @@
                 </div>
             </div>
 
-            <!-- Repeat for other sections -->
             <!-- Section 2: Secure Your Bitcoin Wallet -->
             <div class="security-item">
-                <div class="security-question" onclick="toggleSecurityAnswer(2)">
+                <button class="dropdown-question" onclick="toggleSecurityAnswer(2)" aria-expanded="false" aria-controls="security-answer-2">
                     1. Secure Your Bitcoin Wallet
                     <span class="arrow">&#9660;</span>
-                </div>
-                <div class="security-answer" id="security-answer-2">
+                </button>
+                <div class="dropdown-answer" id="security-answer-2">
                     <p>Your Bitcoin wallet is the gateway to your funds. Follow these best practices to keep it secure:</p>
                     <ul>
                         <li><strong>Use a Hardware Wallet:</strong> Store your Bitcoin in a hardware wallet (e.g., Ledger, Trezor) for offline, cold storage.</li>
@@ -77,8 +76,11 @@
     <script>
         function toggleSecurityAnswer(id) {
             const answer = document.getElementById(`security-answer-${id}`);
+            const question = answer.previousElementSibling;
+            const isExpanded = question.getAttribute('aria-expanded') === 'true';
+            question.setAttribute('aria-expanded', !isExpanded);
             answer.classList.toggle('active');
-            const arrow = answer.previousElementSibling.querySelector('.arrow');
+            const arrow = question.querySelector('.arrow');
             arrow.classList.toggle('rotate');
         }
     </script>
