@@ -56,22 +56,33 @@
             color: #fec107;
         }
 
-        /* Hero Section */
+        /* Hero Section with Honeycomb Background */
         .hero {
-            background: #000000;
+            background-color: #000000;
+            background-image: 
+                linear-gradient(120deg, rgba(254, 193, 7, 0.1) 50%, transparent 50%),
+                linear-gradient(60deg, rgba(254, 193, 7, 0.1) 50%, transparent 50%),
+                linear-gradient(0deg, rgba(254, 193, 7, 0.1) 50%, transparent 50%);
+            background-size: 60px 104px; /* Adjust size of honeycomb pattern */
             padding: 100px 20px;
             text-align: center;
+            position: relative;
+            overflow: hidden;
         }
 
         .hero h1 {
             font-size: 48px;
             margin: 0;
+            position: relative;
+            z-index: 2; /* Ensure text is above the pattern */
         }
 
         .hero p {
             font-size: 20px;
             margin: 20px 0;
             color: #ffffff;
+            position: relative;
+            z-index: 2; /* Ensure text is above the pattern */
         }
 
         .cta-button {
@@ -85,6 +96,8 @@
             text-transform: uppercase;
             font-weight: bold;
             transition: background 0.3s ease, transform 0.3s ease;
+            position: relative;
+            z-index: 2; /* Ensure button is above the pattern */
         }
 
         .cta-button:hover {
@@ -147,7 +160,7 @@
         <a href="the-hive.html">The Hive</a>
     </nav>
 
-    <!-- Hero Section -->
+    <!-- Hero Section with Honeycomb Background -->
     <section class="hero">
         <div class="container">
             <h1>Welcome to The Hive</h1>
