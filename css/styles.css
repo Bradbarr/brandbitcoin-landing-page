@@ -214,16 +214,19 @@ footer {
 /* Security Page Dropdown Menu */
 .security-dropdown {
     display: none;
-}
-
-.security-dropdown.active {
-    display: block;
-    color: #ffffff; /* Updated to white text */
-    background-color: #1c1c1c; /* Optional: Background color for contrast */
+    color: #ffffff; /* Text color */
+    background-color: #1c1c1c; /* Background color for contrast */
     padding: 10px;
     border-radius: 5px;
+    font-size: 14px;
 }
 
+/* Active state to show dropdown */
+.security-dropdown.active {
+    display: block; /* Display the answer when the question is clicked */
+}
+
+/* Styling for the security question buttons */
 .security-dropdown-button {
     cursor: pointer;
     font-weight: bold;
@@ -233,7 +236,7 @@ footer {
 }
 
 .security-dropdown-button:hover {
-    color: #3498db;
+    color: #3498db; /* Hover color for questions */
 }
 
 /* Media Queries for Mobile */
@@ -260,4 +263,3 @@ footer {
         width: 100%;
     }
 }
-
