@@ -174,6 +174,31 @@ footer {
     border-top: 1px solid #fec107;
 }
 
+/* Introductory Text Styles */
+.intro-text {
+    margin-bottom: 30px;
+}
+
+.intro-text h3 {
+    color: #fec107;
+    margin-top: 20px;
+}
+
+.intro-text p {
+    font-size: 16px;
+    line-height: 1.6;
+    color: #ffffff;
+}
+
+.intro-text a {
+    color: #fec107;
+    text-decoration: underline;
+}
+
+.intro-text a:hover {
+    color: #e0a800;
+}
+
 /* Consolidated Dropdown Styles */
 .dropdown-question {
     cursor: pointer;
@@ -198,53 +223,4 @@ footer {
 .dropdown-answer {
     display: none;
     margin-left: 20px;
-    font-size: 14px;
-    color: #ffffff; /* Updated to white text */
-    background-color: #1c1c1c; /* Optional: Background color for contrast */
-    padding: 10px;
-    border-radius: 5px;
-}
-
-.dropdown-answer.active {
-    display: block; /* Display the answer when the question is clicked */
-}
-
-/* Arrow Styling */
-.arrow {
-    display: inline-block;
-    margin-left: 10px;
-    transition: transform 0.3s ease;
-}
-
-.arrow.rotate {
-    transform: rotate(180deg);
-}
-
-/* Media Queries for Mobile */
-@media (max-width: 768px) {
-    nav a {
-        display: block;
-        margin: 10px 0;
-    }
-
-    .hero h1 {
-        font-size: 36px;
-    }
-
-    .hero p {
-        font-size: 16px;
-    }
-
-    .cta-button {
-        font-size: 16px;
-        padding: 12px 24px;
-    }
-
-    .email-form input {
-        width: 100%;
-    }
-
-    .dropdown-answer {
-        margin-left: 10px;
-    }
-}
+    font-size: 14px
