@@ -214,32 +214,6 @@ footer {
     display: flex;
     justify-content: space-between;
     align-items: center;
-}
-
-.dropdown-question:hover {
-    color: #3498db; /* Hover color for questions */
-}
-
-.dropdown-answer {
-    display: none;
-    margin-left: 20px;
-    font-size: 14px
-
-/* Dropdown Styles */
-.dropdown-question {
-    cursor: pointer;
-    font-weight: bold;
-    margin: 10px 0;
-    color: #fec107;
-    transition: color 0.3s ease;
-    background: none;
-    border: none;
-    text-align: left;
-    width: 100%;
-    padding: 10px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
     border-bottom: 1px solid #fec107;
 }
 
@@ -251,4 +225,22 @@ footer {
     display: none;
     margin-left: 20px;
     font-size: 14px;
-    padding: 
+    padding: 10px 0;
+    border-bottom: 1px solid #fec107;
+}
+
+.dropdown-answer.active {
+    display: block;
+}
+
+.arrow {
+    font-size: 12px;
+    transition: transform 0.3s ease;
+}
+
+/* Section Divider */
+.section-divider {
+    height: 2px;
+    background-color: #fec107;
+    margin: 20px 0;
+}
