@@ -174,57 +174,28 @@ footer {
     border-top: 1px solid #fec107;
 }
 
-/* FAQ and Terminology Section Dropdown Styles */
-.faq-answer,
-.terminology-answer {
-    display: none;
-}
-
-.faq-answer.active,
-.terminology-answer.active {
-    display: block;
-}
-
-/* Hover effects for questions */
-.faq-question,
-.terminology-question {
+/* Consolidated Dropdown Styles */
+.dropdown-question {
     cursor: pointer;
     font-weight: bold;
     margin: 10px 0;
     color: #fec107;
     transition: color 0.3s ease;
-}
-
-.faq-question:hover,
-.terminology-question:hover {
-    color: #3498db;
-}
-
-/* Styling for the answer sections */
-.faq-answer,
-.terminology-answer {
-    margin-left: 20px;
-    font-size: 14px;
-    color: #ffffff; /* Updated to white text */
-    background-color: #1c1c1c; /* Optional: Background color for contrast */
+    background: none;
+    border: none;
+    text-align: left;
+    width: 100%;
     padding: 10px;
-    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
-/* Security Page Dropdown Styles (Reuse FAQ Styles) */
-.security-question {
-    cursor: pointer;
-    font-weight: bold;
-    margin: 10px 0;
-    color: #fec107;
-    transition: color 0.3s ease;
-}
-
-.security-question:hover {
+.dropdown-question:hover {
     color: #3498db; /* Hover color for questions */
 }
 
-.security-answer {
+.dropdown-answer {
     display: none;
     margin-left: 20px;
     font-size: 14px;
@@ -234,26 +205,19 @@ footer {
     border-radius: 5px;
 }
 
-.security-answer.active {
+.dropdown-answer.active {
     display: block; /* Display the answer when the question is clicked */
 }
 
-/* Active state to show dropdown */
-.security-dropdown.active {
-    display: block; /* Display the answer when the question is clicked */
+/* Arrow Styling */
+.arrow {
+    display: inline-block;
+    margin-left: 10px;
+    transition: transform 0.3s ease;
 }
 
-/* Styling for the security question buttons */
-.security-dropdown-button {
-    cursor: pointer;
-    font-weight: bold;
-    margin: 10px 0;
-    color: #fec107;
-    transition: color 0.3s ease;
-}
-
-.security-dropdown-button:hover {
-    color: #3498db; /* Hover color for questions */
+.arrow.rotate {
+    transform: rotate(180deg);
 }
 
 /* Media Queries for Mobile */
@@ -278,5 +242,9 @@ footer {
 
     .email-form input {
         width: 100%;
+    }
+
+    .dropdown-answer {
+        margin-left: 10px;
     }
 }
