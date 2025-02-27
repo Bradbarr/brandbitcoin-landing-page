@@ -297,5 +297,67 @@ footer {
     .dropdown-answer {
         margin-left: 10px;
     }
+    
+    /* Payment Form Styles */
+#payment-form-container {
+    background: #000000;
+    padding: 50px 20px;
+    text-align: center;
+    border-top: 1px solid #fec107;
+}
+
+#payment-form-container h2 {
+    color: #fec107;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+#payment-form label {
+    display: block;
+    color: #ffffff;
+    font-size: 18px;
+    margin: 10px 0 5px;
+}
+
+#payment-form input {
+    width: 300px;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #fec107;
+    border-radius: 5px;
+    background: #000000;
+    color: #ffffff;
+    font-size: 16px;
+}
+
+#payment-form button {
+    background: #fec107;
+    color: #000000;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 16px;
+    transition: background 0.3s ease;
+}
+
+#payment-form button:hover {
+    background: #e0a800;
+}
+
+#card-element {
+    background: #000000;
+    border: 1px solid #fec107;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 10px 0;
+}
+
+#card-errors {
+    color: #ff0000;
+    font-size: 14px;
+    margin: 10px 0;
+}
 }
 
