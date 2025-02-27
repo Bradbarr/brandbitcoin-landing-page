@@ -426,98 +426,123 @@
     <script src="https://js.stripe.com/v3/"></script>
 
     <script>
-        // Initialize Stripe
-        const stripe = Stripe('pk_test_51Qx422P22RIGPTA0gCqU2AVoTMYjZSIpHcxYbGcAXeVVkFCX68FfVfVUfPum0vwE29D6oXjJ8iBjTiC56wOYdF96005fFEL1NY'); // Replace with your Stripe Publishable Key
-        const elements = stripe.elements();
-        const cardElement = elements.create('card');
-        cardElement.mount('#card-element');
+       // Initialize Stripe
+const stripe = Stripe('pk_test_51Qx422P22RIGPTA0gCqU2AVoTMYjZSIpHcxYbGcAXeVVkFCX68FfVfVUfPum0vwE29D6oXjJ8iBjTiC56wOYdF96005fFEL1NY'); // Replace with your Stripe Publishable Key
+const elements = stripe.elements();
+const cardElement = elements.create('card');
+cardElement.mount('#card-element');
 
-        // Function to fetch Bitcoin price in GBP
-        async function fetchBitcoinPriceInGBP() {
-            try {
-                const response = await fetch('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=gbp');
-                if (!response.ok) {
-                    throw new Error('Failed to fetch Bitcoin price');
-                }
-                const data = await response.json();
-                const bitcoinPrice = data.bitcoin.gbp;
-                return bitcoinPrice.toFixed(2); // No markup, exact price in GBP
-            } catch (error) {
-                console.error('Error fetching Bitcoin price:', error);
-                return null;
-            }
+// Function to fetch Bitcoin price in GBP
+async function fetchBitcoinPriceInGBP() {
+    try {
+        const response = await fetch('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=gbp');
+        if (!response.ok) {
+            throw new Error('Failed to fetch Bitcoin price');
         }
+        const data = await response.json();
+        const bitcoinPrice = data.bitcoin.gbp;
+        return bitcoinPrice.toFixed(2); // No markup, exact price in GBP
+    } catch (error) {
+        console.error('Error fetching Bitcoin price:', error);
+        return null;
+    }
+}
 
-        // Function to update the Bitcoin price on the page
-        async function updateBitcoinPrice() {
-            const priceElement = document.getElementById('bitcoinPrice');
-            const price = await fetchBitcoinPriceInGBP();
-            if (price) {
-                priceElement.innerText = `£${price}`; // Display in GBP
-            } else {
-                priceElement.innerText = 'Failed to load price.';
-            }
-        }
+// Function to update the Bitcoin price on the page
+async function updateBitcoinPrice() {
+    const priceElement = document.getElementById('bitcoinPrice');
+    const price = await fetchBitcoinPriceInGBP();
+    if (price) {
+        priceElement.innerText = `£${price}`; // Display in GBP
+    } else {
+        priceElement.innerText = 'Failed to load price.';
+    }
+}
 
-        // Update the price every 1 minute (60,000 milliseconds)
-        setInterval(updateBitcoinPrice, 60000);
+// Update the price every 1 minute (60,000 milliseconds)
+setInterval(updateBitcoinPrice, 60000);
 
-        // Initial price update
-        updateBitcoinPrice();
+// Initial price update
+updateBitcoinPrice();
 
-        // Function to open the payment form
-        function openPaymentForm() {
-            document.getElementById('payment-form-container').style.display = 'block';
-        }
+// Function to open the payment form
+function openPaymentForm() {
+    document.getElementById('payment-form-container').style.display = 'block';
+}
 
-        // Function to handle the payment form submission
-        const form = document.getElementById('payment-form');
-        form.addEventListener('submit', async (event) => {
-            event.preventDefault();
+// Function to handle the payment form submission
+const form = document.getElementById('payment-form');
+form.addEventListener('submit', async (event) => {
+    event.preventDefault();
 
-            const walletAddress = document.getElementById('wallet-address').value;
-            const amountGBP = parseFloat(document.getElementById('amount-gbp').value);
+    console.log("Form submitted"); // Debugging: Confirm the form is being submitted
 
-            if (!walletAddress || !amountGBP) {
-                alert('Please fill in all fields');
-                return;
-            }
+    const walletAddress = document.getElementById('wallet-address').value;
+    const amountGBP = parseFloat(document.getElementById('amount-gbp').value);
 
-            // Create payment method
-            const { paymentMethod, error } = await stripe.createPaymentMethod({
-                type: 'card',
-                card: cardElement,
-            });
+    console.log("Wallet Address:", walletAddress); // Debugging: Check wallet address
+    console.log("Amount (GBP):", amountGBP); // Debugging: Check amount
 
-            if (error) {
-                document.getElementById('card-errors').textContent = error.message;
-                return;
-            }
+    if (!walletAddress || !amountGBP) {
+        alert('Please fill in all fields');
+        return;
+    }
 
-            // Send payment details to the backend
-            const response = await fetch('https://eeb3-2a00-23c8-8510-d301-9954-7202-4454-4a82.ngrok-free.app', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({
-                    wallet_address: walletAddress,
-                    payment_method_id: paymentMethod.id,
-                    amount_gbp: amountGBP,
-                }),
-            });
+    console.log("Creating payment method..."); // Debugging: Confirm payment method creation
 
-            const result = await response.json();
-            if (result.success) {
-                alert(`Bitcoin sent successfully! Transaction ID: ${result.txid}`);
-            } else {
-                alert(`Error: ${result.error}`);
-            }
+    // Create payment method
+    const { paymentMethod, error } = await stripe.createPaymentMethod({
+        type: 'card',
+        card: cardElement,
+    });
+
+    if (error) {
+        console.error("Stripe error:", error); // Debugging: Log Stripe errors
+        document.getElementById('card-errors').textContent = error.message;
+        return;
+    }
+
+    console.log("Payment method created:", paymentMethod.id); // Debugging: Confirm payment method ID
+
+    console.log("Sending payment details to backend..."); // Debugging: Confirm backend request
+
+    // Send payment details to the backend
+    try {
+        const response = await fetch('https://eeb3-2a00-23c8-8510-d301-9954-7202-4454-4a82.ngrok-free.app', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                wallet_address: walletAddress,
+                payment_method_id: paymentMethod.id,
+                amount_gbp: amountGBP,
+            }),
         });
 
-        // Function to toggle the full disclaimer
-        function toggleDisclaimer() {
-            const fullDisclaimer = document.getElementById('fullDisclaimer');
-            fullDisclaimer.classList.toggle('active');
+        console.log("Backend response:", response); // Debugging: Log backend response
+
+        if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
         }
+
+        const result = await response.json();
+        console.log("Backend result:", result); // Debugging: Log backend result
+
+        if (result.success) {
+            alert(`Bitcoin sent successfully! Transaction ID: ${result.txid}`);
+        } else {
+            alert(`Error: ${result.error}`);
+        }
+    } catch (error) {
+        console.error("Error sending payment details:", error); // Debugging: Log fetch errors
+        alert("An error occurred while processing your payment. Please try again.");
+    }
+});
+
+// Function to toggle the full disclaimer
+function toggleDisclaimer() {
+    const fullDisclaimer = document.getElementById('fullDisclaimer');
+    fullDisclaimer.classList.toggle('active');
+}
     </script>
 </body>
 </html>
