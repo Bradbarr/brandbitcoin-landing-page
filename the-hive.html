@@ -67,57 +67,23 @@
             width: auto;
         }
 
-        /* Hero Section with Hexagon Pattern */
+        /* Hero Section with Honeycomb Background */
         .hero {
-            background-color: #000000;
+            background-image: url('https://github.com/Bradbarr/brandbitcoin-landing-page/raw/main/Honeycomb(1).png');
+            background-size: cover;
+            background-position: center;
             padding: 100px 20px;
             text-align: center;
             position: relative;
             overflow: hidden;
-        }
-
-        .hero::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: 
-                /* Horizontal lines */
-                repeating-linear-gradient(
-                    to right,
-                    transparent,
-                    transparent 49px,
-                    #fec107 49px,
-                    #fec107 50px
-                ),
-                /* Diagonal lines (60deg) */
-                repeating-linear-gradient(
-                    60deg,
-                    transparent,
-                    transparent 49px,
-                    #fec107 49px,
-                    #fec107 50px
-                ),
-                /* Diagonal lines (-60deg) */
-                repeating-linear-gradient(
-                    -60deg,
-                    transparent,
-                    transparent 49px,
-                    #fec107 49px,
-                    #fec107 50px
-                );
-            background-size: 100px 86.6px; /* Adjusted for proper hexagon alignment */
-            opacity: 0.2; /* Adjust opacity for subtlety */
-            z-index: 1; /* Place behind the content */
+            height: 400px; /* Adjust height as needed */
         }
 
         .hero h1 {
             font-size: 48px;
             margin: 0;
             position: relative;
-            z-index: 2; /* Ensure text is above the pattern */
+            z-index: 2; /* Ensure text is above the background */
         }
 
         .hero p {
@@ -125,7 +91,7 @@
             margin: 20px 0;
             color: #ffffff;
             position: relative;
-            z-index: 2; /* Ensure text is above the pattern */
+            z-index: 2; /* Ensure text is above the background */
         }
 
         /* Section Styling */
