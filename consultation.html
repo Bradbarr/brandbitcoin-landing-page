@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consultation | BrandBitcoin</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css"> <!-- Correct link to your CSS -->
+    <style>
+        /* General Styles */
+        body {
+            font-family: 'Roboto Mono', monospace;
+            margin: 0;
+            padding: 0;
+            background-color: #000000;
+            color: #ffffff;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        h1, h2, h3 {
+            color: #fec107;
+        }
+
+        a {
+            color: #fec107;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        /* Consultation Form Section */
+        .consultation-form {
+            background: #000000;
+            padding: 50px 20px;
+            text-align: center;
+        }
+
+        .consultation-form h2 {
+            color: #fec107;
+            margin-bottom: 20px;
+        }
+
+        .consultation-form input, .consultation-form textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #fec107;
+            border-radius: 5px;
+            background: #000000;
+            color: #ffffff;
+        }
+
+        .consultation-form button {
+            background: #fec107;
+            color: #000000;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background 0.3s ease;
+        }
+
+        .consultation-form button:hover {
+            background: #e0a800;
+        }
+
+        /* Footer */
+        footer {
+            background: #000000;
+            color: #ffffff;
+            text-align: center;
+            padding: 20px 0;
+            border-top: 1px solid #fec107;
+        }
+
+        /* Media Queries for Mobile */
+        @media (max-width: 768px) {
+            .consultation-form input, .consultation-form textarea {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+        <nav>
+        <a href="index.html">Home</a>
+        <a href="consultation.html">Consultation</a>
+        <a href="resources.html">Resources</a>
+        <a href="security.html">Security</a>
+        <a href="the-hive.html">The Hive</a> <!-- Link to the new page -->
+    </nav>
+
+    <!-- Consultation Form Section -->
+    <section class="consultation-form">
+        <div class="container">
+            <h2>Schedule a Consultation</h2>
+            <form action="mailto:brandbitcoin@proton.me" method="post" enctype="text/plain">
+                <input type="text" placeholder="Your Name" required>
+                <input type="email" placeholder="Your Email" required>
+                <textarea placeholder="Your Question" rows="5" required></textarea>
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2023 BrandBitcoin. All rights reserved.</p>
+    </footer>
+</body>
+</html>
