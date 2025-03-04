@@ -31,13 +31,15 @@ a:hover {
 nav {
     background: #000000;
     padding: 20px 0;
-    text-align: center;
+    display: flex;
+    justify-content: center; /* Center navigation links */
+    align-items: center;
     border-bottom: 1px solid #fec107;
 }
 
 nav a {
     color: #ffffff;
-    margin: 0 15px;
+    margin: 0 15px; /* Uniform spacing between links */
     font-size: 18px;
     transition: color 0.3s ease;
 }
@@ -57,6 +59,18 @@ nav a:hover {
 
 .consultation-button:hover {
     background: #e0a800;
+}
+
+/* Logo Under Navigation Bar */
+.logo-container {
+    text-align: center; /* Center the logo */
+    margin-top: 20px; /* Spacing between nav bar and logo */
+    padding: 20px 0; /* Optional: Add padding for better spacing */
+}
+
+.logo-container img {
+    height: 100px; /* Adjust logo size as needed */
+    width: auto;
 }
 
 /* Hero Section */
@@ -174,11 +188,93 @@ footer {
     border-top: 1px solid #fec107;
 }
 
+/* Introductory Text Styles */
+.intro-text {
+    margin-bottom: 30px;
+}
+
+.intro-text h3 {
+    color: #fec107;
+    margin-top: 20px;
+}
+
+.intro-text p {
+    font-size: 16px;
+    line-height: 1.6;
+    color: #ffffff;
+}
+
+.intro-text a {
+    color: #fec107;
+    text-decoration: underline;
+}
+
+.intro-text a:hover {
+    color: #e0a800;
+}
+
+/* Consolidated Dropdown Styles */
+.dropdown-question {
+    cursor: pointer;
+    font-weight: bold;
+    margin: 10px 0;
+    color: #fec107;
+    transition: color 0.3s ease;
+    background: none;
+    border: none;
+    text-align: left;
+    width: 100%;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #fec107;
+}
+
+.dropdown-question:hover {
+    color: #3498db; /* Hover color for questions */
+}
+
+.dropdown-answer {
+    display: none;
+    margin-left: 20px;
+    font-size: 14px;
+    padding: 10px 0;
+    border-bottom: 1px solid #fec107;
+}
+
+.dropdown-answer.active {
+    display: block;
+}
+
+.arrow {
+    font-size: 12px;
+    transition: transform 0.3s ease;
+}
+
+.arrow.rotate {
+    transform: rotate(180deg);
+}
+
+/* Section Divider */
+.section-divider {
+    height: 2px;
+    background-color: #fec107;
+    margin: 20px 0;
+}
+
 /* Media Queries for Mobile */
 @media (max-width: 768px) {
+    nav {
+        flex-direction: column; /* Stack navigation links vertically */
+    }
+
     nav a {
-        display: block;
-        margin: 10px 0;
+        margin: 10px 0; /* Adjust spacing for mobile */
+    }
+
+    .logo-container img {
+        height: 80px; /* Adjust logo size for mobile */
     }
 
     .hero h1 {
@@ -197,4 +293,71 @@ footer {
     .email-form input {
         width: 100%;
     }
+
+    .dropdown-answer {
+        margin-left: 10px;
+    }
+    
+    /* Payment Form Styles */
+#payment-form-container {
+    background: #000000;
+    padding: 50px 20px;
+    text-align: center;
+    border-top: 1px solid #fec107;
 }
+
+#payment-form-container h2 {
+    color: #fec107;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+#payment-form label {
+    display: block;
+    color: #ffffff;
+    font-size: 18px;
+    margin: 10px 0 5px;
+}
+
+#payment-form input {
+    width: 300px;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #fec107;
+    border-radius: 5px;
+    background: #000000;
+    color: #ffffff;
+    font-size: 16px;
+}
+
+#payment-form button {
+    background: #fec107;
+    color: #000000;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 16px;
+    transition: background 0.3s ease;
+}
+
+#payment-form button:hover {
+    background: #e0a800;
+}
+
+#card-element {
+    background: #000000;
+    border: 1px solid #fec107;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 10px 0;
+}
+
+#card-errors {
+    color: #ff0000;
+    font-size: 14px;
+    margin: 10px 0;
+}
+}
+
