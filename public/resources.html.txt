@@ -179,16 +179,16 @@
             <p><strong>Disclaimer:</strong> The information provided on this website is for educational purposes only and does not constitute financial, legal, or tax advice. Bitcoin is a highly volatile asset, and you could lose money. Always consult a professional before making financial decisions.</p>
             <button onclick="toggleDisclaimer()">Read Full Disclaimer</button>
             <div class="full-disclaimer" id="fullDisclaimer">
-                <p><strong>Full Disclaimer:</strong></p>
-                <ol>
-                    <li><strong>No Financial Advice:</strong> The content on this website is for informational purposes only and should not be considered financial, legal, or tax advice. Consult a qualified professional before making any financial decisions.</li>
-                    <li><strong>Risks of Bitcoin:</strong> Bitcoin is a highly volatile and speculative asset. The value of Bitcoin can fluctuate significantly, and you may lose some or all of your investment. Past performance is not indicative of future results.</li>
-                    <li><strong>No Guarantees:</strong> We do not guarantee the accuracy, completeness, or timeliness of the information provided on this website. We are not responsible for any errors or omissions, or for the results obtained from the use of this information.</li>
-                    <li><strong>User Responsibility:</strong> You are solely responsible for your decisions and actions. BrandBitcoin is not liable for any losses or damages arising from your use of this website or our services.</li>
-                    <li><strong>Third-Party Services:</strong> This website may contain links to third-party websites or services. We are not responsible for the content, accuracy, or practices of these third-party sites. Use them at your own risk.</li>
-                    <li><strong>Jurisdiction:</strong> This website and its services are governed by the laws of [Insert Jurisdiction, e.g., the United Kingdom]. Any disputes will be resolved in the courts of [Insert Jurisdiction].</li>
-                </ol>
-                <p>By using this website, you acknowledge that you have read, understood, and agreed to this disclaimer. If you do not agree, please do not use this website or our services.</p>
+            <p><strong>Full Disclaimer:</strong></p>
+            <ol>
+                <li><strong>No Financial Advice:</strong> The content on this website is for informational purposes only and should not be considered financial, legal, or tax advice. Consult a qualified professional before making any financial decisions.</li>
+                <li><strong>Risks of Bitcoin:</strong> Bitcoin is a highly volatile and speculative asset. The value of Bitcoin can fluctuate significantly, and you may lose some or all of your investment. Past performance is not indicative of future results.</li>
+                <li><strong>No Guarantees:</strong> We do not guarantee the accuracy, completeness, or timeliness of the information provided on this website. We are not responsible for any errors or omissions, or for the results obtained from the use of this information.</li>
+                <li><strong>User Responsibility:</strong> You are solely responsible for your decisions and actions. BrandBitcoin is not liable for any losses or damages arising from your use of this website or our services.</li>
+                <li><strong>Third-Party Services:</strong> This website may contain links to third-party websites or services. We are not responsible for the content, accuracy, or practices of these third-party sites. Use them at your own risk.</li>
+                <li><strong>Jurisdiction:</strong> This website and its services are governed by the laws of [Insert Jurisdiction, e.g., the United Kingdom]. Any disputes will be resolved in the courts of [Insert Jurisdiction].</li>
+            </ol>
+            <p>By using this website, you acknowledge that you have read, understood, and agreed to this disclaimer. If you do not agree, please do not use this website or our services.</p>
             </div>
         </div>
     </section>
@@ -201,6 +201,23 @@
     <!-- Script for Dropdown FAQs and Terminology -->
     <script>
         // Function to toggle visibility of FAQ answers
-        function toggleAnswer(id) {
-            const answer = document.getElementById(`answer-${id}`);
-            const arrow = document.querySelector(`#answer
+    function toggleAnswer(id) {
+    const answer = document.getElementById(`answer-${id}`);
+    const arrow = document.querySelector(`#answer-${id}`).previousElementSibling.querySelector('.arrow');
+
+    // Toggle visibility of the answer
+    if (answer.style.display === "block") {
+        answer.style.display = "none";
+        arrow.textContent = "▼"; // Reset arrow to down
+    } else {
+        answer.style.display = "block";
+        arrow.textContent = "▲"; // Change arrow to up
+    }
+    <script>
+    // Function to toggle the full disclaimer
+    function toggleDisclaimer() {
+        const fullDisclaimer = document.getElementById('fullDisclaimer');
+        fullDisclaimer.classList.toggle('active');
+    }
+    </script>
+    }
