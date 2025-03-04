@@ -201,6 +201,16 @@
     <!-- Script for Dropdown FAQs and Terminology -->
     <script>
         // Function to toggle visibility of FAQ answers
-        function toggleAnswer(id) {
-            const answer = document.getElementById(`answer-${id}`);
-            const arrow = document.querySelector(`#answer
+    function toggleAnswer(id) {
+    const answer = document.getElementById(`answer-${id}`);
+    const arrow = document.querySelector(`#answer-${id}`).previousElementSibling.querySelector('.arrow');
+
+    // Toggle visibility of the answer
+    if (answer.style.display === "block") {
+        answer.style.display = "none";
+        arrow.textContent = "▼"; // Reset arrow to down
+    } else {
+        answer.style.display = "block";
+        arrow.textContent = "▲"; // Change arrow to up
+    }
+}
