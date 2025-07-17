@@ -48,6 +48,23 @@
             margin-bottom: 20px;
         }
 
+        .consultation-form p {
+            max-width: 700px;
+            margin: 0 auto 20px;
+            font-size: 1rem;
+        }
+
+        .consultation-form ul {
+            text-align: left;
+            max-width: 600px;
+            margin: 20px auto;
+            padding-left: 20px;
+        }
+
+        .consultation-form ul li {
+            margin-bottom: 10px;
+        }
+
         .consultation-form input, .consultation-form textarea {
             width: 100%;
             padding: 10px;
@@ -92,7 +109,7 @@
 </head>
 <body>
     <!-- Navigation Bar -->
-        <nav>
+    <nav>
         <a href="index.html">Home</a>
         <a href="consultation.html">Consultation</a>
         <a href="resources.html">Resources</a>
@@ -103,12 +120,30 @@
     <!-- Consultation Form Section -->
     <section class="consultation-form">
         <div class="container">
-            <h2>Schedule a Consultation</h2>
+            <h2>Free Bitcoin Consultation</h2>
+            <p>
+                Whether you're just getting started with Bitcoin or looking to dive deeper, we offer <strong>free one-on-one consultations</strong> to help you navigate the world of Bitcoin with confidence.
+            </p>
+            <p>
+                In your free consultation, we can cover topics such as:
+            </p>
+            <ul>
+                <li>What Bitcoin is and how it works</li>
+                <li>How to safely and securely buy Bitcoin</li>
+                <li>Where and how to store Bitcoin</li>
+                <li>How and where to sell Bitcoin</li>
+                <li>How to use your Bitcoin as collateral for loans</li>
+                <li>Any general questions or concerns you may have</li>
+            </ul>
+            <p>
+                There’s no pressure and no technical jargon—just simple, honest guidance to help you feel more confident in your Bitcoin journey.
+            </p>
+
             <form action="mailto:brandbitcoin@proton.me" method="post" enctype="text/plain">
                 <input type="text" placeholder="Your Name" required>
                 <input type="email" placeholder="Your Email" required>
-                <textarea placeholder="Your Question" rows="5" required></textarea>
-                <button type="submit">Submit</button>
+                <textarea placeholder="What would you like to discuss?" rows="5" required></textarea>
+                <button type="submit">Book Free Consultation</button>
             </form>
         </div>
     </section>
