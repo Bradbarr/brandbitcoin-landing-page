@@ -6,7 +6,6 @@
   <title>BrandBitcoin | Your Bitcoin Partner</title>
   <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500;700&display=swap" rel="stylesheet">
   <style>
-    /* Core styling preserved */
     body {
       font-family: 'Roboto Mono', monospace;
       margin: 0;
@@ -51,32 +50,54 @@
       font-weight: bold;
       transition: background 0.3s ease;
     }
-
     .consultation-button:hover { background: #e0a800; }
 
     .logo-container {
       text-align: center;
-      margin-top: 60px;
+      margin-top: 40px;
     }
 
     .logo-container img {
-      height: 210px;
+      height: 180px;
       width: auto;
     }
 
-    .bitcoin-price {
-      text-align: center;
-      margin: 40px 0;
+    /* --- Bitcoin Metrics Dashboard --- */
+    .metrics-dashboard {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      margin: 40px auto;
+      max-width: 1000px;
     }
 
-    .bitcoin-price h2 {
-      font-size: 24px;
+    .metric-card {
+      background: #111;
+      border: 1px solid #fec107;
+      border-radius: 10px;
+      padding: 20px;
+      text-align: center;
+      transition: transform 0.3s ease;
+    }
+
+    .metric-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .metric-card h3 {
+      color: #fec107;
       margin-bottom: 10px;
     }
 
-    .bitcoin-price p {
-      font-size: 18px;
-      color: #ffffff;
+    .metric-value {
+      font-size: 24px;
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+
+    .metric-description {
+      font-size: 14px;
+      color: #bbb;
     }
 
     iframe {
@@ -156,7 +177,6 @@
       font-weight: bold;
       transition: background 0.3s ease;
     }
-
     .email-form button:hover { background: #e0a800; }
 
     .disclaimer .full-disclaimer {
@@ -204,16 +224,27 @@
     <a href="the-hive.html">The Hive</a>
   </nav>
 
-  <!-- Logo Under Navigation Bar -->
+  <!-- Logo -->
   <div class="logo-container">
     <img src="https://github.com/Bradbarr/brandbitcoin-landing-page/raw/main/BrandbitcoinBee(2).png" alt="Brand Bitcoin Logo">
   </div>
 
-  <!-- Bitcoin Price Section (Moved Here) -->
-  <section class="bitcoin-price">
-    <div class="container">
-      <h2>Bitcoin Price</h2>
-      <p>Current Price: <span id="bitcoinPrice">Loading...</span></p>
+  <!-- Metrics Dashboard -->
+  <section class="container">
+    <h2 style="text-align:center;">Bitcoin Network Metrics</h2>
+    <div class="metrics-dashboard">
+      <!-- Bitcoin Price -->
+      <div class="metric-card">
+        <h3>Bitcoin Price (GBP)</h3>
+        <div id="bitcoinPrice" class="metric-value">Loading...</div>
+        <p class="metric-description">Live market price in GBP.</p>
+      </div>
+      <!-- Wallets with Non-Zero Balance -->
+      <div class="metric-card">
+        <h3>Wallets with Balance</h3>
+        <div id="walletsCount" class="metric-value">Loading...</div>
+        <p class="metric-description">Unique addresses holding Bitcoin. A sign of growing adoption.</p>
+      </div>
     </div>
   </section>
 
@@ -229,7 +260,7 @@
   <!-- Mempool Block Explorer -->
   <iframe src="https://mempool.space" title="Mempool Explorer"></iframe>
 
-  <!-- Email Form Section -->
+  <!-- Email Form -->
   <section class="email-form">
     <div class="container">
       <h2>Get Your Free Bitcoin Guide</h2>
@@ -240,7 +271,7 @@
     </div>
   </section>
 
-  <!-- Disclaimer Section -->
+  <!-- Disclaimer -->
   <section class="disclaimer">
     <div class="container">
       <p><strong>Disclaimer:</strong> The information provided on this website is for educational purposes only and does not constitute financial, legal, or tax advice. Bitcoin is a highly volatile asset, and you could lose money. Always consult a professional before making financial decisions.</p>
@@ -265,15 +296,32 @@
     <p>&copy; 2023 BrandBitcoin. All rights reserved.</p>
   </footer>
 
-  <!-- Bitcoin Price Script -->
+  <!-- Scripts -->
   <script>
+    // Fetch Bitcoin Price in GBP
     async function fetchBitcoinPriceInGBP() {
       try {
         const response = await fetch('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=gbp');
         const data = await response.json();
-        document.getElementById('bitcoinPrice').innerText = `£${data.bitcoin.gbp.toFixed(2)}`;
+        document.getElementById('bitcoinPrice').innerText = `£${data.bitcoin.gbp.toLocaleString()}`;
       } catch (error) {
         document.getElementById('bitcoinPrice').innerText = 'Unavailable';
+      }
+    }
+
+    // Fetch Wallets with Non-Zero Balance (Glassnode)
+    async function fetchWalletsCount() {
+      try {
+        const response = await fetch('https://api.glassnode.com/v1/metrics/addresses/non_zero_count?api_key=YOUR_API_KEY');
+        const data = await response.json();
+        if (Array.isArray(data) && data.length > 0) {
+          const latest = data[data.length - 1].v;
+          document.getElementById('walletsCount').innerText = latest.toLocaleString();
+        } else {
+          document.getElementById('walletsCount').innerText = 'Unavailable';
+        }
+      } catch (error) {
+        document.getElementById('walletsCount').innerText = 'Unavailable';
       }
     }
 
@@ -282,8 +330,13 @@
       disclaimer.classList.toggle('active');
     }
 
+    // Initial load
     fetchBitcoinPriceInGBP();
+    fetchWalletsCount();
+
+    // Refresh every minute
     setInterval(fetchBitcoinPriceInGBP, 60000);
+    setInterval(fetchWalletsCount, 60000);
   </script>
 </body>
 </html>
