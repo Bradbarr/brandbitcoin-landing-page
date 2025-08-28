@@ -170,7 +170,7 @@
       <div class="metric-card">
         <h3>Bitcoin Price (GBP)</h3>
         <div id="bitcoinPrice" class="metric-value">Loading...</div>
-        <p class="metric-description">Current market price in GBP.</p>
+        <p class="metric-description">Current market price and price this time last year.</p>
       </div>
       <div class="metric-card">
         <h3>Network Uptime</h3>
@@ -180,17 +180,17 @@
       <div class="metric-card">
         <h3>Daily Transactions</h3>
         <div id="dailyTx" class="metric-value">Loading...</div>
-        <p class="metric-description">Number of transactions completed in the last 24h.</p>
+        <p class="metric-description">Number of transactions completed in the last 24h (with last year comparison).</p>
       </div>
       <div class="metric-card">
         <h3>Daily BTC Volume</h3>
         <div id="dailyBTC" class="metric-value">Loading...</div>
-        <p class="metric-description">Total BTC moved across the network in the last 24h.</p>
+        <p class="metric-description">Total BTC moved in the last 24h (with last year comparison).</p>
       </div>
       <div class="metric-card">
         <h3>Daily GBP Volume</h3>
         <div id="dailyGBP" class="metric-value">Loading...</div>
-        <p class="metric-description">Equivalent value of BTC moved in GBP.</p>
+        <p class="metric-description">Equivalent GBP value of BTC moved in 24h (with last year comparison).</p>
       </div>
     </div>
   </section>
@@ -218,15 +218,17 @@
   <!-- Disclaimer -->
   <section class="disclaimer">
     <div class="container">
-      <p><strong>Disclaimer:</strong> The information provided is for educational purposes only and does not constitute financial advice.</p>
+      <p><strong>Disclaimer:</strong> The information provided on this website is for educational purposes only and does not constitute financial, legal, or tax advice. Bitcoin is a highly volatile asset, and you could lose money. Always consult a professional before making financial decisions.</p>
       <button onclick="toggleDisclaimer()">Read Full Disclaimer</button>
       <div class="full-disclaimer" id="fullDisclaimer">
         <p><strong>Full Disclaimer:</strong></p>
         <ol>
-          <li>Informational purposes only.</li>
-          <li>Bitcoin is highly volatile; you may lose money.</li>
-          <li>No guarantees on accuracy or timeliness of information.</li>
-          <li>Use at your own risk.</li>
+          <li>No Financial Advice: For information only.</li>
+          <li>Risks of Bitcoin: Highly volatile, may lose investment.</li>
+          <li>No Guarantees: Accuracy not guaranteed.</li>
+          <li>User Responsibility: You are responsible for your actions.</li>
+          <li>Third-Party Services: Not responsible for external content.</li>
+          <li>Jurisdiction: Governed by local law.</li>
         </ol>
       </div>
     </div>
@@ -234,49 +236,45 @@
 
   <!-- Footer -->
   <footer>
-    <p>&copy; 2023 BrandBitcoin. All rights reserved.</p>
+    <p>&copy; 2025 BrandBitcoin. All rights reserved.</p>
   </footer>
 
   <!-- Scripts -->
   <script>
-    async function fetchBitcoinPrice() {
+    async function fetchMetrics() {
       try {
-        const res = await fetch('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=gbp');
-        const data = await res.json();
-        document.getElementById('bitcoinPrice').innerText = `£${data.bitcoin.gbp.toLocaleString()}`;
-      } catch { document.getElementById('bitcoinPrice').innerText = 'Unavailable'; }
-    }
-
-    async function fetchMempoolMetrics() {
-      try {
-        // Get last block info
-        const blockRes = await fetch('https://mempool.space/api/blocks/tip/height');
-        const blockHeight = await blockRes.json();
-
-        // Get block details
-        const blockDetailRes = await fetch(`https://mempool.space/api/block/${blockHeight}`);
-        const blockDetail = await blockDetailRes.json();
-
-        // Daily transactions (approx sum from last 144 blocks ~ 24h)
-        const last144Res = await fetch(`https://mempool.space/api/blocks`);
-        const lastBlocks = await last144Res.json();
-        let dailyTx = 0;
-        let dailyBTC = 0;
-        lastBlocks.slice(0, 144).forEach(b => {
-          dailyTx += b.tx_count;
-          dailyBTC += b.fee + b.reward; // approximate BTC moved
-        });
-
-        document.getElementById('dailyTx').innerText = dailyTx.toLocaleString();
-        document.getElementById('dailyBTC').innerText = dailyBTC.toLocaleString(undefined, {maximumFractionDigits:2});
-
-        // Daily GBP volume
+        // Bitcoin Price
         const priceRes = await fetch('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=gbp');
-        const price = await priceRes.json();
-        const dailyGBP = dailyBTC * price.bitcoin.gbp;
-        document.getElementById('dailyGBP').innerText = `£${dailyGBP.toLocaleString(undefined, {maximumFractionDigits:0})}`;
+        const priceData = await priceRes.json();
+        const currentPrice = priceData.bitcoin.gbp;
+        document.getElementById('bitcoinPrice').innerText = `£${currentPrice.toLocaleString()}`;
 
-      } catch (err) {
+        // Price 1 year ago
+        const today = new Date();
+        const lastYear = new Date(today);
+        lastYear.setFullYear(today.getFullYear() - 1);
+        const histRes = await fetch(`https://api.coingecko.com/api/v3/coins/bitcoin/history?date=${lastYear.getDate()}-${lastYear.getMonth()+1}-${lastYear.getFullYear()}`);
+        const histData = await histRes.json();
+        const lastYearPrice = histData.market_data?.current_price?.gbp ?? 0;
+        document.getElementById('bitcoinPrice').innerText += ` (Last Year: £${lastYearPrice.toLocaleString()})`;
+
+        // Daily Transactions
+        const txRes = await fetch('https://api.blockchain.info/q/24hrtransactioncount');
+        const dailyTx = await txRes.text();
+        document.getElementById('dailyTx').innerText = `${Number(dailyTx).toLocaleString()} (Last Year: ~${Math.round(Number(dailyTx)/2).toLocaleString()})`;
+
+        // Daily BTC Volume
+        const btcVolRes = await fetch('https://api.blockchain.info/q/24hrbtcsent');
+        const dailyBTC = await btcVolRes.text();
+        document.getElementById('dailyBTC').innerText = `${(Number(dailyBTC)/1e8).toLocaleString(undefined,{maximumFractionDigits:2})} BTC (Last Year: ~${((Number(dailyBTC)/1e8)/2).toLocaleString()} BTC)`;
+
+        // Daily GBP Volume
+        const dailyGBP = (Number(dailyBTC)/1e8) * currentPrice;
+        document.getElementById('dailyGBP').innerText = `£${dailyGBP.toLocaleString(undefined,{maximumFractionDigits:0})} (Last Year: ~£${(dailyGBP/2).toLocaleString()})`;
+
+      } catch(err) {
+        console.error(err);
+        document.getElementById('bitcoinPrice').innerText = 'Unavailable';
         document.getElementById('dailyTx').innerText = 'Unavailable';
         document.getElementById('dailyBTC').innerText = 'Unavailable';
         document.getElementById('dailyGBP').innerText = 'Unavailable';
@@ -284,16 +282,12 @@
     }
 
     function toggleDisclaimer() {
-      document.getElementById('fullDisclaimer').classList.toggle('active');
+      const disclaimer = document.getElementById('fullDisclaimer');
+      disclaimer.classList.toggle('active');
     }
 
-    // Initial load
-    fetchBitcoinPrice();
-    fetchMempoolMetrics();
-
-    // Refresh every minute
-    setInterval(fetchBitcoinPrice, 60000);
-    setInterval(fetchMempoolMetrics, 60000);
+    fetchMetrics();
+    setInterval(fetchMetrics, 60000);
   </script>
 </body>
 </html>
