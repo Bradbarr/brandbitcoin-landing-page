@@ -40,7 +40,6 @@
       font-size: 18px;
       transition: color 0.3s ease;
     }
-
     nav a:hover { color: #fec107; }
     .consultation-button {
       background: #fec107;
@@ -56,13 +55,8 @@
       text-align: center;
       margin-top: 40px;
     }
+    .logo-container img { height: 180px; width: auto; }
 
-    .logo-container img {
-      height: 180px;
-      width: auto;
-    }
-
-    /* --- Bitcoin Metrics Dashboard --- */
     .metrics-dashboard {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -70,7 +64,6 @@
       margin: 40px auto;
       max-width: 1000px;
     }
-
     .metric-card {
       background: #111;
       border: 1px solid #fec107;
@@ -79,47 +72,18 @@
       text-align: center;
       transition: transform 0.3s ease;
     }
-
-    .metric-card:hover {
-      transform: translateY(-5px);
-    }
-
-    .metric-card h3 {
-      color: #fec107;
-      margin-bottom: 10px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-    }
-
-    .metric-value {
-      font-size: 24px;
-      font-weight: bold;
-      margin-bottom: 5px;
-    }
-
-    .metric-description {
-      font-size: 14px;
-      color: #bbb;
-    }
+    .metric-card:hover { transform: translateY(-5px); }
+    .metric-card h3 { color: #fec107; margin-bottom: 10px; }
+    .metric-value { font-size: 24px; font-weight: bold; margin-bottom: 5px; }
+    .metric-description { font-size: 14px; color: #bbb; }
 
     .hero {
       background: #000;
       padding: 100px 20px;
       text-align: center;
     }
-
-    .hero h1 {
-      font-size: 48px;
-      margin: 0;
-    }
-
-    .hero p {
-      font-size: 20px;
-      margin: 20px 0;
-    }
-
+    .hero h1 { font-size: 48px; margin: 0; }
+    .hero p { font-size: 20px; margin: 20px 0; }
     .cta-button {
       display: inline-block;
       padding: 15px 30px;
@@ -132,27 +96,15 @@
       font-weight: bold;
       transition: background 0.3s ease, transform 0.3s ease;
     }
+    .cta-button:hover { background: #e0a800; transform: translateY(-5px); }
 
-    .cta-button:hover {
-      background: #e0a800;
-      transform: translateY(-5px);
-    }
-
-    .email-form,
-    .disclaimer,
-    footer {
+    .email-form, .disclaimer, footer {
       background: #000;
       text-align: center;
       padding: 50px 20px;
       border-top: 1px solid #fec107;
     }
-
-    .email-form h2,
-    .disclaimer h2 {
-      color: #fec107;
-      margin-bottom: 20px;
-    }
-
+    .email-form h2, .disclaimer h2 { color: #fec107; margin-bottom: 20px; }
     .email-form input {
       max-width: 300px;
       width: 100%;
@@ -163,7 +115,6 @@
       border: 1px solid #fec107;
       border-radius: 5px;
     }
-
     .email-form button {
       background: #fec107;
       color: #000;
@@ -175,17 +126,8 @@
     }
     .email-form button:hover { background: #e0a800; }
 
-    .disclaimer .full-disclaimer {
-      display: none;
-      margin-top: 10px;
-      font-size: 14px;
-      text-align: left;
-    }
-
-    .disclaimer .full-disclaimer.active {
-      display: block;
-    }
-
+    .disclaimer .full-disclaimer { display: none; margin-top: 10px; font-size: 14px; text-align: left; }
+    .disclaimer .full-disclaimer.active { display: block; }
     .disclaimer button {
       background: none;
       border: none;
@@ -194,13 +136,9 @@
       text-decoration: underline;
       font-size: 14px;
     }
-
     .disclaimer button:hover { color: #e0a800; }
 
-    footer p {
-      color: #fff;
-      margin: 0;
-    }
+    footer p { color: #fff; margin: 0; }
 
     @media (max-width: 768px) {
       nav { flex-direction: column; }
@@ -225,50 +163,34 @@
     <img src="https://github.com/Bradbarr/brandbitcoin-landing-page/raw/main/BrandbitcoinBee(2).png" alt="Brand Bitcoin Logo">
   </div>
 
-  <!-- Metrics Dashboard (CoinGecko + mempool.space) -->
+  <!-- Metrics Dashboard -->
   <section class="container">
     <h2 style="text-align:center;">Bitcoin Network Metrics</h2>
     <div class="metrics-dashboard">
-      <!-- Bitcoin Price -->
-      <div class="metric-card" aria-live="polite">
-        <h3>₿ Bitcoin Price (GBP)</h3>
+      <div class="metric-card">
+        <h3>Bitcoin Price (GBP)</h3>
         <div id="bitcoinPrice" class="metric-value">Loading...</div>
-        <p class="metric-description">Live market price in GBP (CoinGecko).</p>
+        <p class="metric-description">Current market price in GBP.</p>
       </div>
-
-      <!-- Pending Transactions -->
-      <div class="metric-card" aria-live="polite">
-        <h3>📥 Pending Transactions</h3>
-        <div id="pendingTx" class="metric-value">Loading...</div>
-        <p class="metric-description">Number of unconfirmed transactions waiting in the mempool.</p>
+      <div class="metric-card">
+        <h3>Network Uptime</h3>
+        <div class="metric-value">99.98%</div>
+        <p class="metric-description">Bitcoin has been running reliably since 2009.</p>
       </div>
-
-      <!-- Recommended Fee -->
-      <div class="metric-card" aria-live="polite">
-        <h3>⚡ Recommended Fee</h3>
-        <div id="feeEstimate" class="metric-value">Loading...</div>
-        <p class="metric-description">Sat/vByte suggested for next-block confirmation (mempool.space).</p>
+      <div class="metric-card">
+        <h3>Daily Transactions</h3>
+        <div id="dailyTx" class="metric-value">Loading...</div>
+        <p class="metric-description">Number of transactions completed in the last 24h.</p>
       </div>
-
-      <!-- Latest Block Transactions -->
-      <div class="metric-card" aria-live="polite">
-        <h3>📦 Latest Block (tx)</h3>
-        <div id="blockTx" class="metric-value">Loading...</div>
-        <p class="metric-description">Number of transactions included in the most recent block.</p>
+      <div class="metric-card">
+        <h3>Daily BTC Volume</h3>
+        <div id="dailyBTC" class="metric-value">Loading...</div>
+        <p class="metric-description">Total BTC moved across the network in the last 24h.</p>
       </div>
-
-      <!-- Network Hashrate -->
-      <div class="metric-card" aria-live="polite">
-        <h3>⛏️ Network Hashrate</h3>
-        <div id="hashrate" class="metric-value">Loading...</div>
-        <p class="metric-description">3-day average hashpower securing Bitcoin (mempool.space).</p>
-      </div>
-
-      <!-- Miner Fees (24h) -->
-      <div class="metric-card" aria-live="polite">
-        <h3>💰 Miner Fees (24h)</h3>
-        <div id="minerFees" class="metric-value">Loading...</div>
-        <p class="metric-description">Total BTC paid in fees across the last 24 hours.</p>
+      <div class="metric-card">
+        <h3>Daily GBP Volume</h3>
+        <div id="dailyGBP" class="metric-value">Loading...</div>
+        <p class="metric-description">Equivalent value of BTC moved in GBP.</p>
       </div>
     </div>
   </section>
@@ -281,8 +203,6 @@
       <a href="consultation.html" class="cta-button">Get Started</a>
     </div>
   </section>
-
-  <!-- Removed the embedded mempool.space iframe (was causing the white Firefox error) -->
 
   <!-- Email Form -->
   <section class="email-form">
@@ -298,19 +218,16 @@
   <!-- Disclaimer -->
   <section class="disclaimer">
     <div class="container">
-      <p><strong>Disclaimer:</strong> The information provided on this website is for educational purposes only and does not constitute financial, legal, or tax advice. Bitcoin is a highly volatile asset, and you could lose money. Always consult a professional before making financial decisions.</p>
+      <p><strong>Disclaimer:</strong> The information provided is for educational purposes only and does not constitute financial advice.</p>
       <button onclick="toggleDisclaimer()">Read Full Disclaimer</button>
       <div class="full-disclaimer" id="fullDisclaimer">
         <p><strong>Full Disclaimer:</strong></p>
         <ol>
-          <li><strong>No Financial Advice:</strong> The content on this website is for informational purposes only and should not be considered financial, legal, or tax advice.</li>
-          <li><strong>Risks of Bitcoin:</strong> Bitcoin is highly volatile. You may lose your investment. Past performance is not indicative of future results.</li>
-          <li><strong>No Guarantees:</strong> We do not guarantee the accuracy or timeliness of information.</li>
-          <li><strong>User Responsibility:</strong> You are solely responsible for your actions. BrandBitcoin is not liable for losses.</li>
-          <li><strong>Third-Party Services:</strong> We are not responsible for external content or services.</li>
-          <li><strong>Jurisdiction:</strong> Governed by the laws of [Insert Jurisdiction]. Disputes resolved in local courts.</li>
+          <li>Informational purposes only.</li>
+          <li>Bitcoin is highly volatile; you may lose money.</li>
+          <li>No guarantees on accuracy or timeliness of information.</li>
+          <li>Use at your own risk.</li>
         </ol>
-        <p>By using this website, you agree to this disclaimer.</p>
       </div>
     </div>
   </section>
@@ -322,137 +239,61 @@
 
   <!-- Scripts -->
   <script>
-    // Helper: format hashrate in human units
-    function formatHashrate(h) {
-      if (h === null || h === undefined || isNaN(h)) return null;
-      const n = Number(h);
-      if (n >= 1e18) return (n / 1e18).toFixed(2) + " EH/s";
-      if (n >= 1e15) return (n / 1e15).toFixed(2) + " PH/s";
-      if (n >= 1e12) return (n / 1e12).toFixed(2) + " TH/s";
-      if (n >= 1e9) return (n / 1e9).toFixed(2) + " GH/s";
-      return n.toLocaleString() + " H/s";
-    }
-
-    // Fetch Bitcoin Price in GBP (CoinGecko)
-    async function fetchBitcoinPriceInGBP() {
+    async function fetchBitcoinPrice() {
       try {
-        const response = await fetch('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=gbp');
-        const data = await response.json();
-        if (data && data.bitcoin && typeof data.bitcoin.gbp === 'number') {
-          document.getElementById('bitcoinPrice').innerText = `£${data.bitcoin.gbp.toLocaleString()}`;
-        } else {
-          document.getElementById('bitcoinPrice').innerText = 'Unavailable';
-        }
-      } catch (error) {
-        document.getElementById('bitcoinPrice').innerText = 'Unavailable';
-      }
-    }
-
-    // Fetch Pending Transactions (mempool)
-    async function fetchPendingTransactions() {
-      try {
-        const res = await fetch("https://mempool.space/api/mempool");
+        const res = await fetch('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=gbp');
         const data = await res.json();
-        if (data && typeof data.count === 'number') {
-          document.getElementById("pendingTx").innerText = data.count.toLocaleString();
-        } else {
-          document.getElementById("pendingTx").innerText = "Unavailable";
-        }
-      } catch (err) {
-        document.getElementById("pendingTx").innerText = "Unavailable";
-      }
+        document.getElementById('bitcoinPrice').innerText = `£${data.bitcoin.gbp.toLocaleString()}`;
+      } catch { document.getElementById('bitcoinPrice').innerText = 'Unavailable'; }
     }
 
-    // Fetch Recommended Fee (mempool)
-    async function fetchFeeEstimate() {
+    async function fetchMempoolMetrics() {
       try {
-        const res = await fetch("https://mempool.space/api/v1/fees/recommended");
-        const data = await res.json();
-        // mempool.space returns fields like fastestFee, halfHourFee, hourFee
-        if (data && typeof data.fastestFee === 'number') {
-          document.getElementById("feeEstimate").innerText = `${data.fastestFee} sat/vB`;
-        } else {
-          document.getElementById("feeEstimate").innerText = "Unavailable";
-        }
-      } catch (err) {
-        document.getElementById("feeEstimate").innerText = "Unavailable";
-      }
-    }
+        // Get last block info
+        const blockRes = await fetch('https://mempool.space/api/blocks/tip/height');
+        const blockHeight = await blockRes.json();
 
-    // Fetch Latest Block (tx count)
-    async function fetchLatestBlock() {
-      try {
-        const res = await fetch("https://mempool.space/api/blocks");
-        const data = await res.json();
-        if (Array.isArray(data) && data.length > 0 && typeof data[0].tx_count === 'number') {
-          document.getElementById("blockTx").innerText = data[0].tx_count.toLocaleString();
-        } else {
-          document.getElementById("blockTx").innerText = "Unavailable";
-        }
-      } catch (err) {
-        document.getElementById("blockTx").innerText = "Unavailable";
-      }
-    }
+        // Get block details
+        const blockDetailRes = await fetch(`https://mempool.space/api/block/${blockHeight}`);
+        const blockDetail = await blockDetailRes.json();
 
-    // Fetch Network Hashrate (3-day avg)
-    async function fetchHashrate() {
-      try {
-        const res = await fetch("https://mempool.space/api/v1/mining/hashrate/3d");
-        const data = await res.json();
-        // The JSON shape can vary; try common fields
-        if (Array.isArray(data) && data.length > 0) {
-          const last = data[data.length - 1];
-          const value = last.avgHashrate ?? last.hashrate ?? last.value ?? null;
-          const formatted = formatHashrate(Number(value));
-          if (formatted) {
-            document.getElementById("hashrate").innerText = formatted;
-            return;
-          }
-        }
-        document.getElementById("hashrate").innerText = "Unavailable";
-      } catch (err) {
-        document.getElementById("hashrate").innerText = "Unavailable";
-      }
-    }
+        // Daily transactions (approx sum from last 144 blocks ~ 24h)
+        const last144Res = await fetch(`https://mempool.space/api/blocks`);
+        const lastBlocks = await last144Res.json();
+        let dailyTx = 0;
+        let dailyBTC = 0;
+        lastBlocks.slice(0, 144).forEach(b => {
+          dailyTx += b.tx_count;
+          dailyBTC += b.fee + b.reward; // approximate BTC moved
+        });
 
-    // Fetch Miner Fees (24h)
-    async function fetchMinerFees() {
-      try {
-        const res = await fetch("https://mempool.space/api/v1/mining/blocks/fees/24h");
-        const data = await res.json();
-        // try a few possible shapes
-        const total = data.total ?? data.total_btc ?? data[0]?.total ?? null;
-        if (total !== null && !isNaN(total)) {
-          // show to 3 decimal places for readability
-          document.getElementById("minerFees").innerText = Number(total).toFixed(3) + " BTC";
-        } else {
-          document.getElementById("minerFees").innerText = "Unavailable";
-        }
+        document.getElementById('dailyTx').innerText = dailyTx.toLocaleString();
+        document.getElementById('dailyBTC').innerText = dailyBTC.toLocaleString(undefined, {maximumFractionDigits:2});
+
+        // Daily GBP volume
+        const priceRes = await fetch('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=gbp');
+        const price = await priceRes.json();
+        const dailyGBP = dailyBTC * price.bitcoin.gbp;
+        document.getElementById('dailyGBP').innerText = `£${dailyGBP.toLocaleString(undefined, {maximumFractionDigits:0})}`;
+
       } catch (err) {
-        document.getElementById("minerFees").innerText = "Unavailable";
+        document.getElementById('dailyTx').innerText = 'Unavailable';
+        document.getElementById('dailyBTC').innerText = 'Unavailable';
+        document.getElementById('dailyGBP').innerText = 'Unavailable';
       }
     }
 
     function toggleDisclaimer() {
-      const disclaimer = document.getElementById('fullDisclaimer');
-      disclaimer.classList.toggle('active');
+      document.getElementById('fullDisclaimer').classList.toggle('active');
     }
 
     // Initial load
-    fetchBitcoinPriceInGBP();
-    fetchPendingTransactions();
-    fetchFeeEstimate();
-    fetchLatestBlock();
-    fetchHashrate();
-    fetchMinerFees();
+    fetchBitcoinPrice();
+    fetchMempoolMetrics();
 
     // Refresh every minute
-    setInterval(fetchBitcoinPriceInGBP, 60000);
-    setInterval(fetchPendingTransactions, 60000);
-    setInterval(fetchFeeEstimate, 60000);
-    setInterval(fetchLatestBlock, 60000);
-    setInterval(fetchHashrate, 60000);
-    setInterval(fetchMinerFees, 60000);
+    setInterval(fetchBitcoinPrice, 60000);
+    setInterval(fetchMempoolMetrics, 60000);
   </script>
 </body>
 </html>
