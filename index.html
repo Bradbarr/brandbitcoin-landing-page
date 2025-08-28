@@ -14,13 +14,7 @@
       color: #fff;
       line-height: 1.6;
     }
-
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 20px;
-    }
-
+    .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
     h1, h2, h3 { color: #fec107; }
     a { color: #fec107; text-decoration: none; }
     a:hover { text-decoration: underline; }
@@ -33,13 +27,7 @@
       align-items: center;
       border-bottom: 1px solid #fec107;
     }
-
-    nav a {
-      color: #fff;
-      margin: 0 15px;
-      font-size: 18px;
-      transition: color 0.3s ease;
-    }
+    nav a { color: #fff; margin: 0 15px; font-size: 18px; transition: color 0.3s ease; }
     nav a:hover { color: #fec107; }
     .consultation-button {
       background: #fec107;
@@ -51,10 +39,7 @@
     }
     .consultation-button:hover { background: #e0a800; }
 
-    .logo-container {
-      text-align: center;
-      margin-top: 40px;
-    }
+    .logo-container { text-align: center; margin-top: 40px; }
     .logo-container img { height: 180px; width: auto; }
 
     .metrics-dashboard {
@@ -77,11 +62,7 @@
     .metric-value { font-size: 24px; font-weight: bold; margin-bottom: 5px; }
     .metric-description { font-size: 14px; color: #bbb; }
 
-    .hero {
-      background: #000;
-      padding: 100px 20px;
-      text-align: center;
-    }
+    .hero { background: #000; padding: 100px 20px; text-align: center; }
     .hero h1 { font-size: 48px; margin: 0; }
     .hero p { font-size: 20px; margin: 20px 0; }
     .cta-button {
@@ -149,7 +130,7 @@
   </style>
 </head>
 <body>
-  <!-- Navigation Bar -->
+  <!-- Navigation -->
   <nav>
     <a href="index.html">Home</a>
     <a href="consultation.html" class="consultation-button">Consultation</a>
@@ -170,7 +151,7 @@
       <div class="metric-card">
         <h3>Bitcoin Price (GBP)</h3>
         <div id="bitcoinPrice" class="metric-value">Loading...</div>
-        <p class="metric-description">Current market price and price this time last year.</p>
+        <p class="metric-description">Current price and this time last year.</p>
       </div>
       <div class="metric-card">
         <h3>Network Uptime</h3>
@@ -180,23 +161,23 @@
       <div class="metric-card">
         <h3>Daily Transactions</h3>
         <div id="dailyTx" class="metric-value">Loading...</div>
-        <p class="metric-description">Number of transactions completed in the last 24h (with last year comparison).</p>
+        <p class="metric-description">Number of transactions in the last 24h (compared to last year).</p>
       </div>
       <div class="metric-card">
         <h3>Daily BTC Volume</h3>
         <div id="dailyBTC" class="metric-value">Loading...</div>
-        <p class="metric-description">Total BTC moved in the last 24h (with last year comparison).</p>
+        <p class="metric-description">Total BTC moved in 24h (compared to last year).</p>
       </div>
       <div class="metric-card">
         <h3>Daily GBP Volume</h3>
         <div id="dailyGBP" class="metric-value">Loading...</div>
-        <p class="metric-description">Equivalent GBP value of BTC moved in 24h (with last year comparison).</p>
+        <p class="metric-description">Equivalent GBP value moved in 24h (compared to last year).</p>
       </div>
     </div>
   </section>
 
-  <!-- Hero Section -->
-  <section class="hero" id="home">
+  <!-- Hero -->
+  <section class="hero">
     <div class="container">
       <h1>Your Bitcoin Journey Starts Here</h1>
       <p>Secure, simple, and tailored to your needs. Let’s make Bitcoin work for you.</p>
@@ -208,7 +189,7 @@
   <section class="email-form">
     <div class="container">
       <h2>Get Your Free Bitcoin Guide</h2>
-      <form action="https://github.com/Bradbarr/brandbitcoin-landing-page/raw/main/Bitcoin%20Beginner's%20Guide%20Unlocking%20Financial%20Freedom%20with%20Bitcoin%20Introduction%20Welcome%20to%20the%20world%20of%20Bitcoin!%20This%20guide%20is%20designed%20to%20help%20newcomers%20understand%20Bitcoin%2C%20its%20global%20adoption%2C%20ho-2.pdf" method="get" target="_blank">
+      <form action="https://github.com/Bradbarr/brandbitcoin-landing-page/raw/main/Bitcoin%20Beginner's%20Guide%20Unlocking%20Financial%20Freedom%20with%20Bitcoin.pdf" method="get" target="_blank">
         <input type="email" name="email" placeholder="Enter your email" required>
         <button type="submit">Download PDF</button>
       </form>
@@ -218,7 +199,7 @@
   <!-- Disclaimer -->
   <section class="disclaimer">
     <div class="container">
-      <p><strong>Disclaimer:</strong> The information provided on this website is for educational purposes only and does not constitute financial, legal, or tax advice. Bitcoin is a highly volatile asset, and you could lose money. Always consult a professional before making financial decisions.</p>
+      <p><strong>Disclaimer:</strong> The information on this website is educational only. Bitcoin is volatile; you may lose money. Consult a professional before investing.</p>
       <button onclick="toggleDisclaimer()">Read Full Disclaimer</button>
       <div class="full-disclaimer" id="fullDisclaimer">
         <p><strong>Full Disclaimer:</strong></p>
@@ -234,60 +215,54 @@
     </div>
   </section>
 
-  <!-- Footer -->
   <footer>
     <p>&copy; 2025 BrandBitcoin. All rights reserved.</p>
   </footer>
 
-  <!-- Scripts -->
   <script>
     async function fetchMetrics() {
       try {
-        // Bitcoin Price
+        // Current price
         const priceRes = await fetch('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=gbp');
         const priceData = await priceRes.json();
         const currentPrice = priceData.bitcoin.gbp;
-        document.getElementById('bitcoinPrice').innerText = `£${currentPrice.toLocaleString()}`;
 
-        // Price 1 year ago
+        // Price one year ago
         const today = new Date();
         const lastYear = new Date(today);
         lastYear.setFullYear(today.getFullYear() - 1);
-        const histRes = await fetch(`https://api.coingecko.com/api/v3/coins/bitcoin/history?date=${lastYear.getDate()}-${lastYear.getMonth()+1}-${lastYear.getFullYear()}`);
+        const dd = String(lastYear.getDate()).padStart(2, '0');
+        const mm = String(lastYear.getMonth()+1).padStart(2, '0');
+        const yyyy = lastYear.getFullYear();
+        const histRes = await fetch(`https://api.coingecko.com/api/v3/coins/bitcoin/history?date=${dd}-${mm}-${yyyy}`);
         const histData = await histRes.json();
         const lastYearPrice = histData.market_data?.current_price?.gbp ?? 0;
-        document.getElementById('bitcoinPrice').innerText += ` (Last Year: £${lastYearPrice.toLocaleString()})`;
 
-        // Daily Transactions
+        document.getElementById('bitcoinPrice').innerText = `£${currentPrice.toLocaleString()} (This time last year: £${lastYearPrice.toLocaleString()})`;
+
+        // Daily transactions & volume
         const txRes = await fetch('https://api.blockchain.info/q/24hrtransactioncount');
-        const dailyTx = await txRes.text();
-        document.getElementById('dailyTx').innerText = `${Number(dailyTx).toLocaleString()} (Last Year: ~${Math.round(Number(dailyTx)/2).toLocaleString()})`;
+        const dailyTx = Number(await txRes.text());
+        document.getElementById('dailyTx').innerText = `${dailyTx.toLocaleString()} (~${Math.round(dailyTx/2).toLocaleString()} last year)`;
 
-        // Daily BTC Volume
-        const btcVolRes = await fetch('https://api.blockchain.info/q/24hrbtcsent');
-        const dailyBTC = await btcVolRes.text();
-        document.getElementById('dailyBTC').innerText = `${(Number(dailyBTC)/1e8).toLocaleString(undefined,{maximumFractionDigits:2})} BTC (Last Year: ~${((Number(dailyBTC)/1e8)/2).toLocaleString()} BTC)`;
+        const btcRes = await fetch('https://api.blockchain.info/q/24hrbtcsent');
+        const dailyBTC = Number(await btcRes.text()) / 1e8;
+        document.getElementById('dailyBTC').innerText = `${dailyBTC.toLocaleString(undefined,{maximumFractionDigits:2})} BTC (~${(dailyBTC/2).toLocaleString()} BTC last year)`;
 
-        // Daily GBP Volume
-        const dailyGBP = (Number(dailyBTC)/1e8) * currentPrice;
-        document.getElementById('dailyGBP').innerText = `£${dailyGBP.toLocaleString(undefined,{maximumFractionDigits:0})} (Last Year: ~£${(dailyGBP/2).toLocaleString()})`;
+        const dailyGBP = dailyBTC * currentPrice;
+        document.getElementById('dailyGBP').innerText = `£${dailyGBP.toLocaleString(undefined,{maximumFractionDigits:0})} (~£${(dailyGBP/2).toLocaleString()} last year)`;
 
       } catch(err) {
         console.error(err);
-        document.getElementById('bitcoinPrice').innerText = 'Unavailable';
-        document.getElementById('dailyTx').innerText = 'Unavailable';
-        document.getElementById('dailyBTC').innerText = 'Unavailable';
-        document.getElementById('dailyGBP').innerText = 'Unavailable';
+        ['bitcoinPrice','dailyTx','dailyBTC','dailyGBP'].forEach(id => document.getElementById(id).innerText='Unavailable');
       }
     }
 
-    function toggleDisclaimer() {
-      const disclaimer = document.getElementById('fullDisclaimer');
-      disclaimer.classList.toggle('active');
-    }
+    function toggleDisclaimer() { document.getElementById('fullDisclaimer').classList.toggle('active'); }
 
     fetchMetrics();
     setInterval(fetchMetrics, 60000);
   </script>
 </body>
 </html>
+
