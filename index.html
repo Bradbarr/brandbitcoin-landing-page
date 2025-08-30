@@ -256,16 +256,25 @@
           document.getElementById('bitcoinPriceLY').innerText = '';
         }
 
-        // Placeholders for transactions & volume (you can replace with real APIs later)
-        const dailyTx = 280000;
-        const dailyBTC = 4000;
-        const dailyGBP = (dailyBTC * currentPrice).toFixed(0);
+        // Daily transactions (Blockchain.com API)
+        const txRes = await fetch('https://api.blockchain.info/q/24hrtransactioncount?cors=true');
+        const dailyTx = await txRes.json(); 
         document.getElementById('dailyTx').innerText = dailyTx.toLocaleString();
-        document.getElementById('dailyBTC').innerText = `${dailyBTC.toLocaleString()} BTC`;
-        document.getElementById('dailyGBP').innerText = `£${Number(dailyGBP).toLocaleString()}`;
-        document.getElementById('dailyTxChange').innerText = '+12% YoY';
-        document.getElementById('dailyBTCChange').innerText = '+8% YoY';
-        document.getElementById('dailyGBPChange').innerText = '+30% YoY';
+
+        // Daily BTC transaction volume (Blockchain.com API)
+        const volRes = await fetch('https://api.blockchain.info/q/24hrbtcsent?cors=true');
+        const dailyBTC = await volRes.json() / 1e8; // API returns in satoshis
+        document.getElementById('dailyBTC').innerText = `${dailyBTC.toLocaleString(undefined, {maximumFractionDigits:0})} BTC`;
+
+        // Convert BTC volume to GBP
+        const dailyGBP = (dailyBTC * currentPrice);
+        document.getElementById('dailyGBP').innerText = `£${dailyGBP.toLocaleString(undefined, {maximumFractionDigits:0})}`;
+
+        // For now, static placeholders for YoY change until you add historical data
+        document.getElementById('dailyTxChange').innerText = '+13% YoY';
+        document.getElementById('dailyBTCChange').innerText = '+10% YoY';
+        document.getElementById('dailyGBPChange').innerText = '+25% YoY';
+
 
         // Populate new supply & market cap metrics
         document.getElementById('btcMarketCap').innerText = `Market Cap: £${marketCapGBP.toLocaleString()}`;
