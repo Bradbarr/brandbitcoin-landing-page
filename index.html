@@ -173,6 +173,13 @@
         <div class="metric-value">99.98%</div>
         <div class="metric-secondary">Since inception</div>
       </div>
+      <!-- New Metric Card -->
+      <div class="metric-card">
+        <h3>Bitcoin Supply & Value</h3>
+        <div class="metric-value" id="btcMarketCap">Loading...</div>
+        <div class="metric-secondary" id="btcSupply">Mined: Loading...</div>
+        <div class="metric-secondary" id="btcRemaining">Remaining: Loading...</div>
+      </div>
     </div>
   </section>
 
@@ -222,13 +229,19 @@
   <script>
     async function fetchMetrics() {
       try {
-        // Current BTC price
-        const priceRes = await fetch('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=gbp');
-        const priceData = await priceRes.json();
-        const currentPrice = priceData.bitcoin.gbp;
+        // Fetch detailed BTC data (includes price, market cap, supply)
+        const coinRes = await fetch('https://api.coingecko.com/api/v3/coins/bitcoin?localization=false&tickers=false&market_data=true');
+        const coinData = await coinRes.json();
+
+        const currentPrice = coinData.market_data.current_price.gbp;
+        const circulating = coinData.market_data.circulating_supply;
+        const maxSupply = coinData.market_data.max_supply || 21000000;
+        const marketCapGBP = coinData.market_data.market_cap.gbp;
+        const remaining = maxSupply - circulating;
+
         document.getElementById('bitcoinPrice').innerText = `£${currentPrice.toLocaleString()}`;
 
-        // BTC price one year ago
+        // Historical price one year ago
         const lastYear = new Date();
         lastYear.setFullYear(lastYear.getFullYear() - 1);
         const dd = lastYear.getDate();
@@ -243,21 +256,21 @@
           document.getElementById('bitcoinPriceLY').innerText = '';
         }
 
-        // Daily transactions and BTC volume (from mempool.space)
-        const mempoolRes = await fetch('https://mempool.space/api/v1/fees/recommended');
-        const mempoolData = await mempoolRes.json();
-        // Using placeholder for transactions and volume as free API doesn't provide historical daily metrics
-        const dailyTx = 280000; // placeholder
-        const dailyBTC = 4000; // placeholder
+        // Placeholders for transactions & volume (you can replace with real APIs later)
+        const dailyTx = 280000;
+        const dailyBTC = 4000;
         const dailyGBP = (dailyBTC * currentPrice).toFixed(0);
         document.getElementById('dailyTx').innerText = dailyTx.toLocaleString();
         document.getElementById('dailyBTC').innerText = `${dailyBTC.toLocaleString()} BTC`;
         document.getElementById('dailyGBP').innerText = `£${Number(dailyGBP).toLocaleString()}`;
-
-        // Example 1-year change approximations
         document.getElementById('dailyTxChange').innerText = '+12% YoY';
         document.getElementById('dailyBTCChange').innerText = '+8% YoY';
         document.getElementById('dailyGBPChange').innerText = '+30% YoY';
+
+        // Populate new supply & market cap metrics
+        document.getElementById('btcMarketCap').innerText = `Market Cap: £${marketCapGBP.toLocaleString()}`;
+        document.getElementById('btcSupply').innerText = `Mined: ${circulating.toLocaleString()} BTC`;
+        document.getElementById('btcRemaining').innerText = `Remaining: ${remaining.toLocaleString()} BTC`;
 
       } catch(err) {
         console.error(err);
