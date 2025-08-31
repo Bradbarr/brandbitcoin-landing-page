@@ -130,7 +130,7 @@
   <script>
     async function fetchMetrics() {
       try {
-        // --- PRICE & SUPPLY ---
+        // Fetch data from CoinGecko
         const coinRes = await fetch('https://api.coingecko.com/api/v3/coins/bitcoin?localization=false&tickers=false&market_data=true');
         const coinData = await coinRes.json();
 
@@ -159,7 +159,7 @@
           document.getElementById('bitcoinPriceLY').innerText = '';
         }
 
-        // --- DAILY VOLUME ---
+        // Daily volume
         const dailyBTC = coinData.market_data.total_volume.btc;
         const dailyGBP = coinData.market_data.total_volume.gbp;
 
@@ -175,7 +175,7 @@
         document.getElementById('dailyGBP').innerText = `£${dailyGBP.toLocaleString(undefined, { maximumFractionDigits: 0 })}`;
         document.getElementById('dailyGBPChange').innerText = `${gbpChange.toFixed(1)}% YoY`;
 
-        // --- SUPPLY & MARKET CAP ---
+        // Supply & Market Cap
         document.getElementById('btcMarketCap').innerText = `Market Cap: £${marketCapGBP.toLocaleString()}`;
         document.getElementById('btcSupply').innerText = `Mined: ${circulating.toLocaleString()} BTC`;
         document.getElementById('btcRemaining').innerText = `Remaining: ${remaining.toLocaleString()} BTC`;
