@@ -229,10 +229,9 @@
   <script>
     async function fetchMetrics() {
       try {
-        // Fetch detailed BTC data (includes price, market cap, supply)
+        // --- PRICE + SUPPLY ---
         const coinRes = await fetch('https://api.coingecko.com/api/v3/coins/bitcoin?localization=false&tickers=false&market_data=true');
         const coinData = await coinRes.json();
-
         const currentPrice = coinData.market_data.current_price.gbp;
         const circulating = coinData.market_data.circulating_supply;
         const maxSupply = coinData.market_data.max_supply || 21000000;
@@ -241,7 +240,7 @@
 
         document.getElementById('bitcoinPrice').innerText = `£${currentPrice.toLocaleString()}`;
 
-        // Historical price one year ago
+        // Price one year ago
         const lastYear = new Date();
         lastYear.setFullYear(lastYear.getFullYear() - 1);
         const dd = lastYear.getDate();
@@ -256,27 +255,43 @@
           document.getElementById('bitcoinPriceLY').innerText = '';
         }
 
-        // Daily transactions (Blockchain.com API)
+        // --- DAILY TRANSACTIONS (today + 1y ago) ---
         const txRes = await fetch('https://api.blockchain.info/q/24hrtransactioncount?cors=true');
-        const dailyTx = await txRes.json(); 
+        const dailyTx = await txRes.json();
+        const txHistRes = await fetch(`https://api.blockchain.info/charts/n-transactions?timespan=2years&rollingAverage=1d&format=json`);
+        const txHistData = await txHistRes.json();
+        const oneYearAgoTx = txHistData.values.find(v => {
+          const date = new Date(v.x * 1000);
+          return date.getFullYear() === lastYear.getFullYear() && date.getMonth() === lastYear.getMonth() && date.getDate() === lastYear.getDate();
+        })?.y || dailyTx; // fallback
+        const txChange = ((dailyTx - oneYearAgoTx) / oneYearAgoTx) * 100;
+
         document.getElementById('dailyTx').innerText = dailyTx.toLocaleString();
+        document.getElementById('dailyTxChange').innerText = `${txChange.toFixed(1)}% YoY`;
 
-        // Daily BTC transaction volume (Blockchain.com API)
+        // --- DAILY VOLUME (BTC) ---
         const volRes = await fetch('https://api.blockchain.info/q/24hrbtcsent?cors=true');
-        const dailyBTC = await volRes.json() / 1e8; // API returns in satoshis
-        document.getElementById('dailyBTC').innerText = `${dailyBTC.toLocaleString(undefined, {maximumFractionDigits:0})} BTC`;
+        const dailyBTC = (await volRes.json()) / 1e8;
+        const volHistRes = await fetch(`https://api.blockchain.info/charts/output-volume?timespan=2years&rollingAverage=1d&format=json`);
+        const volHistData = await volHistRes.json();
+        const oneYearAgoVol = volHistData.values.find(v => {
+          const date = new Date(v.x * 1000);
+          return date.getFullYear() === lastYear.getFullYear() && date.getMonth() === lastYear.getMonth() && date.getDate() === lastYear.getDate();
+        })?.y / 1e8 || dailyBTC; // fallback
+        const volChange = ((dailyBTC - oneYearAgoVol) / oneYearAgoVol) * 100;
 
-        // Convert BTC volume to GBP
-        const dailyGBP = (dailyBTC * currentPrice);
-        document.getElementById('dailyGBP').innerText = `£${dailyGBP.toLocaleString(undefined, {maximumFractionDigits:0})}`;
+        document.getElementById('dailyBTC').innerText = `${dailyBTC.toLocaleString(undefined,{maximumFractionDigits:0})} BTC`;
+        document.getElementById('dailyBTCChange').innerText = `${volChange.toFixed(1)}% YoY`;
 
-        // For now, static placeholders for YoY change until you add historical data
-        document.getElementById('dailyTxChange').innerText = '+13% YoY';
-        document.getElementById('dailyBTCChange').innerText = '+10% YoY';
-        document.getElementById('dailyGBPChange').innerText = '+25% YoY';
+        // --- DAILY VOLUME (GBP) ---
+        const dailyGBP = dailyBTC * currentPrice;
+        const oneYearAgoGBP = oneYearAgoVol * (priceLY || currentPrice);
+        const gbpChange = ((dailyGBP - oneYearAgoGBP) / oneYearAgoGBP) * 100;
 
+        document.getElementById('dailyGBP').innerText = `£${dailyGBP.toLocaleString(undefined,{maximumFractionDigits:0})}`;
+        document.getElementById('dailyGBPChange').innerText = `${gbpChange.toFixed(1)}% YoY`;
 
-        // Populate new supply & market cap metrics
+        // --- SUPPLY & MARKET CAP ---
         document.getElementById('btcMarketCap').innerText = `Market Cap: £${marketCapGBP.toLocaleString()}`;
         document.getElementById('btcSupply').innerText = `Mined: ${circulating.toLocaleString()} BTC`;
         document.getElementById('btcRemaining').innerText = `Remaining: ${remaining.toLocaleString()} BTC`;
