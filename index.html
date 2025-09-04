@@ -6,41 +6,295 @@
   <title>BrandBitcoin | Your Bitcoin Partner</title>
   <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500;700&display=swap" rel="stylesheet">
   <style>
-    body { font-family: 'Roboto Mono', monospace; margin: 0; padding: 0; background-color: #000; color: #fff; line-height: 1.6; }
-    .container { max-width: 1400px; margin: 0 auto; padding: 20px; }
-    h1, h2, h3 { color: #fec107; }
-    a { color: #fec107; text-decoration: none; }
-    a:hover { text-decoration: underline; }
-    nav { background: #000; padding: 20px 0; display: flex; justify-content: center; align-items: center; border-bottom: 1px solid #fec107; }
-    nav a { color: #fff; margin: 0 15px; font-size: 18px; transition: color 0.3s ease; }
-    nav a:hover { color: #fec107; }
-    .consultation-button { background: #fec107; color: #000; padding: 10px 20px; border-radius: 5px; font-weight: bold; transition: background 0.3s ease; }
-    .consultation-button:hover { background: #e0a800; }
-    .logo-container { text-align: center; margin-top: 40px; }
-    .logo-container img { height: 180px; width: auto; }
-    .metrics-dashboard { display: grid; grid-template-columns: repeat(7, 1fr); gap: 10px; margin: 40px auto; max-width: 1400px; }
-    .metric-card { background: #111; border: 1px solid #fec107; border-radius: 10px; padding: 10px; text-align: center; transition: transform 0.3s ease, font-size 0.3s ease; font-size: 13px; }
-    .metric-card:hover { transform: scale(1.5); z-index: 10; position: relative; }
-    .metric-card h3 { color: #fec107; margin-bottom: 5px; font-size: 14px; }
-    .metric-value { font-size: 18px; font-weight: bold; margin-bottom: 4px; }
-    .metric-secondary { font-size: 12px; color: #ccc; }
-    .hero { background: #000; padding: 100px 20px; text-align: center; }
-    .hero h1 { font-size: 48px; margin: 0; }
-    .hero p { font-size: 20px; margin: 20px 0; }
-    .cta-button { display: inline-block; padding: 15px 30px; background: #fec107; color: #000; font-size: 18px; border-radius: 5px; margin-top: 20px; text-transform: uppercase; font-weight: bold; transition: background 0.3s ease, transform 0.3s ease; }
-    .cta-button:hover { background: #e0a800; transform: translateY(-5px); }
-    .email-form, .disclaimer, footer { background: #000; text-align: center; padding: 50px 20px; border-top: 1px solid #fec107; }
-    .email-form h2, .disclaimer h2 { color: #fec107; margin-bottom: 20px; }
-    .email-form input { max-width: 300px; width: 100%; padding: 10px; margin: 10px 0; background: #000; color: #fff; border: 1px solid #fec107; border-radius: 5px; }
-    .email-form button { background: #fec107; color: #000; padding: 10px 20px; border: none; border-radius: 5px; font-weight: bold; transition: background 0.3s ease; }
-    .email-form button:hover { background: #e0a800; }
-    .disclaimer .full-disclaimer { display: none; margin-top: 10px; font-size: 14px; text-align: left; }
-    .disclaimer .full-disclaimer.active { display: block; }
-    .disclaimer button { background: none; border: none; color: #fec107; cursor: pointer; text-decoration: underline; font-size: 14px; }
-    .disclaimer button:hover { color: #e0a800; }
-    footer p { color: #fff; margin: 0; }
-    @media (max-width: 1024px) { .metrics-dashboard { grid-template-columns: repeat(3, 1fr); } }
-    @media (max-width: 600px) { .metrics-dashboard { grid-template-columns: repeat(1, 1fr); } .hero h1 { font-size: 36px; } .hero p, .cta-button { font-size: 16px; } }
+    body { 
+      font-family: 'Roboto Mono', monospace; 
+      margin: 0; 
+      padding: 0; 
+      background-color: #000; 
+      color: #fff; 
+      line-height: 1.6; 
+      overflow-x: hidden;
+    }
+    .container { 
+      max-width: 1400px; 
+      margin: 0 auto; 
+      padding: 20px; 
+    }
+    h1, h2, h3 { 
+      color: #fec107; 
+    }
+    a { 
+      color: #fec107; 
+      text-decoration: none; 
+    }
+    a:hover { 
+      text-decoration: underline; 
+    }
+    nav { 
+      background: #000; 
+      padding: 20px 0; 
+      display: flex; 
+      justify-content: center; 
+      align-items: center; 
+      border-bottom: 1px solid #fec107; 
+      position: relative;
+      z-index: 100;
+    }
+    nav a { 
+      color: #fff; 
+      margin: 0 15px; 
+      font-size: 18px; 
+      transition: color 0.3s ease; 
+    }
+    nav a:hover { 
+      color: #fec107; 
+    }
+    .consultation-button { 
+      background: #fec107; 
+      color: #000; 
+      padding: 10px 20px; 
+      border-radius: 5px; 
+      font-weight: bold; 
+      transition: background 0.3s ease; 
+    }
+    .consultation-button:hover { 
+      background: #e0a800; 
+    }
+    
+    /* Logo section - made massive */
+    .logo-container { 
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 1;
+      pointer-events: none;
+    }
+    .logo-container img { 
+      height: 150vmin; 
+      width: auto; 
+      opacity: 0.7;
+      filter: brightness(0.8);
+    }
+    
+    /* Metrics positioned on the B */
+    .metrics-overlay {
+      position: relative;
+      z-index: 10;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .metrics-grid {
+      position: relative;
+      width: 100%;
+      height: 90vh;
+      margin: 5vh auto;
+    }
+    
+    .metric-card { 
+      background: #111; 
+      border: 1px solid #fec107; 
+      border-radius: 10px; 
+      padding: 8px;
+      text-align: center; 
+      transition: all 0.3s ease; 
+      font-size: 10px;
+      width: 90px;
+      height: 70px;
+      position: absolute;
+      box-shadow: 0 0 10px rgba(254, 193, 7, 0.3);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      cursor: pointer;
+      overflow: hidden;
+    }
+    .metric-card:hover { 
+      transform: scale(2.5); 
+      z-index: 100; 
+      background: #000;
+      width: auto;
+      min-width: 180px;
+      height: auto;
+      min-height: 120px;
+      box-shadow: 0 0 20px rgba(254, 193, 7, 0.7);
+    }
+    .metric-card h3 { 
+      color: #fec107; 
+      margin: 0 0 4px 0; 
+      font-size: 9px;
+      line-height: 1.2;
+    }
+    .metric-card:hover h3 {
+      font-size: 14px;
+    }
+    .metric-value { 
+      font-size: 12px; 
+      font-weight: bold; 
+      margin-bottom: 2px; 
+    }
+    .metric-card:hover .metric-value {
+      font-size: 18px;
+    }
+    .metric-secondary { 
+      font-size: 8px; 
+      color: #ccc; 
+      line-height: 1.1;
+    }
+    .metric-card:hover .metric-secondary {
+      font-size: 10px;
+    }
+    
+    .hero { 
+      background: #000; 
+      padding: 100px 20px; 
+      text-align: center; 
+      position: relative;
+      z-index: 20;
+    }
+    .hero h1 { 
+      font-size: 48px; 
+      margin: 0; 
+    }
+    .hero p { 
+      font-size: 20px; 
+      margin: 20px 0; 
+    }
+    .cta-button { 
+      display: inline-block; 
+      padding: 15px 30px; 
+      background: #fec107; 
+      color: #000; 
+      font-size: 18px; 
+      border-radius: 5px; 
+      margin-top: 20px; 
+      text-transform: uppercase; 
+      font-weight: bold; 
+      transition: background 0.3s ease, transform 0.3s ease; 
+    }
+    .cta-button:hover { 
+      background: #e0a800; 
+      transform: translateY(-5px); 
+    }
+    .email-form, .disclaimer, footer { 
+      background: #000; 
+      text-align: center; 
+      padding: 50px 20px; 
+      border-top: 1px solid #fec107; 
+      position: relative;
+      z-index: 20;
+    }
+    .email-form h2, .disclaimer h2 { 
+      color: #fec107; 
+      margin-bottom: 20px; 
+    }
+    .email-form input { 
+      max-width: 300px; 
+      width: 100%; 
+      padding: 10px; 
+      margin: 10px 0; 
+      background: #000; 
+      color: #fff; 
+      border: 1px solid #fec107; 
+      border-radius: 5px; 
+    }
+    .email-form button { 
+      background: #fec107; 
+      color: #000; 
+      padding: 10px 20px; 
+      border: none; 
+      border-radius: 5px; 
+      font-weight: bold; 
+      transition: background 0.3s ease; 
+    }
+    .email-form button:hover { 
+      background: #e0a800; 
+    }
+    .disclaimer .full-disclaimer { 
+      display: none; 
+      margin-top: 10px; 
+      font-size: 14px; 
+      text-align: left; 
+    }
+    .disclaimer .full-disclaimer.active { 
+      display: block; 
+    }
+    .disclaimer button { 
+      background: none; 
+      border: none; 
+      color: #fec107; 
+      cursor: pointer; 
+      text-decoration: underline; 
+      font-size: 14px; 
+    }
+    .disclaimer button:hover { 
+      color: #e0a800; 
+    }
+    footer p { 
+      color: #fff; 
+      margin: 0; 
+    }
+    
+    @media (max-width: 1024px) {
+      .metric-card {
+        width: 80px;
+        height: 60px;
+      }
+      .metric-card:hover {
+        transform: scale(2.2);
+      }
+    }
+    
+    @media (max-width: 768px) {
+      /* Adjust B positioning for smaller screens */
+      .metric-card {
+        width: 70px;
+        height: 50px;
+        padding: 5px;
+      }
+      .metric-card:hover {
+        transform: scale(2);
+        min-width: 140px;
+        min-height: 100px;
+      }
+      .hero h1 { 
+        font-size: 36px; 
+      } 
+      .hero p, .cta-button { 
+        font-size: 16px; 
+      }
+      
+      /* Reposition metrics for mobile */
+      .metrics-grid {
+        height: auto;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+        position: relative;
+        padding: 20px;
+      }
+      .metric-card {
+        position: relative;
+        width: auto;
+        height: auto;
+        min-height: 80px;
+      }
+      .logo-container {
+        display: none;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .metrics-grid {
+        grid-template-columns: 1fr;
+      }
+    }
   </style>
 </head>
 <body>
@@ -56,40 +310,40 @@
     <img src="https://github.com/Bradbarr/brandbitcoin-landing-page/raw/main/BrandbitcoinBee(2).png" alt="Brand Bitcoin Logo">
   </div>
 
-  <section class="container">
-    <h2 style="text-align:center;">Bitcoin Network Metrics</h2>
-    <div class="metrics-dashboard">
-      <!-- Existing 5 widgets -->
-      <div class="metric-card"><h3>Bitcoin Price (GBP)</h3><div class="metric-value" id="bitcoinPrice">Loading...</div><div class="metric-secondary" id="bitcoinPriceLY">This time last year: Loading...</div></div>
-      <div class="metric-card"><h3>Daily BTC Volume</h3><div class="metric-value" id="dailyBTC">Loading...</div><div class="metric-secondary" id="dailyBTCChange">1-year change: Loading...</div></div>
-      <div class="metric-card"><h3>Daily GBP Volume</h3><div class="metric-value" id="dailyGBP">Loading...</div><div class="metric-secondary" id="dailyGBPChange">1-year change: Loading...</div></div>
-      <div class="metric-card"><h3>Network Uptime</h3><div class="metric-value">99.98%</div><div class="metric-secondary">Since inception</div></div>
-      <div class="metric-card"><h3>Bitcoin Supply & Value</h3><div class="metric-value" id="btcMarketCap">Loading...</div><div class="metric-secondary" id="btcSupply">Mined: Loading...</div><div class="metric-secondary" id="btcRemaining">Remaining: Loading...</div></div>
+  <section class="metrics-overlay">
+    <h2 style="text-align:center; position: relative; z-index: 20;">Bitcoin Network Metrics</h2>
+    <div class="metrics-grid">
+      <!-- Widgets positioned to form the letter B -->
+      <div class="metric-card" style="top: 10%; left: 40%;"><h3>Bitcoin Price (GBP)</h3><div class="metric-value" id="bitcoinPrice">Loading...</div><div class="metric-secondary" id="bitcoinPriceLY">Last year: Loading...</div></div>
+      <div class="metric-card" style="top: 20%; left: 35%;"><h3>Daily BTC Volume</h3><div class="metric-value" id="dailyBTC">Loading...</div><div class="metric-secondary" id="dailyBTCChange">1-year change: Loading...</div></div>
+      <div class="metric-card" style="top: 30%; left: 32%;"><h3>Daily GBP Volume</h3><div class="metric-value" id="dailyGBP">Loading...</div><div class="metric-secondary" id="dailyGBPChange">1-year change: Loading...</div></div>
+      <div class="metric-card" style="top: 40%; left: 35%;"><h3>Network Uptime</h3><div class="metric-value">99.98%</div><div class="metric-secondary">Since inception</div></div>
+      <div class="metric-card" style="top: 50%; left: 40%;"><h3>Bitcoin Supply</h3><div class="metric-value" id="btcMarketCap">Loading...</div><div class="metric-secondary" id="btcSupply">Mined: Loading...</div></div>
 
-      <!-- 16 New Widgets -->
-      <div class="metric-card"><h3>Bitcoin Nodes</h3><div class="metric-value" id="btcNodes">Loading...</div><div class="metric-secondary">Copies of Bitcoin’s rulebook worldwide</div></div>
-      <div class="metric-card"><h3>Years Running</h3><div class="metric-value" id="btcYears">Loading...</div><div class="metric-secondary">Uninterrupted since 2009</div></div>
-      <div class="metric-card"><h3>Days Since Genesis</h3><div class="metric-value" id="btcDays">Loading...</div><div class="metric-secondary">Days since block #0</div></div>
-      <div class="metric-card"><h3>Halvings Completed</h3><div class="metric-value" id="btcHalvings">Loading...</div><div class="metric-secondary">Next halving countdown</div></div>
-      <div class="metric-card"><h3>Network Hacks</h3><div class="metric-value">0</div><div class="metric-secondary">SHA256 never broken</div></div>
-      <div class="metric-card"><h3>Longest Downtime</h3><div class="metric-value">Few Hours</div><div class="metric-secondary">Occurred in 2010</div></div>
-      <div class="metric-card"><h3>Block Height</h3><div class="metric-value" id="btcBlocks">Loading...</div><div class="metric-secondary">Blocks added every ~10min</div></div>
-      <div class="metric-card"><h3>Network Hashrate</h3><div class="metric-value" id="btcHashrate">Loading...</div><div class="metric-secondary">Mining power securing Bitcoin</div></div>
-      <div class="metric-card"><h3>Active Wallets</h3><div class="metric-value" id="btcWallets">Loading...</div><div class="metric-secondary">Addresses active in last 24h</div></div>
-      <div class="metric-card"><h3>Largest Transaction</h3><div class="metric-value" id="btcLargestTx">Loading...</div><div class="metric-secondary">Biggest BTC moved at once</div></div>
-      <div class="metric-card"><h3>Average Fee</h3><div class="metric-value" id="btcFees">Loading...</div><div class="metric-secondary">Cost per transaction</div></div>
-      <div class="metric-card"><h3>Bitcoin vs Gold Supply</h3><div class="metric-value" id="btcVsGold">Loading...</div><div class="metric-secondary">Annual issuance comparison</div></div>
-      <div class="metric-card"><h3>Renewable Energy</h3><div class="metric-value" id="btcRenewable">Loading...</div><div class="metric-secondary">% mining from renewables</div></div>
-      <div class="metric-card"><h3>Countries Legal</h3><div class="metric-value" id="btcCountries">Loading...</div><div class="metric-secondary">Where Bitcoin is recognized</div></div>
-      <div class="metric-card"><h3>Bitcoin Market Share</h3><div class="metric-value" id="btcDominance">Loading...</div><div class="metric-secondary">% of crypto market cap</div></div>
-      <div class="metric-card"><h3>Billion £ Wallets</h3><div class="metric-value" id="btcWhales">Loading...</div><div class="metric-secondary">Wallets over £1B BTC</div></div>
+      <div class="metric-card" style="top: 15%; left: 60%;"><h3>Bitcoin Nodes</h3><div class="metric-value" id="btcNodes">Loading...</div><div class="metric-secondary">Copies worldwide</div></div>
+      <div class="metric-card" style="top: 25%; left: 63%;"><h3>Years Running</h3><div class="metric-value" id="btcYears">Loading...</div><div class="metric-secondary">Since 2009</div></div>
+      <div class="metric-card" style="top: 35%; left: 65%;"><h3>Days Since Genesis</h3><div class="metric-value" id="btcDays">Loading...</div><div class="metric-secondary">Days since block #0</div></div>
+      <div class="metric-card" style="top: 45%; left: 63%;"><h3>Halvings Completed</h3><div class="metric-value" id="btcHalvings">Loading...</div><div class="metric-secondary">Next halving countdown</div></div>
+      <div class="metric-card" style="top: 55%; left: 60%;"><h3>Network Hacks</h3><div class="metric-value">0</div><div class="metric-secondary">SHA256 never broken</div></div>
+
+      <div class="metric-card" style="top: 60%; left: 40%;"><h3>Block Height</h3><div class="metric-value" id="btcBlocks">Loading...</div><div class="metric-secondary">Blocks every ~10min</div></div>
+      <div class="metric-card" style="top: 70%; left: 35%;"><h3>Network Hashrate</h3><div class="metric-value" id="btcHashrate">Loading...</div><div class="metric-secondary">Mining power</div></div>
+      <div class="metric-card" style="top: 80%; left: 32%;"><h3>Active Wallets</h3><div class="metric-value" id="btcWallets">Loading...</div><div class="metric-secondary">Active in 24h</div></div>
+      <div class="metric-card" style="top: 65%; left: 60%;"><h3>Largest Transaction</h3><div class="metric-value" id="btcLargestTx">Loading...</div><div class="metric-secondary">Biggest BTC moved</div></div>
+      <div class="metric-card" style="top: 75%; left: 63%;"><h3>Average Fee</h3><div class="metric-value" id="btcFees">Loading...</div><div class="metric-secondary">Cost per transaction</div></div>
+
+      <div class="metric-card" style="top: 85%; left: 65%;"><h3>Bitcoin vs Gold</h3><div class="metric-value" id="btcVsGold">Loading...</div><div class="metric-secondary">Issuance comparison</div></div>
+      <div class="metric-card" style="top: 20%; left: 45%;"><h3>Renewable Energy</h3><div class="metric-value" id="btcRenewable">Loading...</div><div class="metric-secondary">% mining from renewables</div></div>
+      <div class="metric-card" style="top: 70%; left: 45%;"><h3>Countries Legal</h3><div class="metric-value" id="btcCountries">Loading...</div><div class="metric-secondary">Where recognized</div></div>
+      <div class="metric-card" style="top: 30%; left: 45%;"><h3>Market Share</h3><div class="metric-value" id="btcDominance">Loading...</div><div class="metric-secondary">% of crypto market</div></div>
+      <div class="metric-card" style="top: 80%; left: 45%;"><h3>Billion £ Wallets</h3><div class="metric-value" id="btcWhales">Loading...</div><div class="metric-secondary">Wallets over £1B BTC</div></div>
     </div>
   </section>
 
   <section class="hero">
     <div class="container">
       <h1>Your Bitcoin Journey Starts Here</h1>
-      <p>Secure, simple, and tailored to your needs. Let’s make Bitcoin work for you.</p>
+      <p>Secure, simple, and tailored to your needs. Let's make Bitcoin work for you.</p>
       <a href="consultation.html" class="cta-button">Get Started</a>
     </div>
   </section>
@@ -127,6 +381,11 @@
   </footer>
 
   <script>
+    function toggleDisclaimer() {
+      const disclaimer = document.getElementById('fullDisclaimer');
+      disclaimer.classList.toggle('active');
+    }
+
     async function fetchMetrics() {
       try {
         const coinRes = await fetch('https://api.coingecko.com/api/v3/coins/bitcoin?localization=false&tickers=false&market_data=true');
@@ -149,7 +408,7 @@
         const histRes = await fetch(`https://api.coingecko.com/api/v3/coins/bitcoin/history?date=${dd}-${mm}-${yyyy}&localization=false`);
         const histData = await histRes.json();
         const priceLY = histData.market_data?.current_price?.gbp ?? null;
-        if (priceLY) { document.getElementById('bitcoinPriceLY').innerText = `This time last year: £${priceLY.toLocaleString()}`; }
+        if (priceLY) { document.getElementById('bitcoinPriceLY').innerText = `Last year: £${priceLY.toLocaleString()}`; }
 
         const dailyBTC = coinData.market_data.total_volume.btc;
         const dailyGBP = coinData.market_data.total_volume.gbp;
@@ -162,20 +421,32 @@
         document.getElementById('dailyGBP').innerText = `£${dailyGBP.toLocaleString(undefined, { maximumFractionDigits: 0 })}`;
         document.getElementById('dailyGBPChange').innerText = `${gbpChange.toFixed(1)}% YoY`;
 
-        document.getElementById('btcMarketCap').innerText = `Market Cap: £${marketCapGBP.toLocaleString()}`;
+        document.getElementById('btcMarketCap').innerText = `£${(marketCapGBP/1000000000).toFixed(1)}B`;
         document.getElementById('btcSupply').innerText = `Mined: ${circulating.toLocaleString()} BTC`;
-        document.getElementById('btcRemaining').innerText = `Remaining: ${remaining.toLocaleString()} BTC`;
 
         // Populate some new widgets with approximate values (static/demo)
         document.getElementById('btcYears').innerText = (new Date().getFullYear() - 2009) + ' yrs';
         document.getElementById('btcDays').innerText = Math.floor((Date.now() - new Date('2009-01-03')) / (1000*60*60*24));
         document.getElementById('btcHalvings').innerText = '4';
         document.getElementById('btcBlocks').innerText = coinData.market_data.block_time_in_minutes ? Math.round((Date.now()-new Date('2009-01-03'))/(coinData.market_data.block_time_in_minutes*60000)) : 'Loading...';
-        document.getElementById('btcDominance').innerText = coinData.market_data.market_cap_percentage?.btc ? coinData.market_data.market_cap_percentage.btc+'%' : '≈50%';
+        document.getElementById('btcDominance').innerText = coinData.market_data.market_cap_percentage?.btc ? coinData.market_data.market_cap_percentage.btc.toFixed(1)+'%' : '≈50%';
         document.getElementById('btcNodes').innerText = '~18,000+';
         document.getElementById('btcHashrate').innerText = coinData.hashing_algorithm ? 'Hundreds of EH/s' : 'Loading...';
         document.getElementById('btcWallets').innerText = '~1M+';
-        document.getElementById('btcLargestTx').innerText = '~500,000 BTC';
-        document.getElementById('btcFees').innerText = '£'+(coinData.market_data.average_transaction_fee || '2');
+        document.getElementById('btcLargestTx').innerText = '~500K BTC';
+        document.getElementById('btcFees').innerText = '£'+(coinData.market_data.average_transaction_fee?.gbp ? coinData.market_data.average_transaction_fee.gbp.toFixed(2) : '2');
         document.getElementById('btcVsGold').innerText = '<2% vs gold ~2%';
         document.getElementById('btcRenewable').innerText = '~60%';
+        document.getElementById('btcCountries').innerText = '100+';
+        document.getElementById('btcWhales').innerText = '100+';
+
+      } catch (error) {
+        console.error('Error fetching metrics:', error);
+      }
+    }
+
+    // Initialize metrics
+    fetchMetrics();
+  </script>
+</body>
+</html>
