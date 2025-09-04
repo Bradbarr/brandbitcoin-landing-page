@@ -61,51 +61,50 @@
       background: #e0a800; 
     }
     
-    /* Logo section - fixed position */
+    /* Logo section - integrated into layout */
+    .logo-section {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 40px 20px;
+      position: relative;
+    }
     .logo-container { 
-      position: fixed;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      z-index: 1;
-      pointer-events: none;
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
     .logo-container img { 
-      height: 110vmin; 
+      height: 400px; 
       width: auto; 
-      opacity: 0.7;
-      filter: brightness(0.8);
+      z-index: 2;
     }
     
-    /* Metrics positioned on the B */
-    .metrics-overlay {
-      position: relative;
-      z-index: 10;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-    }
-    
+    /* Metrics positioned to form the number 21 within the B */
     .metrics-grid {
-      position: relative;
-      width: 100%;
-      height: 100vh;
+      position: absolute;
+      width: 400px;
+      height: 400px;
+      top: 0;
+      left: 0;
+      right: 0;
       margin: 0 auto;
+      z-index: 3;
     }
     
     .metric-card { 
-      background: rgba(17, 17, 17, 0.9); 
+      background: rgba(17, 17, 17, 0.95); 
       border: 1px solid #fec107; 
-      border-radius: 10px; 
-      padding: 8px;
+      border-radius: 8px; 
+      padding: 6px;
       text-align: center; 
       transition: all 0.3s ease; 
-      font-size: 10px;
-      width: 90px;
-      height: 70px;
+      font-size: 9px;
+      width: 70px;
+      height: 55px;
       position: absolute;
-      box-shadow: 0 0 10px rgba(254, 193, 7, 0.3);
+      box-shadow: 0 0 8px rgba(254, 193, 7, 0.4);
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -113,26 +112,26 @@
       overflow: hidden;
     }
     .metric-card:hover { 
-      transform: scale(2.5); 
+      transform: scale(2.8); 
       z-index: 100; 
       background: #000;
       width: auto;
-      min-width: 180px;
+      min-width: 160px;
       height: auto;
-      min-height: 120px;
-      box-shadow: 0 0 20px rgba(254, 193, 7, 0.7);
+      min-height: 100px;
+      box-shadow: 0 0 20px rgba(254, 193, 7, 0.8);
     }
     .metric-card h3 { 
       color: #fec107; 
-      margin: 0 0 4px 0; 
-      font-size: 9px;
-      line-height: 1.2;
+      margin: 0 0 3px 0; 
+      font-size: 8px;
+      line-height: 1.1;
     }
     .metric-card:hover h3 {
       font-size: 14px;
     }
     .metric-value { 
-      font-size: 12px; 
+      font-size: 11px; 
       font-weight: bold; 
       margin-bottom: 2px; 
     }
@@ -140,7 +139,7 @@
       font-size: 18px;
     }
     .metric-secondary { 
-      font-size: 8px; 
+      font-size: 7px; 
       color: #ccc; 
       line-height: 1.1;
     }
@@ -148,9 +147,34 @@
       font-size: 10px;
     }
     
+    /* Number 2 formation (using the B shape) */
+    .metric-card:nth-child(1) { top: 15%; left: 25%; }  /* Top curve */
+    .metric-card:nth-child(2) { top: 8%; left: 35%; }
+    .metric-card:nth-child(3) { top: 12%; left: 45%; }
+    .metric-card:nth-child(4) { top: 22%; left: 50%; }
+    .metric-card:nth-child(5) { top: 32%; left: 48%; }  /* Middle curve */
+    .metric-card:nth-child(6) { top: 42%; left: 42%; }
+    .metric-card:nth-child(7) { top: 48%; left: 32%; }
+    .metric-card:nth-child(8) { top: 55%; left: 25%; }
+    .metric-card:nth-child(9) { top: 62%; left: 32%; }  /* Bottom curve */
+    .metric-card:nth-child(10) { top: 68%; left: 42%; }
+    .metric-card:nth-child(11) { top: 72%; left: 52%; }
+    .metric-card:nth-child(12) { top: 78%; left: 45%; }
+    .metric-card:nth-child(13) { top: 82%; left: 35%; }
+    
+    /* Number 1 formation (straight line) */
+    .metric-card:nth-child(14) { top: 10%; left: 65%; }
+    .metric-card:nth-child(15) { top: 22%; left: 65%; }
+    .metric-card:nth-child(16) { top: 34%; left: 65%; }
+    .metric-card:nth-child(17) { top: 46%; left: 65%; }
+    .metric-card:nth-child(18) { top: 58%; left: 65%; }
+    .metric-card:nth-child(19) { top: 70%; left: 65%; }
+    .metric-card:nth-child(20) { top: 82%; left: 65%; }
+    .metric-card:nth-child(21) { top: 50%; left: 60%; }  /* Crossbar of 1 */
+    
     .hero { 
       background: #000; 
-      padding: 100px 20px; 
+      padding: 80px 20px; 
       text-align: center; 
       position: relative;
       z-index: 20;
@@ -239,25 +263,39 @@
     }
     
     @media (max-width: 1024px) {
+      .logo-container img {
+        height: 350px;
+      }
+      .metrics-grid {
+        width: 350px;
+        height: 350px;
+      }
       .metric-card {
-        width: 80px;
-        height: 60px;
+        width: 65px;
+        height: 50px;
       }
       .metric-card:hover {
-        transform: scale(2.2);
+        transform: scale(2.5);
       }
     }
     
     @media (max-width: 768px) {
+      .logo-container img {
+        height: 300px;
+      }
+      .metrics-grid {
+        width: 300px;
+        height: 300px;
+      }
       .metric-card {
-        width: 70px;
-        height: 50px;
-        padding: 5px;
+        width: 55px;
+        height: 45px;
+        padding: 4px;
       }
       .metric-card:hover {
-        transform: scale(2);
-        min-width: 140px;
-        min-height: 100px;
+        transform: scale(2.2);
+        min-width: 120px;
+        min-height: 90px;
       }
       .hero h1 { 
         font-size: 36px; 
@@ -265,30 +303,46 @@
       .hero p, .cta-button { 
         font-size: 16px; 
       }
-      
-      /* Reposition metrics for mobile */
-      .metrics-grid {
-        height: auto;
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 10px;
-        position: relative;
-        padding: 20px;
-      }
-      .metric-card {
-        position: relative;
-        width: auto;
-        height: auto;
-        min-height: 80px;
-      }
-      .logo-container {
-        display: none;
-      }
     }
     
     @media (max-width: 480px) {
+      .logo-section {
+        padding: 20px 10px;
+      }
+      .logo-container img {
+        height: 280px;
+      }
       .metrics-grid {
-        grid-template-columns: 1fr;
+        width: 280px;
+        height: 280px;
+      }
+      .metric-card {
+        width: 50px;
+        height: 40px;
+        font-size: 7px;
+      }
+      .metric-card h3 {
+        font-size: 7px;
+      }
+      .metric-value {
+        font-size: 9px;
+      }
+      .metric-secondary {
+        font-size: 6px;
+      }
+      .metric-card:hover {
+        transform: scale(2);
+        min-width: 100px;
+        min-height: 80px;
+      }
+      .metric-card:hover h3 {
+        font-size: 12px;
+      }
+      .metric-card:hover .metric-value {
+        font-size: 16px;
+      }
+      .metric-card:hover .metric-secondary {
+        font-size: 9px;
       }
     }
   </style>
@@ -302,42 +356,36 @@
     <a href="the-hive.html">The Hive</a>
   </nav>
 
-  <div class="logo-container">
-    <img src="https://github.com/Bradbarr/brandbitcoin-landing-page/raw/main/BrandbitcoinBee(2).png" alt="Brand Bitcoin Logo">
-  </div>
-
-  <section class="metrics-overlay">
-    <h2 style="text-align:center; position: relative; z-index: 20; margin-top: 50px;">Bitcoin Network Metrics</h2>
-    <div class="metrics-grid">
-      <!-- Widgets positioned to form the letter B -->
-      <!-- Top curve of B -->
-      <div class="metric-card" style="top: 15%; left: 42%;"><h3>Bitcoin Price (GBP)</h3><div class="metric-value" id="bitcoinPrice">Loading...</div><div class="metric-secondary" id="bitcoinPriceLY">Last year: Loading...</div></div>
-      <div class="metric-card" style="top: 20%; left: 38%;"><h3>Daily BTC Volume</h3><div class="metric-value" id="dailyBTC">Loading...</div><div class="metric-secondary" id="dailyBTCChange">1-year change: Loading...</div></div>
-      <div class="metric-card" style="top: 25%; left: 36%;"><h3>Daily GBP Volume</h3><div class="metric-value" id="dailyGBP">Loading...</div><div class="metric-secondary" id="dailyGBPChange">1-year change: Loading...</div></div>
-      <div class="metric-card" style="top: 30%; left: 35%;"><h3>Network Uptime</h3><div class="metric-value">99.98%</div><div class="metric-secondary">Since inception</div></div>
-      <div class="metric-card" style="top: 35%; left: 36%;"><h3>Bitcoin Supply</h3><div class="metric-value" id="btcMarketCap">Loading...</div><div class="metric-secondary" id="btcSupply">Mined: Loading...</div></div>
-      
-      <!-- Middle curve of B -->
-      <div class="metric-card" style="top: 45%; left: 38%;"><h3>Bitcoin Nodes</h3><div class="metric-value" id="btcNodes">Loading...</div><div class="metric-secondary">Copies worldwide</div></div>
-      <div class="metric-card" style="top: 50%; left: 42%;"><h3>Years Running</h3><div class="metric-value" id="btcYears">Loading...</div><div class="metric-secondary">Since 2009</div></div>
-      <div class="metric-card" style="top: 55%; left: 46%;"><h3>Days Since Genesis</h3><div class="metric-value" id="btcDays">Loading...</div><div class="metric-secondary">Days since block #0</div></div>
-      <div class="metric-card" style="top: 60%; left: 48%;"><h3>Halvings Completed</h3><div class="metric-value" id="btcHalvings">Loading...</div><div class="metric-secondary">Next halving countdown</div></div>
-      <div class="metric-card" style="top: 65%; left: 48%;"><h3>Network Hacks</h3><div class="metric-value">0</div><div class="metric-secondary">SHA256 never broken</div></div>
-      
-      <!-- Bottom curve of B -->
-      <div class="metric-card" style="top: 70%; left: 46%;"><h3>Block Height</h3><div class="metric-value" id="btcBlocks">Loading...</div><div class="metric-secondary">Blocks every ~10min</div></div>
-      <div class="metric-card" style="top: 75%; left: 42%;"><h3>Network Hashrate</h3><div class="metric-value" id="btcHashrate">Loading...</div><div class="metric-secondary">Mining power</div></div>
-      <div class="metric-card" style="top: 80%; left: 38%;"><h3>Active Wallets</h3><div class="metric-value" id="btcWallets">Loading...</div><div class="metric-secondary">Active in 24h</div></div>
-      <div class="metric-card" style="top: 85%; left: 36%;"><h3>Largest Transaction</h3><div class="metric-value" id="btcLargestTx">Loading...</div><div class="metric-secondary">Biggest BTC moved</div></div>
-      <div class="metric-card" style="top: 90%; left: 35%;"><h3>Average Fee</h3><div class="metric-value" id="btcFees">Loading...</div><div class="metric-secondary">Cost per transaction</div></div>
-      
-      <!-- Vertical line of B -->
-      <div class="metric-card" style="top: 25%; left: 50%;"><h3>Renewable Energy</h3><div class="metric-value" id="btcRenewable">Loading...</div><div class="metric-secondary">% mining from renewables</div></div>
-      <div class="metric-card" style="top: 35%; left: 50%;"><h3>Market Share</h3><div class="metric-value" id="btcDominance">Loading...</div><div class="metric-secondary">% of crypto market</div></div>
-      <div class="metric-card" style="top: 45%; left: 50%;"><h3>Bitcoin vs Gold</h3><div class="metric-value" id="btcVsGold">Loading...</div><div class="metric-secondary">Issuance comparison</div></div>
-      <div class="metric-card" style="top: 55%; left: 50%;"><h3>Countries Legal</h3><div class="metric-value" id="btcCountries">Loading...</div><div class="metric-secondary">Where recognized</div></div>
-      <div class="metric-card" style="top: 65%; left: 50%;"><h3>Billion £ Wallets</h3><div class="metric-value" id="btcWhales">Loading...</div><div class="metric-secondary">Wallets over £1B BTC</div></div>
-      <div class="metric-card" style="top: 75%; left: 50%;"><h3>Remaining BTC</h3><div class="metric-value" id="btcRemaining">Loading...</div><div class="metric-secondary">Left to mine</div></div>
+  <section class="logo-section">
+    <div class="logo-container">
+      <img src="https://github.com/Bradbarr/brandbitcoin-landing-page/raw/main/BrandbitcoinBee(2).png" alt="Brand Bitcoin Logo">
+      <div class="metrics-grid">
+        <!-- Widgets positioned to form the number 21 -->
+        <div class="metric-card"><h3>Bitcoin Price (GBP)</h3><div class="metric-value" id="bitcoinPrice">Loading...</div><div class="metric-secondary" id="bitcoinPriceLY">Last year: Loading...</div></div>
+        <div class="metric-card"><h3>Daily BTC Volume</h3><div class="metric-value" id="dailyBTC">Loading...</div><div class="metric-secondary" id="dailyBTCChange">1-year change: Loading...</div></div>
+        <div class="metric-card"><h3>Daily GBP Volume</h3><div class="metric-value" id="dailyGBP">Loading...</div><div class="metric-secondary" id="dailyGBPChange">1-year change: Loading...</div></div>
+        <div class="metric-card"><h3>Network Uptime</h3><div class="metric-value">99.98%</div><div class="metric-secondary">Since inception</div></div>
+        <div class="metric-card"><h3>Bitcoin Supply</h3><div class="metric-value" id="btcMarketCap">Loading...</div><div class="metric-secondary" id="btcSupply">Mined: Loading...</div></div>
+        
+        <div class="metric-card"><h3>Bitcoin Nodes</h3><div class="metric-value" id="btcNodes">Loading...</div><div class="metric-secondary">Copies worldwide</div></div>
+        <div class="metric-card"><h3>Years Running</h3><div class="metric-value" id="btcYears">Loading...</div><div class="metric-secondary">Since 2009</div></div>
+        <div class="metric-card"><h3>Days Since Genesis</h3><div class="metric-value" id="btcDays">Loading...</div><div class="metric-secondary">Days since block #0</div></div>
+        <div class="metric-card"><h3>Halvings Completed</h3><div class="metric-value" id="btcHalvings">Loading...</div><div class="metric-secondary">Next halving countdown</div></div>
+        <div class="metric-card"><h3>Network Hacks</h3><div class="metric-value">0</div><div class="metric-secondary">SHA256 never broken</div></div>
+        
+        <div class="metric-card"><h3>Block Height</h3><div class="metric-value" id="btcBlocks">Loading...</div><div class="metric-secondary">Blocks every ~10min</div></div>
+        <div class="metric-card"><h3>Network Hashrate</h3><div class="metric-value" id="btcHashrate">Loading...</div><div class="metric-secondary">Mining power</div></div>
+        <div class="metric-card"><h3>Active Wallets</h3><div class="metric-value" id="btcWallets">Loading...</div><div class="metric-secondary">Active in 24h</div></div>
+        <div class="metric-card"><h3>Largest Transaction</h3><div class="metric-value" id="btcLargestTx">Loading...</div><div class="metric-secondary">Biggest BTC moved</div></div>
+        <div class="metric-card"><h3>Average Fee</h3><div class="metric-value" id="btcFees">Loading...</div><div class="metric-secondary">Cost per transaction</div></div>
+        
+        <div class="metric-card"><h3>Renewable Energy</h3><div class="metric-value" id="btcRenewable">Loading...</div><div class="metric-secondary">% mining from renewables</div></div>
+        <div class="metric-card"><h3>Market Share</h3><div class="metric-value" id="btcDominance">Loading...</div><div class="metric-secondary">% of crypto market</div></div>
+        <div class="metric-card"><h3>Bitcoin vs Gold</h3><div class="metric-value" id="btcVsGold">Loading...</div><div class="metric-secondary">Issuance comparison</div></div>
+        <div class="metric-card"><h3>Countries Legal</h3><div class="metric-value" id="btcCountries">Loading...</div><div class="metric-secondary">Where recognized</div></div>
+        <div class="metric-card"><h3>Billion £ Wallets</h3><div class="metric-value" id="btcWhales">Loading...</div><div class="metric-secondary">Wallets over £1B BTC</div></div>
+        <div class="metric-card"><h3>Remaining BTC</h3><div class="metric-value" id="btcRemaining">Loading...</div><div class="metric-secondary">Left to mine</div></div>
+      </div>
     </div>
   </section>
 
