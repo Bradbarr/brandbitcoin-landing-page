@@ -23,13 +23,6 @@
     h1, h2, h3 { 
       color: #fec107; 
     }
-    a { 
-      color: #fec107; 
-      text-decoration: none; 
-    }
-    a:hover { 
-      text-decoration: underline; 
-    }
     nav { 
       background: #000; 
       padding: 15px 0; 
@@ -45,10 +38,9 @@
       margin: 0 12px; 
       font-size: 16px; 
       transition: color 0.3s ease; 
+      text-decoration: none;
     }
-    nav a:hover { 
-      color: #fec107; 
-    }
+    nav a:hover { color: #fec107; }
     .consultation-button { 
       background: #fec107; 
       color: #000; 
@@ -57,340 +49,91 @@
       font-weight: bold; 
       transition: background 0.3s ease; 
     }
-    .consultation-button:hover { 
-      background: #e0a800; 
-    }
-    
-    /* Main content area */
-    .main-content {
-      padding: 30px 15px;
-      text-align: center;
-    }
-    
-    /* Clear 21 formation with widgets */
+    .consultation-button:hover { background: #e0a800; }
+
+    /* 21 Formation */
     .number-formation {
       display: flex;
       justify-content: center;
-      align-items: center;
-      gap: 60px;
-      margin: 40px 0;
+      align-items: flex-start;
+      gap: 80px;
+      margin: 40px auto;
       flex-wrap: wrap;
     }
-    
-    .number-two, .number-one {
+    .digit {
+      display: grid;
+      grid-template-columns: repeat(5, 70px);
+      grid-template-rows: repeat(7, 70px);
+      gap: 10px;
+    }
+    .digit.one {
+      grid-template-columns: repeat(3, 70px);
+    }
+
+    /* Card Flip Effect */
+    .card {
+      width: 70px;
+      height: 70px;
+      perspective: 800px;
+    }
+    .card-inner {
       position: relative;
-      display: grid;
-      gap: 12px;
+      width: 100%;
+      height: 100%;
+      transition: transform 0.7s;
+      transform-style: preserve-3d;
     }
-    
-    /* Number 2 formation */
-    .number-two {
-      display: grid;
-      grid-template-columns: repeat(5, 1fr);
-      grid-template-rows: repeat(7, 1fr);
-      width: 400px;
-      height: 560px;
+    .card:hover .card-inner {
+      transform: rotateY(180deg);
     }
-    
-    /* Number 1 formation */
-    .number-one {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      grid-template-rows: repeat(7, 1fr);
-      width: 240px;
-      height: 560px;
-    }
-    
-    .metric-card { 
-      background: rgba(17, 17, 17, 0.95); 
-      border: 1px solid #fec107; 
-      border-radius: 6px; 
-      padding: 6px;
-      text-align: center; 
-      transition: all 0.3s ease; 
-      font-size: 8px;
-      width: 65px;
-      height: 50px;
-      box-shadow: 0 0 6px rgba(254, 193, 7, 0.4);
+    .card-front, .card-back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+      background: rgba(17, 17, 17, 0.95);
+      border: 1px solid #fec107;
+      border-radius: 8px;
+      box-shadow: 0 0 8px rgba(254,193,7,0.5);
       display: flex;
       flex-direction: column;
       justify-content: center;
-      cursor: pointer;
-      overflow: hidden;
-      margin: 0 auto;
+      align-items: center;
+      padding: 6px;
+      text-align: center;
     }
-    
-    .metric-card:hover { 
-      transform: scale(2.8); 
-      z-index: 100; 
-      background: #000;
-      width: auto;
-      min-width: 160px;
-      height: auto;
-      min-height: 110px;
-      box-shadow: 0 0 20px rgba(254, 193, 7, 0.8);
-    }
-    
-    .metric-card h3 { 
-      color: #fec107; 
-      margin: 0 0 2px 0; 
-      font-size: 8px;
-      line-height: 1.1;
-    }
-    
-    .metric-card:hover h3 {
-      font-size: 14px;
-    }
-    
-    .metric-value { 
-      font-size: 10px; 
-      font-weight: bold; 
-      margin-bottom: 2px; 
-    }
-    
-    .metric-card:hover .metric-value {
-      font-size: 16px;
-    }
-    
-    .metric-secondary { 
-      font-size: 7px; 
-      color: #ccc; 
-      line-height: 1.1;
-    }
-    
-    .metric-card:hover .metric-secondary {
+    .card-front h3 { font-size: 10px; color: #fec107; margin: 0; }
+    .card-front .metric-value { font-size: 12px; font-weight: bold; margin-top: 2px; }
+    .card-back {
+      transform: rotateY(180deg);
       font-size: 10px;
+      color: #fff;
+      background: #111;
+      padding: 8px;
     }
-    
-    /* --- NEW: Position widgets to form number 2 --- */
-    .two-1 { grid-column: 1 / 6; grid-row: 1 / 2; }  
-    .two-2 { grid-column: 5 / 6; grid-row: 2 / 3; }  
-    .two-3 { grid-column: 5 / 6; grid-row: 3 / 4; }  
-    .two-4 { grid-column: 1 / 6; grid-row: 4 / 5; }  
-    .two-5 { grid-column: 1 / 2; grid-row: 5 / 6; }  
-    .two-6 { grid-column: 1 / 2; grid-row: 6 / 7; }  
-    .two-7 { grid-column: 1 / 6; grid-row: 7 / 8; }  
-    .two-8 { grid-column: 3 / 4; grid-row: 2 / 3; }  
-    .two-9 { grid-column: 2 / 3; grid-row: 3 / 4; }  
-    .two-10 { grid-column: 4 / 5; grid-row: 5 / 6; } 
-    .two-11 { grid-column: 3 / 4; grid-row: 6 / 7; } 
-    .two-12 { grid-column: 2 / 3; grid-row: 6 / 7; } 
-    
-    /* --- NEW: Position widgets to form number 1 --- */
-    .one-1 { grid-column: 2 / 3; grid-row: 1 / 2; }  
-    .one-2 { grid-column: 2 / 3; grid-row: 2 / 3; }
-    .one-3 { grid-column: 2 / 3; grid-row: 3 / 4; }
-    .one-4 { grid-column: 2 / 3; grid-row: 4 / 5; }
-    .one-5 { grid-column: 2 / 3; grid-row: 5 / 6; }
-    .one-6 { grid-column: 2 / 3; grid-row: 6 / 7; }
-    .one-7 { grid-column: 2 / 3; grid-row: 7 / 8; }  
-    .one-8 { grid-column: 1 / 4; grid-row: 2 / 3; }  
-    .one-9 { grid-column: 1 / 2; grid-row: 6 / 7; } 
-    .one-10 { grid-column: 3 / 4; grid-row: 6 / 7; }
-    
-    .hero { 
-      background: #000; 
-      padding: 60px 20px; 
-      text-align: center; 
-      position: relative;
-      z-index: 20;
-    }
-    
-    .hero h1 { 
-      font-size: 36px; 
-      margin: 0; 
-    }
-    
-    .hero p { 
-      font-size: 18px; 
-      margin: 20px 0; 
-    }
-    
-    .cta-button { 
-      display: inline-block; 
-      padding: 12px 24px; 
-      background: #fec107; 
-      color: #000; 
-      font-size: 16px; 
-      border-radius: 5px; 
-      margin-top: 20px; 
-      text-transform: uppercase; 
-      font-weight: bold; 
-      transition: background 0.3s ease, transform 0.3s ease; 
-    }
-    
-    .cta-button:hover { 
-      background: #e0a800; 
-      transform: translateY(-5px); 
-    }
-    
-    .email-form, .disclaimer, footer { 
-      background: #000; 
-      text-align: center; 
-      padding: 40px 20px; 
-      border-top: 1px solid #fec107; 
-      position: relative;
-      z-index: 20;
-    }
-    
-    .email-form h2, .disclaimer h2 { 
-      color: #fec107; 
-      margin-bottom: 20px; 
-    }
-    
-    .email-form input { 
-      max-width: 280px; 
-      width: 100%; 
-      padding: 10px; 
-      margin: 10px 0; 
-      background: #000; 
-      color: #fff; 
-      border: 1px solid #fec107; 
-      border-radius: 5px; 
-    }
-    
-    .email-form button { 
-      background: #fec107; 
-      color: #000; 
-      padding: 10px 20px; 
-      border: none; 
-      border-radius: 5px; 
-      font-weight: bold; 
-      transition: background 0.3s ease; 
-    }
-    
-    .email-form button:hover { 
-      background: #e0a800; 
-    }
-    
-    .disclaimer .full-disclaimer { 
-      display: none; 
-      margin-top: 10px; 
-      font-size: 14px; 
-      text-align: left; 
-    }
-    
-    .disclaimer .full-disclaimer.active { 
-      display: block; 
-    }
-    
-    .disclaimer button { 
-      background: none; 
-      border: none; 
-      color: #fec107; 
-      cursor: pointer; 
-      text-decoration: underline; 
-      font-size: 14px; 
-    }
-    
-    .disclaimer button:hover { 
-      color: #e0a800; 
-    }
-    
-    footer p { 
-      color: #fff; 
-      margin: 0; 
-    }
-    
-    @media (max-width: 1000px) {
-      .number-formation {
-        gap: 40px;
-      }
-      
-      .number-two {
-        width: 320px;
-        height: 448px;
-      }
-      
-      .number-one {
-        width: 192px;
-        height: 448px;
-      }
-      
-      .metric-card {
-        width: 55px;
-        height: 45px;
-      }
-      
-      .metric-card:hover {
-        transform: scale(2.5);
-      }
-    }
-    
-    @media (max-width: 768px) {
-      .number-formation {
-        flex-direction: column;
-        gap: 40px;
-      }
-      
-      .number-two, .number-one {
-        width: 300px;
-        height: 420px;
-      }
-      
-      .metric-card {
-        width: 50px;
-        height: 40px;
-      }
-      
-      .metric-card:hover {
-        transform: scale(2);
-        min-width: 100px;
-        min-height: 80px;
-      }
-      
-      .hero h1 { 
-        font-size: 32px; 
-      } 
-      
-      .hero p, .cta-button { 
-        font-size: 16px; 
-      }
-    }
-    
-    @media (max-width: 480px) {
-      .number-two, .number-one {
-        width: 250px;
-        height: 350px;
-      }
-      
-      .metric-card {
-        width: 40px;
-        height: 35px;
-        font-size: 7px;
-        padding: 3px;
-      }
-      
-      .metric-card h3 {
-        font-size: 7px;
-        margin: 0;
-      }
-      
-      .metric-value {
-        font-size: 9px;
-      }
-      
-      .metric-secondary {
-        font-size: 6px;
-      }
-      
-      .metric-card:hover {
-        transform: scale(2);
-        min-width: 80px;
-        min-height: 70px;
-      }
-      
-      .metric-card:hover h3 {
-        font-size: 12px;
-      }
-      
-      .metric-card:hover .metric-value {
-        font-size: 14px;
-      }
-      
-      .metric-card:hover .metric-secondary {
-        font-size: 9px;
-      }
+
+    /* Positioning the "2" */
+    .two-1 { grid-column: 1 / 6; grid-row: 1; }
+    .two-2 { grid-column: 5; grid-row: 2; }
+    .two-3 { grid-column: 4; grid-row: 3; }
+    .two-4 { grid-column: 3; grid-row: 4; }
+    .two-5 { grid-column: 2; grid-row: 5; }
+    .two-6 { grid-column: 1; grid-row: 6; }
+    .two-7 { grid-column: 1 / 6; grid-row: 7; }
+
+    /* Positioning the "1" */
+    .one-1 { grid-column: 2; grid-row: 1; }
+    .one-2 { grid-column: 2; grid-row: 2; }
+    .one-3 { grid-column: 2; grid-row: 3; }
+    .one-4 { grid-column: 2; grid-row: 4; }
+    .one-5 { grid-column: 2; grid-row: 5; }
+    .one-6 { grid-column: 2; grid-row: 6; }
+    .one-7 { grid-column: 2; grid-row: 7; }
+
+    @media(max-width:768px){
+      .digit{grid-template-columns:repeat(5,50px);grid-template-rows:repeat(7,50px);}
+      .digit.one{grid-template-columns:repeat(3,50px);}
+      .card{width:50px;height:50px;}
     }
   </style>
 </head>
@@ -405,33 +148,73 @@
 
   <section class="main-content">
     <h2>Bitcoin Network Metrics</h2>
-    
     <div class="number-formation">
-      <!-- Number 2 formation -->
-      <div class="number-two">
-        <div class="metric-card two-1"><h3>Price (GBP)</h3><div class="metric-value">£58,240</div><div class="metric-secondary">All-time high: £69,000</div></div>
-        <div class="metric-card two-2"><h3>Market Cap</h3><div class="metric-value">£1.15T</div><div class="metric-secondary">#1 cryptocurrency</div></div>
-        <div class="metric-card two-3"><h3>BTC Volume</h3><div class="metric-value">32,500 BTC</div><div class="metric-secondary">Traded daily</div></div>
-        <div class="metric-card two-4"><h3>GBP Volume</h3><div class="metric-value">£1.9B</div><div class="metric-secondary">Daily trading</div></div>
-        <div class="metric-card two-5"><h3>Supply Mined</h3><div class="metric-value">19.7M BTC</div><div class="metric-secondary">91.9% of total</div></div>
-        <div class="metric-card two-6"><h3>Nodes</h3><div class="metric-value">15,000+</div><div class="metric-secondary">Global copies</div></div>
-        <div class="metric-card two-7"><h3>Years Running</h3><div class="metric-value">15+ years</div><div class="metric-secondary">Since 2009</div></div>
-        <div class="metric-card two-8"><h3>Halvings</h3><div class="metric-value">4 completed</div><div class="metric-secondary">Next: 2028</div></div>
-        <div class="metric-card two-9"><h3>Network Hacks</h3><div class="metric-value">0</div><div class="metric-secondary">SHA256 secure</div></div>
-        <div class="metric-card two-10"><h3>Uptime</h3><div class="metric-value">99.99%</div><div class="metric-secondary">Since inception</div></div>
-        <div class="metric-card two-11"><h3>Downtime</h3><div class="metric-value">Few hours</div><div class="metric-secondary">Only in 2010</div></div>
-        <div class="metric-card two-12"><h3>Vs Gold</h3><div class="metric-value">1.8% inflation</div><div class="metric-secondary">Gold: 2-3%</div></div>
+      
+      <!-- Digit 2 -->
+      <div class="digit two">
+        <div class="card two-1"><div class="card-inner">
+          <div class="card-front"><h3>Price</h3><div class="metric-value">£58,240</div></div>
+          <div class="card-back">That’s how much 1 Bitcoin costs today in pounds.</div>
+        </div></div>
+        <div class="card two-2"><div class="card-inner">
+          <div class="card-front"><h3>Market Cap</h3><div class="metric-value">£1.15T</div></div>
+          <div class="card-back">All Bitcoins combined are worth over a trillion pounds.</div>
+        </div></div>
+        <div class="card two-3"><div class="card-inner">
+          <div class="card-front"><h3>Volume</h3><div class="metric-value">32.5k BTC</div></div>
+          <div class="card-back">That’s how many coins trade hands every single day.</div>
+        </div></div>
+        <div class="card two-4"><div class="card-inner">
+          <div class="card-front"><h3>Supply</h3><div class="metric-value">19.7M</div></div>
+          <div class="card-back">Almost all the 21M coins have already been mined!</div>
+        </div></div>
+        <div class="card two-5"><div class="card-inner">
+          <div class="card-front"><h3>Nodes</h3><div class="metric-value">15k+</div></div>
+          <div class="card-back">Thousands of computers keep Bitcoin running 24/7.</div>
+        </div></div>
+        <div class="card two-6"><div class="card-inner">
+          <div class="card-front"><h3>Uptime</h3><div class="metric-value">99.99%</div></div>
+          <div class="card-back">Bitcoin barely ever goes down—rock solid reliability.</div>
+        </div></div>
+        <div class="card two-7"><div class="card-inner">
+          <div class="card-front"><h3>Years</h3><div class="metric-value">15+</div></div>
+          <div class="card-back">Bitcoin has been ticking along since 2009!</div>
+        </div></div>
       </div>
       
-      <!-- Number 1 formation -->
-      <div class="number-one">
-        <div class="metric-card one-1"><h3>Block Height</h3><div class="metric-value">840,000+</div><div class="metric-secondary">New every 10min</div></div>
-        <div class="metric-card one-2"><h3>Hash Rate</h3><div class="metric-value">600 EH/s</div><div class="metric-secondary">Mining power</div></div>
-        <div class="metric-card one-3"><h3>Active Wallets</h3><div class="metric-value">1M+</div><div class="metric-secondary">Daily activity</div></div>
-        <div class="metric-card one-4"><h3>Largest Tx</h3><div class="metric-value">500,000 BTC</div><div class="metric-secondary">$29B transfer</div></div>
-        <div class="metric-card one-5"><h3>Avg Fee</h3><div class="metric-value">£1.50</div><div class="metric-secondary">Per transaction</div></div>
-        <div class="metric-card one-6"><h3>Renewable Energy</h3><div class="metric-value">58%</div><div class="metric-secondary">Mining power</div></div>
-        <div class="metric-card one-7"><h3>Market Dominance</h3><div class="metric-value">52%</div><div class="metric-secondary">Of crypto market</div></div>
-        <div class="metric-card one-8"><h3>Legal Status</h3><div class="metric-value">119 countries</div><div class="metric-secondary">Fully legal</div></div>
-        <div class="metric-card one-9"><h3>Billion £ Wallets</h3><div class="metric-value">120+</div><div class="metric-secondary">Whale addresses</div></div>
-        <div class="metric-card one-10"><h3>Remaining BTC</h3><div class="metric-value">1.3M left</div><div class="metric-secondary">
+      <!-- Digit 1 -->
+      <div class="digit one">
+        <div class="card one-1"><div class="card-inner">
+          <div class="card-front"><h3>Hashrate</h3><div class="metric-value">600 EH/s</div></div>
+          <div class="card-back">This is the raw computing firepower securing Bitcoin.</div>
+        </div></div>
+        <div class="card one-2"><div class="card-inner">
+          <div class="card-front"><h3>Block Height</h3><div class="metric-value">840k+</div></div>
+          <div class="card-back">Every 10 minutes a new block gets stacked on top.</div>
+        </div></div>
+        <div class="card one-3"><div class="card-inner">
+          <div class="card-front"><h3>Wallets</h3><div class="metric-value">1M+</div></div>
+          <div class="card-back">Over a million people use Bitcoin daily!</div>
+        </div></div>
+        <div class="card one-4"><div class="card-inner">
+          <div class="card-front"><h3>Fees</h3><div class="metric-value">£1.50</div></div>
+          <div class="card-back">On average it costs less than a coffee to send Bitcoin.</div>
+        </div></div>
+        <div class="card one-5"><div class="card-inner">
+          <div class="card-front"><h3>Renewables</h3><div class="metric-value">58%</div></div>
+          <div class="card-back">More than half of Bitcoin’s mining uses green energy!</div>
+        </div></div>
+        <div class="card one-6"><div class="card-inner">
+          <div class="card-front"><h3>Dominance</h3><div class="metric-value">52%</div></div>
+          <div class="card-back">Bitcoin makes up more than half of the entire crypto market.</div>
+        </div></div>
+        <div class="card one-7"><div class="card-inner">
+          <div class="card-front"><h3>Countries</h3><div class="metric-value">119</div></div>
+          <div class="card-back">Bitcoin is legal and thriving in over 100 countries!</div>
+        </div></div>
+      </div>
+
+    </div>
+  </section>
+</body>
+</html>
