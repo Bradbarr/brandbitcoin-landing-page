@@ -85,6 +85,7 @@
     
     /* Number 2 formation */
     .number-two {
+      display: grid;
       grid-template-columns: repeat(5, 1fr);
       grid-template-rows: repeat(7, 1fr);
       width: 400px;
@@ -93,6 +94,7 @@
     
     /* Number 1 formation */
     .number-one {
+      display: grid;
       grid-template-columns: repeat(3, 1fr);
       grid-template-rows: repeat(7, 1fr);
       width: 240px;
@@ -160,27 +162,31 @@
       font-size: 10px;
     }
     
-    /* Position widgets to form number 2 */
-    .two-1 { grid-column: 2 / 5; grid-row: 1 / 2; }
-    .two-2 { grid-column: 1 / 2; grid-row: 1 / 2; }
-    .two-3 { grid-column: 5 / 6; grid-row: 2 / 3; }
-    .two-4 { grid-column: 5 / 6; grid-row: 3 / 4; }
-    .two-5 { grid-column: 4 / 5; grid-row: 4 / 5; }
-    .two-6 { grid-column: 3 / 4; grid-row: 4 / 5; }
-    .two-7 { grid-column: 2 / 3; grid-row: 5 / 6; }
-    .two-8 { grid-column: 1 / 2; grid-row: 5 / 6; }
-    .two-9 { grid-column: 1 / 2; grid-row: 6 / 7; }
-    .two-10 { grid-column: 2 / 5; grid-row: 7 / 8; }
-    .two-11 { grid-column: 1 / 2; grid-row: 2 / 3; }
+    /* --- NEW: Position widgets to form number 2 --- */
+    .two-1 { grid-column: 1 / 6; grid-row: 1 / 2; }  
+    .two-2 { grid-column: 5 / 6; grid-row: 2 / 3; }  
+    .two-3 { grid-column: 5 / 6; grid-row: 3 / 4; }  
+    .two-4 { grid-column: 1 / 6; grid-row: 4 / 5; }  
+    .two-5 { grid-column: 1 / 2; grid-row: 5 / 6; }  
+    .two-6 { grid-column: 1 / 2; grid-row: 6 / 7; }  
+    .two-7 { grid-column: 1 / 6; grid-row: 7 / 8; }  
+    .two-8 { grid-column: 3 / 4; grid-row: 2 / 3; }  
+    .two-9 { grid-column: 2 / 3; grid-row: 3 / 4; }  
+    .two-10 { grid-column: 4 / 5; grid-row: 5 / 6; } 
+    .two-11 { grid-column: 3 / 4; grid-row: 6 / 7; } 
+    .two-12 { grid-column: 2 / 3; grid-row: 6 / 7; } 
     
-    /* Position widgets to form number 1 */
-    .one-1 { grid-column: 2 / 3; grid-row: 1 / 2; }
-    .one-2 { grid-column: 1 / 4; grid-row: 2 / 3; }
+    /* --- NEW: Position widgets to form number 1 --- */
+    .one-1 { grid-column: 2 / 3; grid-row: 1 / 2; }  
+    .one-2 { grid-column: 2 / 3; grid-row: 2 / 3; }
     .one-3 { grid-column: 2 / 3; grid-row: 3 / 4; }
     .one-4 { grid-column: 2 / 3; grid-row: 4 / 5; }
     .one-5 { grid-column: 2 / 3; grid-row: 5 / 6; }
     .one-6 { grid-column: 2 / 3; grid-row: 6 / 7; }
-    .one-7 { grid-column: 1 / 4; grid-row: 7 / 8; }
+    .one-7 { grid-column: 2 / 3; grid-row: 7 / 8; }  
+    .one-8 { grid-column: 1 / 4; grid-row: 2 / 3; }  
+    .one-9 { grid-column: 1 / 2; grid-row: 6 / 7; } 
+    .one-10 { grid-column: 3 / 4; grid-row: 6 / 7; }
     
     .hero { 
       background: #000; 
@@ -414,6 +420,7 @@
         <div class="metric-card two-9"><h3>Network Hacks</h3><div class="metric-value">0</div><div class="metric-secondary">SHA256 secure</div></div>
         <div class="metric-card two-10"><h3>Uptime</h3><div class="metric-value">99.99%</div><div class="metric-secondary">Since inception</div></div>
         <div class="metric-card two-11"><h3>Downtime</h3><div class="metric-value">Few hours</div><div class="metric-secondary">Only in 2010</div></div>
+        <div class="metric-card two-12"><h3>Vs Gold</h3><div class="metric-value">1.8% inflation</div><div class="metric-secondary">Gold: 2-3%</div></div>
       </div>
       
       <!-- Number 1 formation -->
@@ -425,74 +432,6 @@
         <div class="metric-card one-5"><h3>Avg Fee</h3><div class="metric-value">£1.50</div><div class="metric-secondary">Per transaction</div></div>
         <div class="metric-card one-6"><h3>Renewable Energy</h3><div class="metric-value">58%</div><div class="metric-secondary">Mining power</div></div>
         <div class="metric-card one-7"><h3>Market Dominance</h3><div class="metric-value">52%</div><div class="metric-secondary">Of crypto market</div></div>
-      </div>
-    </div>
-    
-    <!-- Additional widgets -->
-    <div style="display: flex; justify-content: center; flex-wrap: wrap; gap: 15px; margin-top: 30px;">
-      <div class="metric-card" style="width: 90px; height: 70px;"><h3>Vs Gold</h3><div class="metric-value">1.8% inflation</div><div class="metric-secondary">Gold: 2-3%</div></div>
-      <div class="metric-card" style="width: 90px; height: 70px;"><h3>Legal Status</h3><div class="metric-value">119 countries</div><div class="metric-secondary">Fully legal</div></div>
-      <div class="metric-card" style="width: 90px; height: 70px;"><h3>Billion £ Wallets</h3><div class="metric-value">120+</div><div class="metric-secondary">Whale addresses</div></div>
-      <div class="metric-card" style="width: 90px; height: 70px;"><h3>Remaining BTC</h3><div class="metric-value">1.3M left</div><div class="metric-secondary">Until 2140</div></div>
-    </div>
-  </section>
-
-  <section class="hero">
-    <div class="container">
-      <h1>Your Bitcoin Journey Starts Here</h1>
-      <p>Secure, simple, and tailored to your needs. Let's make Bitcoin work for you.</p>
-      <a href="consultation.html" class="cta-button">Get Started</a>
-    </div>
-  </section>
-
-  <section class="email-form">
-    <div class="container">
-      <h2>Get Your Free Bitcoin Guide</h2>
-      <form action="https://github.com/Bradbarr/brandbitcoin-landing-page/raw/main/Bitcoin%20Beginner's%20Guide%20Unlocking%20Financial%20Freedom%20with%20Bitcoin.pdf" method="get" target="_blank">
-        <input type="email" name="email" placeholder="Enter your email" required>
-        <button type="submit">Download PDF</button>
-      </form>
-    </div>
-  </section>
-
-  <section class="disclaimer">
-    <div class="container">
-      <p><strong>Disclaimer:</strong> The information on this website is educational only. Bitcoin is volatile; you may lose money. Consult a professional before investing.</p>
-      <button onclick="toggleDisclaimer()">Read Full Disclaimer</button>
-      <div class="full-disclaimer" id="fullDisclaimer">
-        <p><strong>Full Disclaimer:</strong></p>
-        <ol>
-          <li>No Financial Advice: For information only.</li>
-          <li>Risks of Bitcoin: Highly volatile, may lose investment.</li>
-          <li>No Guarantees: Accuracy not guaranteed.</li>
-          <li>User Responsibility: You are responsible for your actions.</li>
-          <li>Third-Party Services: Not responsible for external content.</li>
-          <li>Jurisdiction: Governed by local law.</li>
-        </ol>
-      </div>
-    </div>
-  </section>
-
-  <footer>
-    <p>&copy; 2025 BrandBitcoin. All rights reserved.</p>
-  </footer>
-
-  <script>
-    function toggleDisclaimer() {
-      const disclaimer = document.getElementById('fullDisclaimer');
-      disclaimer.classList.toggle('active');
-    }
-
-    // Function to update live data (simplified for this example)
-    function updateLiveData() {
-      // In a real implementation, this would fetch from APIs
-      const date = new Date();
-      document.getElementById('timestamp').innerText = date.toLocaleTimeString();
-    }
-    
-    // Update time initially and set interval
-    updateLiveData();
-    setInterval(updateLiveData, 60000);
-  </script>
-</body>
-</html>
+        <div class="metric-card one-8"><h3>Legal Status</h3><div class="metric-value">119 countries</div><div class="metric-secondary">Fully legal</div></div>
+        <div class="metric-card one-9"><h3>Billion £ Wallets</h3><div class="metric-value">120+</div><div class="metric-secondary">Whale addresses</div></div>
+        <div class="metric-card one-10"><h3>Remaining BTC</h3><div class="metric-value">1.3M left</div><div class="metric-secondary">
