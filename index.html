@@ -1,321 +1,790 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-GB">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>BrandBitcoin | Your Bitcoin Partner</title>
+  <title>BrandBitcoin | Learn Bitcoin. Secure Bitcoin. Build Conviction.</title>
+  <meta name="description" content="BrandBitcoin helps beginners and serious investors learn Bitcoin fundamentals, avoid mistakes, and secure their holdings with confidence. Free guide + course + consultation." />
+  <meta name="theme-color" content="#000000" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+
   <style>
-    body { 
-      font-family: 'Roboto Mono', monospace; 
-      margin: 0; 
-      padding: 0; 
-      background-color: #000; 
-      color: #fff; 
-      line-height: 1.6; 
-      overflow-x: hidden;
+    :root{
+      --bg:#000;
+      --panel:#0b0b0b;
+      --panel2:#111;
+      --text:#fff;
+      --muted:#bdbdbd;
+      --muted2:#8d8d8d;
+      --brand:#fec107;
+      --brand2:#e0a800;
+      --border:rgba(254,193,7,.35);
+      --shadow:0 10px 30px rgba(0,0,0,.55);
+      --shadow2:0 0 22px rgba(254,193,7,.22);
+      --radius:16px;
+      --radius2:22px;
+      --max:1180px;
     }
-    .container { 
-      max-width: 1200px; 
-      margin: 0 auto; 
-      padding: 20px; 
+
+    *{ box-sizing:border-box; }
+    html{ scroll-behavior:smooth; }
+    body{
+      margin:0;
+      font-family:'Roboto Mono', monospace;
+      background:
+        radial-gradient(1200px 600px at 20% -10%, rgba(254,193,7,.18), transparent 60%),
+        radial-gradient(1000px 600px at 100% 10%, rgba(254,193,7,.12), transparent 65%),
+        radial-gradient(900px 500px at 50% 100%, rgba(254,193,7,.07), transparent 55%),
+        var(--bg);
+      color:var(--text);
+      line-height:1.6;
+      overflow-x:hidden;
     }
-    h1, h2, h3 { 
-      color: #fec107; 
+
+    a{ color:inherit; text-decoration:none; }
+    a:hover{ color:var(--brand); }
+
+    .container{
+      width:100%;
+      max-width:var(--max);
+      margin:0 auto;
+      padding:0 18px;
     }
-    a { 
-      color: #fec107; 
-      text-decoration: none; 
+
+    /* Top nav */
+    .nav{
+      position:sticky;
+      top:0;
+      z-index:1000;
+      backdrop-filter: blur(10px);
+      background: rgba(0,0,0,.7);
+      border-bottom: 1px solid rgba(254,193,7,.25);
     }
-    a:hover { 
-      text-decoration: underline; 
+    .nav-inner{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      padding:14px 0;
     }
-    nav { 
-      background: #000; 
-      padding: 15px 0; 
-      display: flex; 
-      justify-content: center; 
-      align-items: center; 
-      border-bottom: 1px solid #fec107; 
-      position: sticky;
-      top: 0;
-      z-index: 100;
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      font-weight:700;
+      letter-spacing:.5px;
     }
-    nav a { 
-      color: #fff; 
-      margin: 0 12px; 
-      font-size: 16px; 
-      transition: color 0.3s ease; 
+    .brand-badge{
+      width:34px;
+      height:34px;
+      border-radius:10px;
+      background:
+        radial-gradient(circle at 30% 30%, rgba(255,255,255,.18), transparent 50%),
+        linear-gradient(135deg, rgba(254,193,7,.95), rgba(224,168,0,.85));
+      box-shadow: var(--shadow2);
+      display:grid;
+      place-items:center;
+      color:#000;
+      font-weight:900;
     }
-    nav a:hover { 
-      color: #fec107; 
+    .nav-links{
+      display:flex;
+      gap:16px;
+      align-items:center;
+      flex-wrap:wrap;
+      justify-content:flex-end;
     }
-    .consultation-button { 
-      background: #fec107; 
-      color: #000; 
-      padding: 8px 16px; 
-      border-radius: 5px; 
-      font-weight: bold; 
-      transition: background 0.3s ease; 
+    .nav-links a{
+      color:var(--muted);
+      font-size:14px;
+      padding:8px 10px;
+      border-radius:12px;
+      transition: all .2s ease;
     }
-    .consultation-button:hover { 
-      background: #e0a800; 
+    .nav-links a:hover{
+      color:var(--text);
+      background: rgba(254,193,7,.08);
+    }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      padding:12px 16px;
+      border-radius:14px;
+      font-weight:700;
+      letter-spacing:.2px;
+      border:1px solid rgba(254,193,7,.22);
+      transition: transform .18s ease, background .18s ease, border-color .18s ease;
+      cursor:pointer;
+      user-select:none;
+    }
+    .btn:hover{ transform: translateY(-1px); }
+    .btn-primary{
+      background: linear-gradient(135deg, var(--brand), var(--brand2));
+      color:#000;
+      border-color: rgba(0,0,0,.25);
+      box-shadow: var(--shadow2);
+    }
+    .btn-primary:hover{ background: linear-gradient(135deg, var(--brand2), var(--brand)); }
+    .btn-ghost{
+      background: rgba(255,255,255,.03);
+      color: var(--text);
+    }
+    .btn-ghost:hover{
+      background: rgba(254,193,7,.10);
+      border-color: rgba(254,193,7,.45);
     }
 
     /* Hero */
-    .hero { 
-      background: #111; 
-      padding: 80px 20px; 
-      text-align: center; 
+    .hero{
+      padding:70px 0 24px;
+      position:relative;
     }
-    .hero h1 { 
-      font-size: 42px; 
-      margin: 0; 
+    .hero-grid{
+      display:grid;
+      grid-template-columns: 1.25fr .9fr;
+      gap:26px;
+      align-items:stretch;
     }
-    .hero p { 
-      font-size: 18px; 
-      margin: 20px auto; 
-      max-width: 700px;
+    .pill{
+      display:inline-flex;
+      gap:8px;
+      align-items:center;
+      padding:8px 12px;
+      border-radius:999px;
+      background: rgba(254,193,7,.10);
+      border:1px solid rgba(254,193,7,.22);
+      color: var(--muted);
+      font-size:12px;
     }
-    .cta-button { 
-      display: inline-block; 
-      padding: 12px 24px; 
-      background: #fec107; 
-      color: #000; 
-      font-size: 16px; 
-      border-radius: 5px; 
-      margin-top: 20px; 
-      text-transform: uppercase; 
-      font-weight: bold; 
-      transition: background 0.3s ease, transform 0.3s ease; 
+    h1{
+      margin:14px 0 10px;
+      font-size:44px;
+      line-height:1.1;
+      letter-spacing:-.6px;
     }
-    .cta-button:hover { 
-      background: #e0a800; 
-      transform: translateY(-5px); 
+    .hero p{
+      margin:0 0 18px;
+      color: var(--muted);
+      max-width: 62ch;
+      font-size:16px;
     }
-
-    /* Bitcoin story */
-    .story { 
-      background: #000; 
-      padding: 60px 20px; 
-      text-align: center; 
+    .hero-ctas{
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+      margin-top: 16px;
     }
-    .story p { 
-      max-width: 900px; 
-      margin: 20px auto; 
-      font-size: 17px; 
-      line-height: 1.7;
+    .hero-card{
+      background: linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
+      border:1px solid rgba(254,193,7,.20);
+      border-radius: var(--radius2);
+      box-shadow: var(--shadow);
+      overflow:hidden;
+      position:relative;
     }
-
-    /* Metrics */
-    .main-content {
-      padding: 60px 15px;
-      text-align: center;
+    .hero-card header{
+      padding:16px 16px 10px;
+      border-bottom: 1px solid rgba(254,193,7,.16);
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
     }
-    .metrics-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-      gap: 20px;
-      margin: 40px auto;
-      max-width: 1000px;
+    .hero-card header .title{
+      font-weight:700;
+      color: var(--text);
+      font-size:14px;
     }
-    .metric-card { 
-      background: rgba(17, 17, 17, 0.95); 
-      border: 1px solid #fec107; 
-      border-radius: 6px; 
-      padding: 16px;
-      text-align: center; 
-      transition: all 0.3s ease; 
-      font-size: 14px;
-      box-shadow: 0 0 6px rgba(254, 193, 7, 0.4);
+    .hero-card header .tag{
+      font-size:11px;
+      color: var(--muted2);
+      padding:6px 10px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.08);
+      background: rgba(0,0,0,.35);
     }
-    .metric-card:hover { 
-      transform: scale(1.08); 
-      background: #000;
-      box-shadow: 0 0 15px rgba(254, 193, 7, 0.8);
+    .metrics{
+      padding:14px 14px 16px;
+      display:grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap:10px;
     }
-    .metric-card h3 { 
-      color: #fec107; 
-      margin-bottom: 6px; 
-      font-size: 15px;
+    .metric{
+      background: rgba(0,0,0,.45);
+      border:1px solid rgba(254,193,7,.16);
+      border-radius: 14px;
+      padding:12px;
+      min-height:74px;
+      transition: transform .18s ease, border-color .18s ease;
     }
-    .metric-value { 
-      font-size: 18px; 
-      font-weight: bold; 
-      margin-bottom: 4px; 
+    .metric:hover{
+      transform: translateY(-1px);
+      border-color: rgba(254,193,7,.40);
     }
-    .metric-secondary { 
-      font-size: 12px; 
-      color: #ccc; 
+    .metric .k{ color: var(--muted2); font-size:11px; }
+    .metric .v{ font-weight:800; margin-top:4px; font-size:16px; }
+    .metric .s{ color: var(--muted); font-size:11px; margin-top:2px; }
+    .skeleton{
+      display:inline-block;
+      height: 1em;
+      width: 9ch;
+      border-radius: 8px;
+      background: linear-gradient(90deg, rgba(255,255,255,.06), rgba(255,255,255,.12), rgba(255,255,255,.06));
+      background-size: 200% 100%;
+      animation: shimmer 1.2s infinite;
+      vertical-align:middle;
     }
-
-    /* Email form */
-    .email-form, .disclaimer, footer { 
-      background: #000; 
-      text-align: center; 
-      padding: 40px 20px; 
-      border-top: 1px solid #fec107; 
-    }
-    .email-form h2 { 
-      margin-bottom: 20px; 
-    }
-    .email-form input { 
-      max-width: 280px; 
-      width: 100%; 
-      padding: 10px; 
-      margin: 10px 0; 
-      background: #000; 
-      color: #fff; 
-      border: 1px solid #fec107; 
-      border-radius: 5px; 
-    }
-    .email-form button { 
-      background: #fec107; 
-      color: #000; 
-      padding: 10px 20px; 
-      border: none; 
-      border-radius: 5px; 
-      font-weight: bold; 
-      transition: background 0.3s ease; 
-    }
-    .email-form button:hover { 
-      background: #e0a800; 
+    @keyframes shimmer{
+      0%{ background-position: 200% 0; }
+      100%{ background-position: -200% 0; }
     }
 
-    /* Disclaimer */
-    .disclaimer p, .disclaimer ol { 
-      font-size: 14px; 
-      max-width: 800px; 
-      margin: 0 auto; 
-      text-align: left; 
+    /* Section blocks */
+    .section{
+      padding:52px 0;
     }
-    .disclaimer button { 
-      background: none; 
-      border: none; 
-      color: #fec107; 
-      cursor: pointer; 
-      text-decoration: underline; 
-      font-size: 14px; 
+    .section h2{
+      margin:0 0 10px;
+      font-size:28px;
+      letter-spacing:-.3px;
+      color: var(--brand);
+    }
+    .section p.lead{
+      margin:0 0 18px;
+      color: var(--muted);
+      max-width: 80ch;
+    }
+
+    .grid-3{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap:14px;
+    }
+    .card{
+      background: linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.015));
+      border:1px solid rgba(254,193,7,.16);
+      border-radius: var(--radius);
+      padding:16px;
+      box-shadow: var(--shadow);
+      transition: transform .18s ease, border-color .18s ease;
+    }
+    .card:hover{
+      transform: translateY(-2px);
+      border-color: rgba(254,193,7,.38);
+    }
+    .card h3{
+      margin:0 0 8px;
+      font-size:16px;
+      color: var(--text);
+    }
+    .card p{
+      margin:0;
+      color: var(--muted);
+      font-size:14px;
+    }
+
+    /* Offer */
+    .offer{
+      display:grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap:14px;
+      align-items:stretch;
+    }
+    .list{
+      margin:12px 0 0;
+      padding:0;
+      list-style:none;
+      display:grid;
+      gap:10px;
+    }
+    .li{
+      display:flex;
+      gap:10px;
+      align-items:flex-start;
+      color: var(--muted);
+      font-size:14px;
+    }
+    .check{
+      width:22px;height:22px;border-radius:8px;
+      background: rgba(254,193,7,.12);
+      border:1px solid rgba(254,193,7,.22);
+      color: var(--brand);
+      display:grid;
+      place-items:center;
+      flex: 0 0 auto;
+      margin-top:1px;
+      font-weight:900;
+    }
+
+    /* Lead capture */
+    .cta-panel{
+      background:
+        radial-gradient(700px 300px at 20% 0%, rgba(254,193,7,.18), transparent 55%),
+        linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
+      border:1px solid rgba(254,193,7,.20);
+      border-radius: var(--radius2);
+      padding:18px;
+      box-shadow: var(--shadow);
+      position:relative;
+      overflow:hidden;
+    }
+    .cta-panel h3{ margin:0 0 8px; font-size:18px; }
+    .cta-panel p{ margin:0 0 12px; color: var(--muted); font-size:14px; }
+    form{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
       margin-top: 10px;
     }
-    .disclaimer button:hover { 
-      color: #e0a800; 
+    input[type="email"]{
+      flex: 1 1 220px;
+      padding:12px 12px;
+      border-radius: 14px;
+      border:1px solid rgba(254,193,7,.28);
+      background: rgba(0,0,0,.55);
+      color: var(--text);
+      font-family:inherit;
+      outline:none;
     }
-    .disclaimer .full-disclaimer { 
-      display: none; 
-      margin-top: 15px; 
+    input[type="email"]:focus{
+      border-color: rgba(254,193,7,.65);
+      box-shadow: 0 0 0 3px rgba(254,193,7,.12);
     }
-    .disclaimer .full-disclaimer.active { 
-      display: block; 
+    .microcopy{
+      margin-top:10px;
+      color: var(--muted2);
+      font-size:12px;
     }
 
-    footer p { 
-      color: #fff; 
-      margin: 0; 
-      font-size: 14px;
+    /* Social proof */
+    .quote{
+      border-left: 3px solid rgba(254,193,7,.65);
+      padding-left:12px;
+      color: var(--muted);
+      font-size:14px;
+    }
+    .quote strong{ color: var(--text); }
+
+    /* FAQ */
+    details{
+      border:1px solid rgba(254,193,7,.16);
+      border-radius: var(--radius);
+      background: rgba(255,255,255,.02);
+      padding:14px 14px;
+      box-shadow: var(--shadow);
+    }
+    details summary{
+      cursor:pointer;
+      font-weight:700;
+      color: var(--text);
+      list-style:none;
+    }
+    details summary::-webkit-details-marker{ display:none; }
+    details p{ margin:10px 0 0; color: var(--muted); font-size:14px; }
+
+    .faq-grid{
+      display:grid;
+      gap:12px;
+    }
+
+    /* Footer */
+    footer{
+      border-top: 1px solid rgba(254,193,7,.22);
+      padding:24px 0 40px;
+      color: var(--muted2);
+      font-size:13px;
+    }
+    .footer-grid{
+      display:grid;
+      grid-template-columns: 1.4fr .6fr;
+      gap:14px;
+      align-items:start;
+    }
+    .footer-links{
+      display:flex;
+      gap:12px;
+      justify-content:flex-end;
+      flex-wrap:wrap;
+    }
+    .footer-links a{ color: var(--muted2); padding:6px 8px; border-radius:12px; }
+    .footer-links a:hover{ color: var(--text); background: rgba(254,193,7,.08); }
+
+    /* Sticky bottom CTA (mobile conversion boost) */
+    .sticky-cta{
+      position:fixed;
+      left:0; right:0; bottom:0;
+      padding:10px 10px;
+      background: rgba(0,0,0,.78);
+      border-top: 1px solid rgba(254,193,7,.20);
+      backdrop-filter: blur(10px);
+      display:none;
+      z-index:1100;
+    }
+    .sticky-cta .inner{
+      max-width: var(--max);
+      margin:0 auto;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+      padding:0 8px;
+    }
+    .sticky-cta .inner .txt{
+      font-size:12px;
+      color: var(--muted);
+      line-height:1.3;
+    }
+
+    /* Responsive */
+    @media (max-width: 980px){
+      .hero-grid{ grid-template-columns: 1fr; }
+      .grid-3{ grid-template-columns: 1fr; }
+      .offer{ grid-template-columns: 1fr; }
+      h1{ font-size:38px; }
+      .footer-grid{ grid-template-columns: 1fr; }
+      .footer-links{ justify-content:flex-start; }
+    }
+    @media (max-width: 720px){
+      .nav-links a.hide-sm{ display:none; }
+      .sticky-cta{ display:block; }
+      h1{ font-size:34px; }
     }
   </style>
 </head>
+
 <body>
-  <!-- Navigation -->
-  <nav>
-    <a href="index.html">Home</a>
-    <a href="consultation.html" class="consultation-button">Consultation</a>
-    <a href="resources.html">Resources</a>
-    <a href="security.html">Security</a>
-    <a href="the-hive.html">The Hive</a>
-  </nav>
-
-  <!-- Hero -->
-  <section class="hero">
+  <!-- NAV -->
+  <div class="nav">
     <div class="container">
-      <h1>Welcome to BrandBitcoin</h1>
-      <p>Your trusted partner for navigating the world’s first decentralized money. Whether you’re curious, investing, or securing your wealth, you’re in the right place.</p>
-      <a href="consultation.html" class="cta-button">Start Your Journey</a>
-    </div>
-  </section>
+      <div class="nav-inner">
+        <a class="brand" href="#top" aria-label="BrandBitcoin home">
+          <div class="brand-badge">₿</div>
+          <span>BrandBitcoin</span>
+        </a>
 
-  <!-- Bitcoin story -->
-  <section class="story">
+        <div class="nav-links" aria-label="Primary navigation">
+          <a class="hide-sm" href="#learn">Learn</a>
+          <a class="hide-sm" href="#course">Course</a>
+          <a class="hide-sm" href="#metrics">Metrics</a>
+          <a class="hide-sm" href="#faq">FAQ</a>
+          <a class="btn btn-ghost" href="consultation.html">Consultation</a>
+          <a class="btn btn-primary" href="#guide">Free Guide</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- HERO -->
+  <main id="top" class="hero">
     <div class="container">
-      <h2>The Bitcoin Story</h2>
-      <p>Bitcoin is one of the most remarkable inventions in human history. Born in 2009 as an immaculate conception, it arrived without fanfare, owned by no one, controlled by no government. Its mysterious creator, Satoshi Nakamoto, has never sold a single coin and has never revealed his or her identity. </p>
-      <p>This epic story has brought incredible value to its users — and continues to inspire a global movement for financial freedom. But with great opportunity comes risk. Bitcoin is volatile, and the journey isn’t without challenges. That’s where we come in: helping you explore, learn, and navigate safely.</p>
-      <p><strong>Join the adventure. Understand the risks. Discover the rewards.</strong></p>
-    </div>
-  </section>
+      <div class="hero-grid">
+        <section>
+          <span class="pill">⚡ Beginner-friendly • Security-first • UK-focused</span>
+          <h1>Learn Bitcoin without getting wrecked by hype.</h1>
+          <p>
+            BrandBitcoin turns confusion into conviction.
+            Learn the fundamentals, understand the risks, and secure your Bitcoin with a simple step-by-step system.
+          </p>
 
-  <!-- Metrics -->
-  <section class="main-content">
-    <h2>Bitcoin Network Metrics</h2>
-    <p style="font-size:14px;color:#bbb;">(Note: Live market data updates recommended for accuracy)</p>
-    <div class="metrics-grid">
-      <!-- Metrics kept as in original -->
-      <div class="metric-card"><h3>Price (GBP)</h3><div class="metric-value">£58,240</div><div class="metric-secondary">All-time high: £69,000</div></div>
-      <div class="metric-card"><h3>Market Cap</h3><div class="metric-value">£1.15T</div><div class="metric-secondary">#1 cryptocurrency</div></div>
-      <div class="metric-card"><h3>BTC Volume</h3><div class="metric-value">32,500 BTC</div><div class="metric-secondary">Traded daily</div></div>
-      <div class="metric-card"><h3>GBP Volume</h3><div class="metric-value">£1.9B</div><div class="metric-secondary">Daily trading</div></div>
-      <div class="metric-card"><h3>Supply Mined</h3><div class="metric-value">19.7M BTC</div><div class="metric-secondary">91.9% of total</div></div>
-      <div class="metric-card"><h3>Nodes</h3><div class="metric-value">15,000+</div><div class="metric-secondary">Global copies</div></div>
-      <div class="metric-card"><h3>Years Running</h3><div class="metric-value">15+ years</div><div class="metric-secondary">Since 2009</div></div>
-      <div class="metric-card"><h3>Halvings</h3><div class="metric-value">4 completed</div><div class="metric-secondary">Next: 2028</div></div>
-      <div class="metric-card"><h3>Network Hacks</h3><div class="metric-value">0</div><div class="metric-secondary">SHA256 secure</div></div>
-      <div class="metric-card"><h3>Uptime</h3><div class="metric-value">99.99%</div><div class="metric-secondary">Since inception</div></div>
-      <div class="metric-card"><h3>Downtime</h3><div class="metric-value">Few hours</div><div class="metric-secondary">Only in 2010</div></div>
-      <div class="metric-card"><h3>Block Height</h3><div class="metric-value">840,000+</div><div class="metric-secondary">New every 10min</div></div>
-      <div class="metric-card"><h3>Hash Rate</h3><div class="metric-value">600 EH/s</div><div class="metric-secondary">Mining power</div></div>
-      <div class="metric-card"><h3>Active Wallets</h3><div class="metric-value">1M+</div><div class="metric-secondary">Daily activity</div></div>
-      <div class="metric-card"><h3>Largest Tx</h3><div class="metric-value">500,000 BTC</div><div class="metric-secondary">$29B transfer</div></div>
-      <div class="metric-card"><h3>Avg Fee</h3><div class="metric-value">£1.50</div><div class="metric-secondary">Per transaction</div></div>
-      <div class="metric-card"><h3>Renewable Energy</h3><div class="metric-value">58%</div><div class="metric-secondary">Mining power</div></div>
-      <div class="metric-card"><h3>Market Dominance</h3><div class="metric-value">52%</div><div class="metric-secondary">Of crypto market</div></div>
-      <div class="metric-card"><h3>Vs Gold</h3><div class="metric-value">1.8% inflation</div><div class="metric-secondary">Gold: 2-3%</div></div>
-      <div class="metric-card"><h3>Legal Status</h3><div class="metric-value">119 countries</div><div class="metric-secondary">Fully legal</div></div>
-      <div class="metric-card"><h3>Billion £ Wallets</h3><div class="metric-value">120+</div><div class="metric-secondary">Whale addresses</div></div>
-      <div class="metric-card"><h3>Remaining BTC</h3><div class="metric-value">1.3M left</div><div class="metric-secondary">Until 2140</div></div>
-    </div>
-  </section>
+          <div class="hero-ctas">
+            <a class="btn btn-primary" href="#guide">Get the free guide</a>
+            <a class="btn btn-ghost" href="#course">See the course</a>
+          </div>
 
-  <!-- Email form -->
-  <section class="email-form">
+          <p class="microcopy">
+            Not financial advice. Education + security guidance only. Realistic expectations. No “get rich quick”.
+          </p>
+        </section>
+
+        <aside class="hero-card" id="metrics">
+          <header>
+            <div class="title">Live BTC Snapshot</div>
+            <div class="tag" id="metricsStatus">loading…</div>
+          </header>
+          <div class="metrics" aria-live="polite">
+            <div class="metric">
+              <div class="k">Price (GBP)</div>
+              <div class="v" id="m_price"><span class="skeleton"></span></div>
+              <div class="s" id="m_price_s">24h: <span class="skeleton" style="width:6ch;"></span></div>
+            </div>
+            <div class="metric">
+              <div class="k">Market Cap</div>
+              <div class="v" id="m_mcap"><span class="skeleton"></span></div>
+              <div class="s">Source: CoinGecko</div>
+            </div>
+            <div class="metric">
+              <div class="k">24h Volume</div>
+              <div class="v" id="m_vol"><span class="skeleton"></span></div>
+              <div class="s" id="m_updated"><span class="skeleton" style="width:14ch;"></span></div>
+            </div>
+            <div class="metric">
+              <div class="k">Supply Mined</div>
+              <div class="v" id="m_supply"><span class="skeleton"></span></div>
+              <div class="s">Hard cap: 21M</div>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </main>
+
+  <!-- LEARN -->
+  <section class="section" id="learn">
     <div class="container">
-      <h2>Get Your Free Bitcoin Guide</h2>
-      <form action="https://github.com/Bradbarr/brandbitcoin-landing-page/raw/main/Bitcoin%20Beginner's%20Guide%20Unlocking%20Financial%20Freedom%20with%20Bitcoin.pdf" method="get" target="_blank">
-        <input type="email" name="email" placeholder="Enter your email" required>
-        <button type="submit">Download PDF</button>
-      </form>
-    </div>
-  </section>
+      <h2>What we help you do</h2>
+      <p class="lead">
+        Most people lose money because they skip the boring parts: fundamentals, risk, and custody.
+        BrandBitcoin is designed to make those parts simple.
+      </p>
 
-  <!-- Disclaimer -->
-  <section class="disclaimer">
-    <div class="container">
-      <p><strong>Disclaimer:</strong> The information on this website is for educational purposes only. Bitcoin is volatile; you may lose money. Consult a professional before investing.</p>
-      <button onclick="toggleDisclaimer()">Read Full Disclaimer</button>
-      <div class="full-disclaimer" id="fullDisclaimer">
-        <p><strong>Full Disclaimer:</strong></p>
-        <ol>
-          <li>No Financial Advice: Content is educational only.</li>
-          <li>Risks of Bitcoin: Highly volatile; you may lose your investment.</li>
-          <li>No Guarantees: Accuracy not guaranteed.</li>
-          <li>User Responsibility: You are solely responsible for your actions.</li>
-          <li>Third-Party Services: Not responsible for external content.</li>
-          <li>Jurisdiction: Governed by applicable local laws.</li>
-        </ol>
+      <div class="grid-3">
+        <div class="card">
+          <h3>Understand Bitcoin (for real)</h3>
+          <p>What it is, what it isn’t, and why it matters—without tribalism, maximalism, or altcoin rabbit holes.</p>
+        </div>
+        <div class="card">
+          <h3>Buy safely (and avoid mistakes)</h3>
+          <p>Exchange basics, spreads/fees, DCA, scam red flags, and how to not panic during volatility.</p>
+        </div>
+        <div class="card">
+          <h3>Secure your holdings</h3>
+          <p>Wallet types, backups, multisig concepts, operational security, and a clean “do this next” checklist.</p>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- Footer -->
+  <!-- COURSE / OFFER -->
+  <section class="section" id="course">
+    <div class="container">
+      <h2>Your next step</h2>
+      <p class="lead">
+        Two paths depending on where you are: self-serve education, or guided setup.
+      </p>
+
+      <div class="offer">
+        <div class="card">
+          <h3>₿ BrandBitcoin Bootcamp (Course)</h3>
+          <p>Short, structured lessons + checklists. Built for busy people who want clarity, not noise.</p>
+
+          <ul class="list">
+            <li class="li"><span class="check">✓</span>Module 1: Bitcoin fundamentals (what to ignore, what matters)</li>
+            <li class="li"><span class="check">✓</span>Module 2: Buying safely (UK-friendly workflow)</li>
+            <li class="li"><span class="check">✓</span>Module 3: Self-custody (step-by-step)</li>
+            <li class="li"><span class="check">✓</span>Module 4: Security habits (OPSEC, backups, inheritance basics)</li>
+            <li class="li"><span class="check">✓</span>“Red flags” playbook for scams + bad advice</li>
+          </ul>
+
+          <div class="hero-ctas" style="margin-top:14px;">
+            <a class="btn btn-primary" href="#guide">Join the waitlist + get the guide</a>
+            <a class="btn btn-ghost" href="consultation.html">Prefer 1:1 help</a>
+          </div>
+
+          <p class="microcopy">Launch idea: start with a waitlist + 3–5 emails. Sell a “Founding Cohort” at a discounted price.</p>
+        </div>
+
+        <div class="cta-panel" id="guide">
+          <h3>Free download: “Bitcoin Beginner’s Guide”</h3>
+          <p>
+            Get the PDF + a short email series that helps you take the next step (without overwhelm).
+          </p>
+
+          <!-- OPTION A (recommended): Formspree (collect emails easily)
+               1) Create a Formspree form
+               2) Replace the action URL below
+               3) In Formspree, set redirect to your PDF link (or a thank-you page)
+          -->
+          <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+            <input type="email" name="email" placeholder="Enter your email" required />
+            <button class="btn btn-primary" type="submit">Get the guide</button>
+          </form>
+
+          <p class="microcopy">
+            If you’re not using Formspree yet, quick fallback: link directly to the PDF:
+            <a href="https://github.com/Bradbarr/brandbitcoin-landing-page/raw/main/Bitcoin%20Beginner's%20Guide%20Unlocking%20Financial%20Freedom%20with%20Bitcoin.pdf" target="_blank" rel="noopener">Download PDF</a>
+          </p>
+
+          <div class="card" style="margin-top:14px;">
+            <h3>Want a “done-with-you” setup?</h3>
+            <p class="quote">
+              <strong>Consultation:</strong> perfect if you want help selecting a wallet approach, setting up backups,
+              and learning a safe process. (Still not financial advice—security + education only.)
+            </p>
+            <div class="hero-ctas" style="margin-top:12px;">
+              <a class="btn btn-ghost" href="consultation.html">Book consultation</a>
+              <a class="btn btn-ghost" href="security.html">Read security page</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SOCIAL PROOF -->
+  <section class="section" id="proof">
+    <div class="container">
+      <h2>Trust, not hype</h2>
+      <p class="lead">If you want, add real testimonials here later. For now, use credibility signals that don’t require “claims.”</p>
+
+      <div class="grid-3">
+        <div class="card">
+          <h3>Clarity-first curriculum</h3>
+          <p>No charts-as-content. No shilling. No “100x.” Just fundamentals, risk, and security.</p>
+        </div>
+        <div class="card">
+          <h3>Security-first approach</h3>
+          <p>We focus on custody, backups, and good habits—because most losses are user-error, not “Bitcoin broke.”</p>
+        </div>
+        <div class="card">
+          <h3>Designed for real people</h3>
+          <p>Short lessons, checklists, and simple next steps. Built for busy schedules and low mental load.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section" id="faq">
+    <div class="container">
+      <h2>FAQ</h2>
+      <p class="lead">Answer the objections before people have to email you. This is where conversions happen.</p>
+
+      <div class="faq-grid">
+        <details>
+          <summary>Is this financial advice?</summary>
+          <p>No. BrandBitcoin is education + security guidance. You decide what (if anything) to buy. Consider a regulated professional for financial advice.</p>
+        </details>
+        <details>
+          <summary>What if I’m a total beginner?</summary>
+          <p>Perfect. Start with the free guide. Then the Bootcamp is structured to take you from “confused” to “confident” step-by-step.</p>
+        </details>
+        <details>
+          <summary>What do I actually get from a consultation?</summary>
+          <p>A guided walkthrough: safer buying flow, wallet options, backup plan, security habits, and a personalised checklist. No promises, no price predictions.</p>
+        </details>
+        <details>
+          <summary>Why do you show live metrics?</summary>
+          <p>To keep the page current. But decisions shouldn’t be made from one number—education comes first.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- DISCLAIMER -->
+  <section class="section" id="disclaimer" style="padding-top:10px;">
+    <div class="container">
+      <div class="card">
+        <h3 style="margin-top:0;">Disclaimer</h3>
+        <p style="margin:0;color:var(--muted);font-size:14px;">
+          Educational content only. Bitcoin is volatile; you may lose money. You are responsible for your decisions.
+          External links/tools are third-party services. Follow local laws and regulations.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
   <footer>
-    <p>&copy; 2025 BrandBitcoin. All rights reserved.</p>
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="brand" style="margin-bottom:10px;">
+            <div class="brand-badge">₿</div>
+            <span>BrandBitcoin</span>
+          </div>
+          <div>© <span id="year"></span> BrandBitcoin. All rights reserved.</div>
+        </div>
+        <div class="footer-links">
+          <a href="resources.html">Resources</a>
+          <a href="security.html">Security</a>
+          <a href="the-hive.html">The Hive</a>
+          <a href="consultation.html">Consultation</a>
+        </div>
+      </div>
+    </div>
   </footer>
 
+  <!-- Sticky CTA -->
+  <div class="sticky-cta" role="region" aria-label="Sticky call to action">
+    <div class="inner">
+      <div class="txt">
+        Get the free Bitcoin guide + course waitlist.
+      </div>
+      <a class="btn btn-primary" href="#guide">Free Guide</a>
+    </div>
+  </div>
+
   <script>
-    function toggleDisclaimer() {
-      const disclaimer = document.getElementById('fullDisclaimer');
-      disclaimer.classList.toggle('active');
+    // Footer year
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // Live metrics via CoinGecko (graceful fallback)
+    // Note: CORS/network blockers can affect this. If it fails, we show "Unavailable".
+    const el = (id) => document.getElementById(id);
+    const status = el("metricsStatus");
+
+    function fmtGBP(n){
+      try{
+        return new Intl.NumberFormat("en-GB", { style:"currency", currency:"GBP", maximumFractionDigits:0 }).format(n);
+      }catch(e){
+        return "£" + Math.round(n).toLocaleString("en-GB");
+      }
     }
+    function fmtNum(n){
+      return new Intl.NumberFormat("en-GB", { maximumFractionDigits:0 }).format(n);
+    }
+
+    async function loadMetrics(){
+      status.textContent = "loading…";
+      const url =
+        "https://api.coingecko.com/api/v3/coins/bitcoin?localization=false&tickers=false&market_data=true&community_data=false&developer_data=false&sparkline=false";
+
+      try{
+        const res = await fetch(url, { headers: { "accept":"application/json" } });
+        if(!res.ok) throw new Error("HTTP " + res.status);
+        const data = await res.json();
+
+        const md = data.market_data;
+        const price = md.current_price.gbp;
+        const chg = md.price_change_percentage_24h;
+        const mcap = md.market_cap.gbp;
+        const vol = md.total_volume.gbp;
+
+        // Approx circulating supply in BTC: market cap / price
+        const circ = price ? (mcap / price) : null;
+
+        el("m_price").textContent = fmtGBP(price);
+        el("m_price_s").textContent = "24h: " + (chg >= 0 ? "+" : "") + (chg ?? 0).toFixed(2) + "%";
+        el("m_mcap").textContent = fmtGBP(mcap);
+        el("m_vol").textContent = fmtGBP(vol);
+        el("m_supply").textContent = circ ? ( (circ/1e6).toFixed(2) + "M BTC" ) : "—";
+
+        const t = new Date();
+        el("m_updated").textContent = "Updated: " + t.toLocaleTimeString("en-GB", { hour:"2-digit", minute:"2-digit" });
+
+        status.textContent = "live";
+      }catch(err){
+        // Fallback: show placeholders
+        status.textContent = "unavailable";
+        el("m_price").textContent = "—";
+        el("m_price_s").textContent = "24h: —";
+        el("m_mcap").textContent = "—";
+        el("m_vol").textContent = "—";
+        el("m_supply").textContent = "—";
+        el("m_updated").textContent = "Live data blocked";
+        console.warn("Metrics failed:", err);
+      }
+    }
+
+    loadMetrics();
+    // refresh every 2 minutes
+    setInterval(loadMetrics, 120000);
   </script>
 </body>
 </html>
